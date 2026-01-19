@@ -13,8 +13,8 @@ import requests
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from tqdm import tqdm
 
-from .query import PlanetAPIClient
-from .storage import ImageryStorage
+from .planet_pipeline_query import PlanetAPIClient
+from .planet_pipeline_storage import ImageryStorage
 
 logger = logging.getLogger(__name__)
 
@@ -26,22 +26,28 @@ class ImageryDownloader:
         self,
         api_key: str,
         storage: ImageryStorage,
-        max_workers: int = 4,
-        chunk_size: int = 8192
+        max_workers: int = 2,
+        chunk_size: int = 8192,
+        rate_limit_delay: float = 1.0,
+        max_retries: int = 5
     ):
         """
         Initialize downloader.
-        
+
         Args:
             api_key: Planet API key
             storage: Storage manager instance
-            max_workers: Number of parallel downloads
+            max_workers: Number of parallel downloads (reduced to 2 to avoid rate limits)
             chunk_size: Download chunk size in bytes
+            rate_limit_delay: Base delay between requests in seconds
+            max_retries: Maximum retry attempts for rate-limited requests
         """
         self.client = PlanetAPIClient(api_key=api_key)
         self.storage = storage
         self.max_workers = max_workers
         self.chunk_size = chunk_size
+        self.rate_limit_delay = rate_limit_delay
+        self.max_retries = max_retries
     
     def download_scenes(
         self,
@@ -194,37 +200,65 @@ class ImageryDownloader:
         asset_type: str
     ) -> Path:
         """
-        Download file from URL.
-        
+        Download file from URL with retry logic for rate limiting.
+
         Args:
             url: Download URL
             item_id: Item ID
             asset_type: Asset type
-        
+
         Returns:
             Path to temporary downloaded file
         """
         # Create temp directory
         temp_dir = Path("/tmp/planet_downloads")
         temp_dir.mkdir(parents=True, exist_ok=True)
-        
+
         temp_file = temp_dir / f"{item_id}_{asset_type}.tif"
-        
-        # Download with progress
-        response = self.client.session.get(url, stream=True)
-        response.raise_for_status()
-        
-        total_size = int(response.headers.get('content-length', 0))
-        
-        with open(temp_file, 'wb') as f:
-            if total_size == 0:
-                f.write(response.content)
-            else:
-                for chunk in response.iter_content(chunk_size=self.chunk_size):
-                    if chunk:
-                        f.write(chunk)
-        
-        return temp_file
+
+        # Download with retry logic for rate limiting
+        for attempt in range(self.max_retries):
+            try:
+                # Add delay to avoid rate limiting
+                if attempt > 0:
+                    delay = self.rate_limit_delay * (2 ** attempt)  # Exponential backoff
+                    logger.info(f"Retry {attempt + 1}/{self.max_retries} after {delay}s delay for {item_id}")
+                    time.sleep(delay)
+
+                response = self.client.session.get(url, stream=True)
+                response.raise_for_status()
+
+                total_size = int(response.headers.get('content-length', 0))
+
+                with open(temp_file, 'wb') as f:
+                    if total_size == 0:
+                        f.write(response.content)
+                    else:
+                        for chunk in response.iter_content(chunk_size=self.chunk_size):
+                            if chunk:
+                                f.write(chunk)
+
+                return temp_file
+
+            except requests.HTTPError as e:
+                if e.response.status_code == 429:  # Rate limit error
+                    if attempt < self.max_retries - 1:
+                        retry_after = e.response.headers.get('Retry-After')
+                        if retry_after:
+                            delay = float(retry_after)
+                        else:
+                            delay = self.rate_limit_delay * (2 ** attempt)
+                        logger.warning(f"Rate limited. Retrying after {delay}s...")
+                        time.sleep(delay)
+                        continue
+                    else:
+                        logger.error(f"Max retries exceeded for {item_id} due to rate limiting")
+                        raise
+                else:
+                    # For other HTTP errors, raise immediately
+                    raise
+
+        raise RuntimeError(f"Failed to download {item_id} after {self.max_retries} attempts")
     
     def download_by_ids(
         self,

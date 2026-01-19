@@ -196,68 +196,97 @@ class PlanetAPIClient:
     def get_item_assets(self, item_type: str, item_id: str) -> Dict:
         """
         Get available assets for an item.
-        
+
         Args:
             item_type: Planet item type
             item_id: Item ID
-        
+
         Returns:
             Dict of available assets
         """
         url = f"{self.BASE_URL}/item-types/{item_type}/items/{item_id}/assets"
-        
+
         for attempt in range(self.max_retries):
             try:
                 response = self.session.get(url)
                 response.raise_for_status()
                 return response.json()
-            except requests.HTTPError:
-                if attempt < self.max_retries - 1:
+            except requests.HTTPError as e:
+                if e.response.status_code == 429 and attempt < self.max_retries - 1:
+                    # Handle rate limiting with exponential backoff
+                    retry_after = e.response.headers.get('Retry-After')
+                    delay = float(retry_after) if retry_after else self.retry_delay * (2 ** attempt)
+                    time.sleep(delay)
+                    continue
+                elif attempt < self.max_retries - 1:
                     time.sleep(self.retry_delay)
                     continue
                 raise
-        
+
         return {}
     
     def activate_asset(self, asset_url: str) -> bool:
         """
-        Activate an asset for download.
-        
+        Activate an asset for download with retry logic.
+
         Args:
             asset_url: Asset activation URL
-        
+
         Returns:
             True if activation successful
         """
-        response = self.session.get(asset_url)
-        response.raise_for_status()
-        return True
+        for attempt in range(self.max_retries):
+            try:
+                response = self.session.get(asset_url)
+                response.raise_for_status()
+                return True
+            except requests.HTTPError as e:
+                if e.response.status_code == 429 and attempt < self.max_retries - 1:
+                    retry_after = e.response.headers.get('Retry-After')
+                    delay = float(retry_after) if retry_after else self.retry_delay * (2 ** attempt)
+                    time.sleep(delay)
+                    continue
+                elif attempt < self.max_retries - 1:
+                    time.sleep(self.retry_delay)
+                    continue
+                raise
+
+        return False
     
     def get_download_url(self, asset_url: str, timeout: int = 300) -> Optional[str]:
         """
-        Get download URL for an activated asset.
-        
+        Get download URL for an activated asset with rate limit handling.
+
         Args:
             asset_url: Asset URL
             timeout: Maximum wait time in seconds
-        
+
         Returns:
             Download URL or None if timeout
         """
         start_time = time.time()
-        
+
         while time.time() - start_time < timeout:
-            response = self.session.get(asset_url)
-            response.raise_for_status()
-            asset_data = response.json()
-            
-            status = asset_data.get("status")
-            
-            if status == "active":
-                return asset_data.get("location")
-            elif status == "failed":
-                raise RuntimeError("Asset activation failed")
-            
-            time.sleep(5)
-        
+            try:
+                response = self.session.get(asset_url)
+                response.raise_for_status()
+                asset_data = response.json()
+
+                status = asset_data.get("status")
+
+                if status == "active":
+                    return asset_data.get("location")
+                elif status == "failed":
+                    raise RuntimeError("Asset activation failed")
+
+                time.sleep(5)
+
+            except requests.HTTPError as e:
+                if e.response.status_code == 429:
+                    retry_after = e.response.headers.get('Retry-After')
+                    delay = float(retry_after) if retry_after else 10
+                    time.sleep(delay)
+                    continue
+                raise
+
         return None

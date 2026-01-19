@@ -1,0 +1,16 @@
+{
+  "type": "Feature",
+  "properties": {
+    "name": "Example AOI - San Francisco Bay Area"
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [[
+      [-122.5, 37.7],
+      [-122.5, 37.85],
+      [-122.35, 37.85],
+      [-122.35, 37.7],
+      [-122.5, 37.7]
+    ]]
+  }
+}

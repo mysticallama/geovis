@@ -1,0 +1,77 @@
+# Planet Pipeline Configuration Template
+# Copy this to config.yaml and customize for your project
+
+# Planet API Configuration
+planet:
+  api_key: ${PL_API_KEY}  # Or set directly
+  
+# Storage Configuration
+storage:
+  base_dir: ./planet_data
+  cache_enabled: true
+  cache_ttl_days: 30
+
+# Download Configuration
+download:
+  max_workers: 4
+  chunk_size: 8192
+  default_asset_types:
+    - ortho_analytic_4b
+  skip_existing: true
+
+# Query Configuration
+query:
+  default_item_types:
+    - PSScene
+  default_cloud_cover_max: 0.1
+  max_results_per_aoi: 250
+  retry_attempts: 3
+  retry_delay: 2.0
+
+# Preprocessing Configuration
+preprocessing:
+  default_operations:
+    - cloud_mask
+    - normalization
+  cloud_mask:
+    threshold: 0.3
+  normalization:
+    method: percentile  # Options: minmax, zscore, percentile
+  atmospheric_correction:
+    method: dos  # Dark Object Subtraction
+
+# Spectral Indices Configuration
+indices:
+  default_indices:
+    - ndvi
+    - ndwi
+    - evi
+  nodata_value: -9999
+
+# ML Dataset Configuration
+ml:
+  default_model_type: pytorch  # Options: pytorch, tensorflow, sklearn
+  chip_size: 256
+  overlap: 32
+  normalize: true
+  augment: true
+  
+  splits:
+    train: 0.7
+    val: 0.15
+    test: 0.15
+  
+  random_seed: 42
+  
+  augmentation:
+    horizontal_flip: true
+    vertical_flip: true
+    rotate_90: true
+    rotate_180: true
+    rotate_270: true
+
+# Logging Configuration
+logging:
+  level: INFO  # Options: DEBUG, INFO, WARNING, ERROR
+  file: pipeline.log
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
