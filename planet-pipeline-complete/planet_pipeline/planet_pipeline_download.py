@@ -158,18 +158,29 @@ class ImageryDownloader:
             # Activate asset if needed
             status = asset.get("status")
             if status != "active":
-                logger.debug(f"Activating asset: {item_id}/{asset_type}")
+                logger.info(f"Asset {item_id}/{asset_type} status: {status}, activating...")
                 activate_url = asset.get("_links", {}).get("activate")
-                if activate_url:
-                    self.client.activate_asset(activate_url)
-                
-                # Wait for activation
-                download_url = self.client.get_download_url(asset_url, timeout=300)
+
+                if not activate_url:
+                    logger.error(f"No activation URL for {item_id}/{asset_type} - asset may not be available")
+                    return None
+
+                # Send activation request
+                activation_success = self.client.activate_asset(activate_url)
+                if not activation_success:
+                    logger.error(f"Failed to activate {item_id}/{asset_type}")
+                    return None
+
+                # Wait for activation to complete
+                logger.info(f"Waiting for {item_id}/{asset_type} to activate (may take several minutes)...")
+                download_url = self.client.get_download_url(asset_url, timeout=600)  # Increased to 10 minutes
             else:
+                logger.info(f"Asset {item_id}/{asset_type} already active")
                 download_url = asset.get("location")
-            
+
             if not download_url:
                 logger.error(f"Could not get download URL for {item_id}/{asset_type}")
+                logger.info(f"This may indicate: (1) Activation timeout, (2) Missing permissions, or (3) Asset not available for your subscription")
                 return None
             
             # Download file

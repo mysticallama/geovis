@@ -1,0 +1,29 @@
+# Water Infrastructure Monitoring Pipeline
+# v1.0.0
+
+# Core dependencies
+requests>=2.28.0
+numpy>=1.24.0
+pandas>=2.0.0
+shapely>=2.0.0
+geopandas>=0.14.0
+pyproj>=3.5.0
+tqdm>=4.65.0
+pyyaml>=6.0
+
+# Optional: Satellite imagery processing
+# rasterio>=1.3.0
+
+# Optional: ML frameworks
+# torch
+# tensorflow
+# scikit-learn  # For DBSCAN/HDBSCAN
+
+# Optional: Visualization
+# Pillow
+# matplotlib
+
+# Development
+# pytest
+# black
+# flake8

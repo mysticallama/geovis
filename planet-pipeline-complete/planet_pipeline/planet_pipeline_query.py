@@ -230,14 +230,15 @@ class PlanetAPIClient:
         Activate an asset for download with retry logic.
 
         Args:
-            asset_url: Asset activation URL
+            asset_url: Asset activation URL (the activate endpoint)
 
         Returns:
-            True if activation successful
+            True if activation request successful
         """
         for attempt in range(self.max_retries):
             try:
-                response = self.session.get(asset_url)
+                # IMPORTANT: Must use POST to activate, not GET
+                response = self.session.post(asset_url)
                 response.raise_for_status()
                 return True
             except requests.HTTPError as e:
@@ -258,13 +259,17 @@ class PlanetAPIClient:
         Get download URL for an activated asset with rate limit handling.
 
         Args:
-            asset_url: Asset URL
+            asset_url: Asset URL (the _self link to check status)
             timeout: Maximum wait time in seconds
 
         Returns:
             Download URL or None if timeout
         """
+        import logging
+        logger = logging.getLogger(__name__)
+
         start_time = time.time()
+        last_status = None
 
         while time.time() - start_time < timeout:
             try:
@@ -274,19 +279,35 @@ class PlanetAPIClient:
 
                 status = asset_data.get("status")
 
+                # Log status changes
+                if status != last_status:
+                    elapsed = int(time.time() - start_time)
+                    logger.info(f"Asset status: {status} (after {elapsed}s)")
+                    last_status = status
+
                 if status == "active":
                     return asset_data.get("location")
                 elif status == "failed":
-                    raise RuntimeError("Asset activation failed")
+                    raise RuntimeError(f"Asset activation failed: {asset_data.get('error', 'Unknown error')}")
+                elif status == "inactive":
+                    # Asset needs activation but wasn't activated properly
+                    raise RuntimeError("Asset is inactive - activation may have failed")
 
+                # Still activating, wait before checking again
                 time.sleep(5)
 
             except requests.HTTPError as e:
                 if e.response.status_code == 429:
                     retry_after = e.response.headers.get('Retry-After')
                     delay = float(retry_after) if retry_after else 10
+                    logger.warning(f"Rate limited while checking activation status, waiting {delay}s")
                     time.sleep(delay)
                     continue
+                elif e.response.status_code == 403:
+                    # Permission denied - might not have access to this asset
+                    raise RuntimeError(f"Access denied to asset - may require subscription or permissions")
                 raise
 
+        # Timeout reached
+        logger.error(f"Asset activation timed out after {timeout}s. Last status: {last_status}")
         return None

@@ -1,0 +1,74 @@
+# Water Infrastructure Monitoring Pipeline - Configuration Template
+# Copy to config.yaml and customize for your analysis
+
+pipeline:
+  output_dir: ./pipeline_output
+
+# API Keys (can also use environment variables)
+# Set via env vars: FIRMS_MAP_KEY, ACLED_EMAIL, ACLED_API_KEY, PL_API_KEY
+api_keys:
+  planet: ${PL_API_KEY}       # Planet Labs (optional)
+  firms: ${FIRMS_MAP_KEY}     # NASA FIRMS (required for thermal data)
+  acled_email: ${ACLED_EMAIL} # ACLED email (required for conflict data)
+  acled_key: ${ACLED_API_KEY} # ACLED key (required for conflict data)
+
+# Temporal Parameters
+temporal:
+  thermal_lookback_days: 7    # Days to query FIRMS for thermal anomalies
+  acled_lookback_days: 7      # Days to query ACLED for conflict events
+
+# Spatial Parameters
+spatial:
+  proximity_radius_meters: 50.0     # Distance to consider "near" infrastructure
+  acled_match_radius_meters: 500.0  # Radius for matching ACLED events
+
+# NASA FIRMS Settings
+firms:
+  sources:
+    - VIIRS_SNPP_NRT      # VIIRS S-NPP Near Real-Time
+    - VIIRS_NOAA20_NRT    # VIIRS NOAA-20 Near Real-Time
+  confidence_threshold: nominal  # Filter: low, nominal, high (or null for all)
+
+# OSM Water Infrastructure Tags
+# These define what features to query from OpenStreetMap
+water_infrastructure:
+  - key: water
+    value: reservoir
+  - key: water
+    value: basin
+  - key: waterway
+    value: dam
+  - key: waterway
+    value: canal
+  - key: waterway
+    value: ditch
+  # Additional tags (uncomment as needed):
+  # - key: man_made
+  #   value: water_tower
+  # - key: man_made
+  #   value: pumping_station
+  # - key: natural
+  #   value: spring
+  # - key: amenity
+  #   value: drinking_water
+
+# Export Settings
+export:
+  satellite_apis:
+    - planet            # Planet Labs tasking format
+    - maxar             # Maxar Discovery API (STAC)
+  ml_formats:
+    - geojson           # Raw GeoJSON
+    - yolo              # YOLOv8 object detection
+    # - clustering      # DBSCAN/HDBSCAN points
+    # - siamese         # Siamese network pairs
+    # - segmentation    # Segmentation masks
+
+# Maxar Discovery API Settings
+maxar:
+  collections:
+    - wv01              # WorldView-1
+    - wv02              # WorldView-2
+    - wv03              # WorldView-3
+  cloud_cover_max: 20   # Maximum cloud cover percentage
+  # datetime_range: "2024-01-01/2024-12-31"  # Optional date filter
