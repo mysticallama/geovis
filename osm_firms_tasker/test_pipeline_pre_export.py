@@ -64,9 +64,9 @@ PROXIMITY_RADIUS_METERS = 500
 # FIRMS API: Requires MAP_KEY from https://firms.modaps.eosdis.nasa.gov/api/map_key/
 # ACLED: OAuth authentication with email/password
 # =============================================================================
-os.environ["FIRMS_MAP_KEY"] = "2bc3b486cbc85b43930f5a69759fbb29"
-os.environ["ACLED_EMAIL"] = "cole.griffiths@yale.edu"
-os.environ["ACLED_PASSWORD"] = "3BGfzrKYU9rg*7@"
+os.environ["FIRMS_MAP_KEY"] = ""
+os.environ["ACLED_EMAIL"] = ""
+os.environ["ACLED_PASSWORD"] = ""
 # =============================================================================
 
 # Set up logging
