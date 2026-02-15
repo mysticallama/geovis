@@ -1,0 +1,4397 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0302,
+          12.81
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM88790",
+        "event_date": "2024-06-24",
+        "year": 2024,
+        "event_type": "Violence against civilians",
+        "sub_event_type": "Attack",
+        "actor1": "Unidentified Armed Group (Yemen)",
+        "assoc_actor_1": "",
+        "inter1": "Political militia",
+        "actor2": "Civilians (Yemen)",
+        "assoc_actor_2": "Labor Group (Yemen)",
+        "inter2": "Civilians",
+        "interaction": "Political militia-Civilians",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Sahat al Urud",
+        "geo_precision": 1,
+        "source": "Al Mashhad Al Yemeni - Pro-IRG",
+        "source_scale": "National",
+        "notes": "On 24 June 2024, an unidentified armed shot and killed 1 businessman in his house in Safarat neighborhood by Aden - Sahat al Urud (Khur Maksar). The reason behind the shooting was not reported.",
+        "fatalities": 1,
+        "timestamp": 1754411473,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0302,
+          12.81
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM89562",
+        "event_date": "2024-07-05",
+        "year": 2024,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Sahat al Urud",
+        "geo_precision": 1,
+        "source": "Aden al Ghad",
+        "source_scale": "National",
+        "notes": "On 5 July 2024, protesters held a protest in Aden - Sahat al Urud (Khur Maksar) to demand the resumption of construction of the Hay As Salam school project.",
+        "fatalities": 0,
+        "timestamp": 1762820001,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0302,
+          12.81
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM89659",
+        "event_date": "2024-07-16",
+        "year": 2024,
+        "event_type": "Violence against civilians",
+        "sub_event_type": "Abduction/forced disappearance",
+        "actor1": "Police Forces of Yemen (2022-2026) Presidential Leadership Council - STC Security Belt Forces",
+        "assoc_actor_1": "",
+        "inter1": "State forces",
+        "actor2": "Civilians (Yemen)",
+        "assoc_actor_2": "",
+        "inter2": "Civilians",
+        "interaction": "State forces-Civilians",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Sahat al Urud",
+        "geo_precision": 1,
+        "source": "Al Masdar",
+        "source_scale": "National",
+        "notes": "On 16 July 2024, STC Security Belt forces abducted 4 civilians in Aden - Sahat al Urud (Khur Maksar) who were preparing signs and posters for a protest calling for justice in the kidnapping Ali Ashal Al Jaadani, a colonel from Abyan governorate that was abducted at the hands of suspected STC Security Belt forces on 12 June. One of the 4 men was the brother-in-law of the abductee.",
+        "fatalities": 0,
+        "timestamp": 1769474359,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0302,
+          12.81
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM90509",
+        "event_date": "2024-08-03",
+        "year": 2024,
+        "event_type": "Protests",
+        "sub_event_type": "Excessive force against protesters",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "Civilians (Yemen)",
+        "inter1": "Protesters",
+        "actor2": "Police Forces of Yemen (2022-2026) Presidential Leadership Council - STC Aden Security",
+        "assoc_actor_2": "",
+        "inter2": "State forces",
+        "interaction": "State forces-Protesters",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Sahat al Urud",
+        "geo_precision": 1,
+        "source": "Aden al Ghad; Al Masdar; Al Mashhad Al Yemeni - Pro-IRG; Mareb Press; Twitter",
+        "source_scale": "New media-National",
+        "notes": "On 3 August 2024, tens of thousands of demonstrators from Abyan, Hadramawt, Shabwah, and Aden held a demonstration in Aden - Sahat al Urud (Khur Maksar) to demand the disclosure of fate of all abductees and forcibly disappeared persons, especially Ali Ashal Al Jaadani, a colonel from Abyan governorate that was abducted at the hands of suspected STC Security Belt forces on 12 June. STC police forces (coded as STC Aden Security) fired at the demonstrators, causing unspecified injuries and fatalities, and arrested several demonstrators, including some of the organizers and journalists. Unclear fatalities coded as 3 in a non-conflict setting. This came days after Aden Security announced that the head of the Anti-Terrorism Force in the STC, Yisran Al Maqtari, had fled Yemen, along with other suspects involved in the abduction and disappearance of Al Jaadani, confirming that his fate remained unknown.",
+        "fatalities": 3,
+        "timestamp": 1769474359,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0367,
+          12.7794
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM85279",
+        "event_date": "2024-02-08",
+        "year": 2024,
+        "event_type": "Strategic developments",
+        "sub_event_type": "Other",
+        "actor1": "Government of Yemen (2022-2026) Presidential Leadership Council",
+        "assoc_actor_1": "",
+        "inter1": "State forces",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "State forces only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "",
+        "admin3": "",
+        "location": "Aden",
+        "geo_precision": 3,
+        "source": "Al Masdar",
+        "source_scale": "National",
+        "notes": "Other: On 8 February 2024, PLC chairman from the IRG appointed Ahmad Bin Awad Bin Mubarak as a new Prime Minister (coded to Aden interim capital). The source claimed that this decision was aimed at prioritizing the economic question including improving economic conditions, improving service delivery, and the payment of salaries.",
+        "fatalities": 0,
+        "timestamp": 1770676350,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0334,
+          12.8123
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM85347",
+        "event_date": "2024-02-08",
+        "year": 2024,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "Southern Movement",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Khawr Maksar",
+        "geo_precision": 2,
+        "source": "Aden al Ghad",
+        "source_scale": "National",
+        "notes": "On 8 February 2024, protesters held a large protest organized by the Southern Movement in Khur Maksar district (coded to Aden - Khawr Maksar) in solidarity with Palestinian people and the Hamas 'Al Aqsa flood' operation and to denounce the 'crimes of the 'Israeli and American aggression' in the context of the latest round of violence in Israel-Palestine.",
+        "fatalities": 0,
+        "timestamp": 1770078493,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0334,
+          12.8123
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM85348",
+        "event_date": "2024-02-07",
+        "year": 2024,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "Southern Movement; Students (Yemen)",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Khawr Maksar",
+        "geo_precision": 2,
+        "source": "Aden al Ghad",
+        "source_scale": "National",
+        "notes": "On 7 February 2024, protesters from the Southern Movement, including students, held a large protest in Khur Maksar district (coded to Aden - Khawr Maksar) in solidarity with Palestinian people in the context of the latest round of violence in Israel-Palestine and to denounce the deterioration of living conditions and the local currency.",
+        "fatalities": 0,
+        "timestamp": 1770078493,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0541,
+          12.7655
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM85962",
+        "event_date": "2024-03-03",
+        "year": 2024,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "Labor Group (Yemen)",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Craiter",
+        "admin3": "",
+        "location": "Aden - Maashiq Presidential Palace",
+        "geo_precision": 1,
+        "source": "Aden al Ghad",
+        "source_scale": "National",
+        "notes": "On 3 March 2024, employees of Aden TV protested in front of Aden - Maashiq Presidential Palace (Craiter) over the marginalization and negligence of the media sector.",
+        "fatalities": 0,
+        "timestamp": 1724113613,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0541,
+          12.7655
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM86009",
+        "event_date": "2024-03-06",
+        "year": 2024,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Craiter",
+        "admin3": "",
+        "location": "Aden - Maashiq Presidential Palace",
+        "geo_precision": 1,
+        "source": "Aden al Ghad",
+        "source_scale": "National",
+        "notes": "On 6 March 2024, protesters with special needs and disabilities held a demonstration in front of Aden - Maashiq Presidential Palace (Craiter) demanding the prime minister to reinstate the director of the Center for Prosthetics and Physiotherapy and denouncing the storming of the center by armed forces causing panic among the disabled and war-wounded people.",
+        "fatalities": 0,
+        "timestamp": 1762820001,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0367,
+          12.7794
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM86019",
+        "event_date": "2024-03-07",
+        "year": 2024,
+        "event_type": "Strategic developments",
+        "sub_event_type": "Change to group/activity",
+        "actor1": "Military Forces of Yemen (2022-2026) Presidential Leadership Council - Nation Shield Forces",
+        "assoc_actor_1": "",
+        "inter1": "State forces",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "State forces only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "",
+        "admin3": "",
+        "location": "Aden",
+        "geo_precision": 3,
+        "source": "Twitter",
+        "source_scale": "New media",
+        "notes": "Movement of forces: On 7 March 2024, IRG National Shield Forces including 43 armed vehicles coming from Al Wadiah in Hadramawt moved to Aden governorate.",
+        "fatalities": 0,
+        "timestamp": 1770676350,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0541,
+          12.7655
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM86119",
+        "event_date": "2024-03-06",
+        "year": 2024,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "Abductees' Mothers Association; Women (Yemen)",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Craiter",
+        "admin3": "",
+        "location": "Aden - Maashiq Presidential Palace",
+        "geo_precision": 1,
+        "source": "Abductees Mothers Association",
+        "source_scale": "Other",
+        "notes": "On 6 March 2024, women from the Abductees' Mothers Association held a protest in front of Aden - Maashiq Presidential Palace (Craiter) in conjunction with Ramadan demanding the release of forcefully disappeared individuals.",
+        "fatalities": 0,
+        "timestamp": 1724113613,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0382,
+          12.8247
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM86293",
+        "event_date": "2024-03-16",
+        "year": 2024,
+        "event_type": "Violence against civilians",
+        "sub_event_type": "Attack",
+        "actor1": "Police Forces of Yemen (2022-2026) Presidential Leadership Council - STC Aden Security",
+        "assoc_actor_1": "",
+        "inter1": "State forces",
+        "actor2": "Civilians (Yemen)",
+        "assoc_actor_2": "Labor Group (Yemen)",
+        "inter2": "Civilians",
+        "interaction": "State forces-Civilians",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Jawlat al Matar",
+        "geo_precision": 1,
+        "source": "Al Ittihad; Twitter; Yemen Data Project",
+        "source_scale": "Local partner-National",
+        "notes": "On 16 March 2024, pro-STC forces (coded as STC Aden Security) assaulted the employees of Rose Hotel in Aden - Jawlat al Matar (Khur Maksar, Aden) after storming in the hotel. The armed men also abducted the son of the hotel owner. The reason behind the incident was not reported.",
+        "fatalities": 0,
+        "timestamp": 1769474359,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0367,
+          12.7794
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM87238",
+        "event_date": "2024-04-27",
+        "year": 2024,
+        "event_type": "Violence against civilians",
+        "sub_event_type": "Abduction/forced disappearance",
+        "actor1": "Military Forces of Yemen (2022-2026) Presidential Leadership Council - STC",
+        "assoc_actor_1": "",
+        "inter1": "State forces",
+        "actor2": "Civilians (Yemen)",
+        "assoc_actor_2": "Aid Workers (Yemen); Labor Group (Yemen)",
+        "inter2": "Civilians",
+        "interaction": "State forces-Civilians",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "",
+        "admin3": "",
+        "location": "Aden",
+        "geo_precision": 3,
+        "source": "Al Masdar; Twitter",
+        "source_scale": "New media-National",
+        "notes": "On 27 April 2024, STC fighters (coded as STC generic forces) abducted 1 worker as they stormed a bakery belonging to the Muslim Hands charity organization in Aden governorate (coded to capital Aden) and took the victim to an undisclosed location. Sources claimed that the raid happened because the bakery refused to pay protection money to the STC.",
+        "fatalities": 0,
+        "timestamp": 1770676350,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0367,
+          12.7794
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM87278",
+        "event_date": "2024-05-01",
+        "year": 2024,
+        "event_type": "Violence against civilians",
+        "sub_event_type": "Abduction/forced disappearance",
+        "actor1": "Police Forces of Yemen (2022-2026) Presidential Leadership Council - STC Aden Security",
+        "assoc_actor_1": "",
+        "inter1": "State forces",
+        "actor2": "Civilians (Yemen)",
+        "assoc_actor_2": "",
+        "inter2": "Civilians",
+        "interaction": "State forces-Civilians",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "",
+        "admin3": "",
+        "location": "Aden",
+        "geo_precision": 1,
+        "source": "Twitter",
+        "source_scale": "New media",
+        "notes": "On 1 May 2024, STC Aden Security forces abducted 1 man in Aden city (Aden) as they were looking for his brother-in-law. The brother-in-law, who fled Aden city, was a writer who had been critical of the pro-STC minister of Civil Service.",
+        "fatalities": 0,
+        "timestamp": 1769474359,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.044,
+          12.7833
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM87776",
+        "event_date": "2024-05-13",
+        "year": 2024,
+        "event_type": "Riots",
+        "sub_event_type": "Violent demonstration",
+        "actor1": "Rioters (Yemen)",
+        "assoc_actor_1": "",
+        "inter1": "Rioters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Rioters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Craiter",
+        "admin3": "",
+        "location": "Aden - Ras Qatam",
+        "geo_precision": 1,
+        "source": "Aden al Ghad; Yemen Data Project",
+        "source_scale": "Local partner-National",
+        "notes": "On 13 May 2024, dozens of rioters demonstrated by burning tires and closing roads in several locations in Aden including near Aden Mall (Aden - Ras Qatam) (Craiter), Aden - Jawlat al Ghazal wa An Nasij (Al Mansura), and in Ash Shaikh Outhman district (coded to Aden - Ash Shaikh Outhman) over power outages.",
+        "fatalities": 0,
+        "timestamp": 1724113613,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0367,
+          12.7794
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM88037",
+        "event_date": "2024-06-13",
+        "year": 2024,
+        "event_type": "Violence against civilians",
+        "sub_event_type": "Abduction/forced disappearance",
+        "actor1": "Police Forces of Yemen (2022-2026) Presidential Leadership Council - STC Aden Security",
+        "assoc_actor_1": "",
+        "inter1": "State forces",
+        "actor2": "Civilians (Yemen)",
+        "assoc_actor_2": "Military Forces of Yemen (2022-2026) Presidential Leadership Council - STC",
+        "inter2": "Civilians",
+        "interaction": "State forces-Civilians",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "",
+        "admin3": "",
+        "location": "Aden",
+        "geo_precision": 3,
+        "source": "Al Masdar",
+        "source_scale": "National",
+        "notes": "On 13 June 2024, STC forces in Aden (coded as STC Aden Security) abducted 1 fighter in the STC Ad Dali forces (coded as STC generic forces) (likely off duty) in Aden governorate. The reason behind the abduction was not reported. The soldier's family lost contact with him and on 18 June they were informed that he was detained in Dar Sad district.",
+        "fatalities": 0,
+        "timestamp": 1770676350,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          44.9607,
+          12.8386
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM88120",
+        "event_date": "2024-06-04",
+        "year": 2024,
+        "event_type": "Riots",
+        "sub_event_type": "Violent demonstration",
+        "actor1": "Rioters (Yemen)",
+        "assoc_actor_1": "",
+        "inter1": "Rioters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Rioters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Al Mansura",
+        "admin3": "",
+        "location": "Aden - Enma",
+        "geo_precision": 2,
+        "source": "Al Masdar",
+        "source_scale": "National",
+        "notes": "On 4 June 2024, demonstrators closed the road connecting Enma to Al Burayqah with burning tires (coded to Aden - Enma) (Al Mansura) to denounce power outages.",
+        "fatalities": 0,
+        "timestamp": 1724113613,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0304,
+          12.8015
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM88129",
+        "event_date": "2024-06-04",
+        "year": 2024,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "Southern Resistance",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Judicial Complex",
+        "geo_precision": 1,
+        "source": "Aden al Ghad",
+        "source_scale": "National",
+        "notes": "On 4 June 2024, residents of Al Maflahi district organized a protest in front of the supreme court in Aden - Judicial Complex (Khur Maksar) rejecting the death sentence issued by the Criminal Court of Appeal against 7 leaders and members of the Southern Resistance.",
+        "fatalities": 0,
+        "timestamp": 1724113613,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0367,
+          12.7794
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM89589",
+        "event_date": "2024-07-13",
+        "year": 2024,
+        "event_type": "Violence against civilians",
+        "sub_event_type": "Attack",
+        "actor1": "Military Forces of Yemen (2022-2026) Presidential Leadership Council - STC",
+        "assoc_actor_1": "",
+        "inter1": "State forces",
+        "actor2": "Civilians (Yemen)",
+        "assoc_actor_2": "Prisoners (Yemen)",
+        "inter2": "Civilians",
+        "interaction": "State forces-Civilians",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "",
+        "admin3": "",
+        "location": "Aden",
+        "geo_precision": 1,
+        "source": "Al Masirah; Ansar Allah; Khabar News Agency (Yemen)",
+        "source_scale": "National",
+        "notes": "On 13 July 2024, STC forces (coded as STC generic forces) tortured and killed 1 civilian in a prison in Aden city (Aden). The victim had been detained after a dispute arose between him and the owner of the hotel where he was staying. His family refused to bury him before an investigation into the circumstances of his death was conducted. The reason behind the killing was not reported.",
+        "fatalities": 1,
+        "timestamp": 1770676350,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0367,
+          12.7794
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM89925",
+        "event_date": "2024-07-24",
+        "year": 2024,
+        "event_type": "Violence against civilians",
+        "sub_event_type": "Abduction/forced disappearance",
+        "actor1": "Police Forces of Yemen (2022-2026) Presidential Leadership Council - STC Aden Security",
+        "assoc_actor_1": "",
+        "inter1": "State forces",
+        "actor2": "Civilians (Yemen)",
+        "assoc_actor_2": "Fishers (Yemen)",
+        "inter2": "Civilians",
+        "interaction": "State forces-Civilians",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "",
+        "admin3": "",
+        "location": "Aden",
+        "geo_precision": 3,
+        "source": "Al Mashhad Al Yemeni - Pro-IRG; Twitter",
+        "source_scale": "New media-National",
+        "notes": "On 24 July 2024, security forces (coded as STC Aden Security) raided the house of 1 fisherman and abducted him in Aden governorate (coded to Aden) and took him to an unknown destination. The reason for the abduction was not reported.",
+        "fatalities": 0,
+        "timestamp": 1769474359,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0541,
+          12.7655
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM90266",
+        "event_date": "2024-07-31",
+        "year": 2024,
+        "event_type": "Battles",
+        "sub_event_type": "Armed clash",
+        "actor1": "Unidentified Armed Group (Yemen)",
+        "assoc_actor_1": "",
+        "inter1": "Political militia",
+        "actor2": "Military Forces of Yemen (2022-2026) Presidential Leadership Council - Presidential Guard",
+        "assoc_actor_2": "",
+        "inter2": "State forces",
+        "interaction": "State forces-Political militia",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Craiter",
+        "admin3": "",
+        "location": "Aden - Maashiq Presidential Palace",
+        "geo_precision": 1,
+        "source": "Al Mashhad Al Yemeni - Pro-IRG; Yemen Window",
+        "source_scale": "National",
+        "notes": "On 31 July 2024, in the early morning, an unidentified armed group in a car opened fire on IRG presidential guards at a checkpoint by Aden - Maashiq Presidential Palace gate (Craiter, Aden). There were no fatalities or injuries. The armed group fled to the surrounding neighborhoods. The security forces were able to arrest 1 gunman involved in the attack.",
+        "fatalities": 0,
+        "timestamp": 1770676350,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0334,
+          12.8123
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM91080",
+        "event_date": "2024-08-08",
+        "year": 2024,
+        "event_type": "Strategic developments",
+        "sub_event_type": "Other",
+        "actor1": "Unidentified Armed Group (Yemen)",
+        "assoc_actor_1": "",
+        "inter1": "Political militia",
+        "actor2": "Government of Yemen (2022-2026) Presidential Leadership Council",
+        "assoc_actor_2": "",
+        "inter2": "State forces",
+        "interaction": "State forces-Political militia",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Khawr Maksar",
+        "geo_precision": 2,
+        "source": "Al Masdar; Al Mashhad Al Yemeni - Pro-IRG; Mareb Press",
+        "source_scale": "National",
+        "notes": "Other: Around 8 August 2024 (week of), unknown gunmen stormed the office of a unit affiliated with the IRG presidency in Khur Maksar district (coded to district center Aden - Khawr Maksar) (Aden), kicked out its staff, and closed the office. The unit was tasked with managing the Saudi grant. Initial reports claimed that the gunmen were affiliated with Giants Brigade's leader, Abu Zar'a Al-Mahrami, and speculated that it was part of internal disputes within the PLC. The PLC denied both claims.",
+        "fatalities": 0,
+        "timestamp": 1770676350,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0367,
+          12.7794
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM90917",
+        "event_date": "2024-08-09",
+        "year": 2024,
+        "event_type": "Violence against civilians",
+        "sub_event_type": "Abduction/forced disappearance",
+        "actor1": "Police Forces of Yemen (2022-2026) Presidential Leadership Council - STC Aden Security",
+        "assoc_actor_1": "",
+        "inter1": "State forces",
+        "actor2": "Civilians (Yemen)",
+        "assoc_actor_2": "Labor Group (Yemen)",
+        "inter2": "Civilians",
+        "interaction": "State forces-Civilians",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "",
+        "admin3": "",
+        "location": "Aden",
+        "geo_precision": 1,
+        "source": "Al Mashhad Al Yemeni - Pro-IRG",
+        "source_scale": "National",
+        "notes": "On 9 August 2024, security forces (coded as STC Aden Security) abducted a local businessman between the Green City and the qat market in Aden City and took him to a military camp, accusing him of lacking official permits for his employees.",
+        "fatalities": 0,
+        "timestamp": 1769474359,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0367,
+          12.7794
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM91566",
+        "event_date": "2024-08-29",
+        "year": 2024,
+        "event_type": "Strategic developments",
+        "sub_event_type": "Change to group/activity",
+        "actor1": "Government of Yemen (2022-2026) Presidential Leadership Council",
+        "assoc_actor_1": "Giants Brigades",
+        "inter1": "State forces",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "State forces only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "",
+        "admin3": "",
+        "location": "Aden",
+        "geo_precision": 3,
+        "source": "Al Mashhad Al Yemeni - Pro-IRG; STC Aden",
+        "source_scale": "Subnational-National",
+        "notes": "Change to armed group: On 29 August 2024, IRG president Aidarous al-Zubaidi appointed Abu Zara'a Abdulrahman al-Mahrami, the commander of the Giants Brigade, to oversee security operations and anti-terrorism efforts across southern Yemen. Coded to IRG capital Aden.",
+        "fatalities": 0,
+        "timestamp": 1770676350,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          44.9607,
+          12.8386
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM91787",
+        "event_date": "2024-09-04",
+        "year": 2024,
+        "event_type": "Violence against civilians",
+        "sub_event_type": "Abduction/forced disappearance",
+        "actor1": "Police Forces of Yemen (2022-2026) Presidential Leadership Council - STC Security Belt Forces",
+        "assoc_actor_1": "",
+        "inter1": "State forces",
+        "actor2": "Civilians (Yemen)",
+        "assoc_actor_2": "Government of Yemen (2022-2026) Presidential Leadership Council",
+        "inter2": "Civilians",
+        "interaction": "State forces-Civilians",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Al Mansura",
+        "admin3": "",
+        "location": "Aden - Enma",
+        "geo_precision": 1,
+        "source": "Al Harf 28; Al Mahriah; Al Masdar; Yemen Shabab; Yemen Window",
+        "source_scale": "Subnational-National",
+        "notes": "On 4 September 2024, STC Aden Security Belt Forces abducted 1 employee who worked at the Finance Department of the Presidency of the Council of Ministers in Aden - Enma (Al Mansura, Aden), taking him to an undisclosed location. The STC denied the incident officially.",
+        "fatalities": 0,
+        "timestamp": 1770676350,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0371,
+          12.7979
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM91813",
+        "event_date": "2024-09-16",
+        "year": 2024,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "Students (Yemen); Teachers (Yemen)",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Ras al Jarth",
+        "geo_precision": 1,
+        "source": "Aden al Ghad",
+        "source_scale": "National",
+        "notes": "On 16 September 2024, students and teachers at Abdelbari Qasim Girls High School in Khur Maksar district held a protest at the school (Coded to nearest location, Aden - Ras al Jarth) (Aden) to highlight the difficulties in conducting educational activities due to extreme heat and the lack of a solar energy system in the school building.",
+        "fatalities": 0,
+        "timestamp": 1762820001,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0334,
+          12.8123
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM91894",
+        "event_date": "2024-09-15",
+        "year": 2024,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "Former Military Forces of Yemen (2022-2026) Presidential Leadership Council; Labor Group (Yemen)",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Khawr Maksar",
+        "geo_precision": 1,
+        "source": "Aden al Ghad; Al Mashhad Al Yemeni - Pro-IRG",
+        "source_scale": "National",
+        "notes": "On 15 September 2024, for the third consecutive day, hundreds of military and civilian retirees whose names were excluded from payment lists protested in front of the administrative base in Aden - Khawr Maksar (Khur Maksar, Aden) to demand their inclusion in the settlement lists issued by the PLC. The affected individuals were dismissed from their positions following the 1994 civil war in Yemen. In May 2023, IRG President Al-Alimi issued orders to reinstate more than 52,000 workers from southern provinces who were dismissed following the 1994 civil war in Yemen.",
+        "fatalities": 0,
+        "timestamp": 1770676350,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0334,
+          12.8123
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM91903",
+        "event_date": "2024-09-13",
+        "year": 2024,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "Former Military Forces of Yemen (2022-2026) Presidential Leadership Council; Labor Group (Yemen)",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Khawr Maksar",
+        "geo_precision": 1,
+        "source": "Aden al Ghad; Al Mashhad Al Yemeni - Pro-IRG",
+        "source_scale": "National",
+        "notes": "On 13 September 2024, hundreds of military and civilian retirees whose names were excluded from payment lists protested in front of the administrative base in Aden - Khawr Maksar (Khur Maksar, Aden) to demand their inclusion in the settlement lists issued by the PLC. The affected individuals were dismissed from their positions following the 1994 civil war in Yemen. In May 2023, IRG President Al-Alimi issued orders to reinstate more than 52,000 workers from southern provinces who were dismissed following the 1994 civil war in Yemen.",
+        "fatalities": 0,
+        "timestamp": 1770676350,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0334,
+          12.8123
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM91904",
+        "event_date": "2024-09-14",
+        "year": 2024,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "Former Military Forces of Yemen (2022-2026) Presidential Leadership Council; Labor Group (Yemen)",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Khawr Maksar",
+        "geo_precision": 1,
+        "source": "Aden al Ghad; Al Mashhad Al Yemeni - Pro-IRG",
+        "source_scale": "National",
+        "notes": "On 14 September 2024, for the second consecutive day, hundreds of military and civilian retirees whose names were excluded from payment lists protested in front of the administrative base in Aden - Khawr Maksar (Khur Maksar, Aden) to demand their inclusion in the settlement lists issued by the PLC. The affected individuals were dismissed from their positions following the 1994 civil war in Yemen. In May 2023, IRG President Al-Alimi issued orders to reinstate more than 52,000 workers from southern provinces who were dismissed following the 1994 civil war in Yemen.",
+        "fatalities": 0,
+        "timestamp": 1770676350,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0304,
+          12.8015
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM92196",
+        "event_date": "2024-09-22",
+        "year": 2024,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "Students (Yemen)",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Judicial Complex",
+        "geo_precision": 1,
+        "source": "Aden al Ghad; Hadramawt 21",
+        "source_scale": "National",
+        "notes": "On 22 September 2024, students of the High Judicial Institute in Aden held a protest stand in front of the Supreme Judicial Council and the Ministries of Justice and Finance in Aden - Judicial Complex (Khur Maksar, Aden) demanding the payment of their monthly allowances, which have been delayed for nine to 10 months",
+        "fatalities": 0,
+        "timestamp": 1762820001,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0494,
+          12.7792
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM92212",
+        "event_date": "2024-09-29",
+        "year": 2024,
+        "event_type": "Strategic developments",
+        "sub_event_type": "Other",
+        "actor1": "Government of Yemen (2022-2026) Presidential Leadership Council",
+        "assoc_actor_1": "",
+        "inter1": "State forces",
+        "actor2": "Police Forces of Yemen (2022-2026) Presidential Leadership Council - STC Security Belt Forces",
+        "assoc_actor_2": "",
+        "inter2": "State forces",
+        "interaction": "State forces-State forces",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Craiter",
+        "admin3": "",
+        "location": "Aden - Sira",
+        "geo_precision": 1,
+        "source": "Al Masdar",
+        "source_scale": "National",
+        "notes": "Other: On 29 September 2024, the Sirah Primary Court in Aden - Sira (Craiter, Aden) sentenced the former commander of the Eastern Sector of the Security Belt Forces and his companions to three years in prison each for the manslaughter of Amir Al-Kaldi, who was killed by security belt forces during an ambush on 24 June 2023 (coded as a separate event).",
+        "fatalities": 0,
+        "timestamp": 1770676350,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0304,
+          12.8015
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM92480",
+        "event_date": "2024-10-06",
+        "year": 2024,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "Students (Yemen)",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Judicial Complex",
+        "geo_precision": 1,
+        "source": "Aden al Ghad; Hadramawt 21",
+        "source_scale": "National",
+        "notes": "On 6 October 2024, dozens of students of the High Judicial Institute in Aden held a protest stand in front of the Supreme Judicial Council in Aden - Judicial Complex (Khur Maksar, Aden), demanding the payment of their monthly allowances, which had been delayed for nine to 10 months.",
+        "fatalities": 0,
+        "timestamp": 1762820001,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          44.9607,
+          12.8386
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM92674",
+        "event_date": "2024-10-08",
+        "year": 2024,
+        "event_type": "Violence against civilians",
+        "sub_event_type": "Abduction/forced disappearance",
+        "actor1": "Unidentified Armed Group (Yemen)",
+        "assoc_actor_1": "",
+        "inter1": "Political militia",
+        "actor2": "Civilians (Yemen)",
+        "assoc_actor_2": "Labor Group (Yemen)",
+        "inter2": "Civilians",
+        "interaction": "Political militia-Civilians",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Al Mansura",
+        "admin3": "",
+        "location": "Aden - Enma",
+        "geo_precision": 1,
+        "source": "Al Masdar; Khabar News Agency (Yemen)",
+        "source_scale": "National",
+        "notes": "On 8 October 2024, unidentified armed group abducted the Deputy Executive Director of CAC Bank in Aden - Enma (Al Mansura, Aden). The source claimed that the armed group looted his car and released the civilian in Al Feush area in Lahij governorate. The reason behind the abduction was not reported.",
+        "fatalities": 0,
+        "timestamp": 1754563409,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0367,
+          12.7794
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM92811",
+        "event_date": "2024-10-14",
+        "year": 2024,
+        "event_type": "Strategic developments",
+        "sub_event_type": "Other",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "Labor Group (Yemen)",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "",
+        "admin3": "",
+        "location": "Aden",
+        "geo_precision": 3,
+        "source": "Yemen Window",
+        "source_scale": "National",
+        "notes": "Strikes: On 14 October 2024, currency exchange companies in Aden governorate (coded to governate center) went on strike, suspending all buying and selling of foreign currencies due to the rapid collapse of the local currency. This action follows the decline of the Yemeni rial, with the exchange rate for US dollar exceeding 2,000 rials and the Saudi riyal reaching 520 rials.",
+        "fatalities": 0,
+        "timestamp": 1729592882,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0367,
+          12.7794
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM93182",
+        "event_date": "2024-10-20",
+        "year": 2024,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "Southern Movement; Women (Yemen)",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "",
+        "admin3": "",
+        "location": "Aden",
+        "geo_precision": 1,
+        "source": "Al Masdar",
+        "source_scale": "National",
+        "notes": "On 20 October 2024, dozens held a protest march in Aden City (Aden), condemning the collapse of the local currency against foreign currencies and the rise in food prices and accusing the IRG of economic mismanagement and neglect. The Women's Sector of the Southern Revolutionary Movement Council organized the protest.",
+        "fatalities": 0,
+        "timestamp": 1730180207,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0367,
+          12.7794
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM93240",
+        "event_date": "2024-10-30",
+        "year": 2024,
+        "event_type": "Strategic developments",
+        "sub_event_type": "Looting/property destruction",
+        "actor1": "Military Forces of Yemen (2022-2026) Presidential Leadership Council - STC",
+        "assoc_actor_1": "",
+        "inter1": "State forces",
+        "actor2": "Civilians (Yemen)",
+        "assoc_actor_2": "Labor Group (Yemen)",
+        "inter2": "Civilians",
+        "interaction": "State forces-Civilians",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "",
+        "admin3": "",
+        "location": "Aden",
+        "geo_precision": 3,
+        "source": "Twitter",
+        "source_scale": "New media",
+        "notes": "Land seizure: On 30 October 2024, an STC military commander seized a land belonging to a merchant in Aden governorate (coded to governorate center Aden city).",
+        "fatalities": 0,
+        "timestamp": 1770676350,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0541,
+          12.7655
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM93245",
+        "event_date": "2024-10-28",
+        "year": 2024,
+        "event_type": "Violence against civilians",
+        "sub_event_type": "Abduction/forced disappearance",
+        "actor1": "Police Forces of Yemen (2022-2026) Presidential Leadership Council - STC Aden Security",
+        "assoc_actor_1": "",
+        "inter1": "State forces",
+        "actor2": "Civilians (Yemen)",
+        "assoc_actor_2": "Government of Yemen (2022-2026) Presidential Leadership Council",
+        "inter2": "Civilians",
+        "interaction": "State forces-Civilians",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Craiter",
+        "admin3": "",
+        "location": "Aden - Maashiq Presidential Palace",
+        "geo_precision": 1,
+        "source": "Al Masdar; Al Mashhad Al Yemeni - Pro-IRG",
+        "source_scale": "National",
+        "notes": "On 28 October 2024, at around 11:30 Sanaa time, STC forces (coded to Aden security) detained three officials from the Prime Minister's Office at the gates of Aden - Maashiq Presidential Palace (Craiter, Aden). The detainees included the Assistant Director of the Prime Minister's Office, the Head of the Secretariat Division, and the General Manager of Revenue. The officials were taken to an undisclosed location at gunpoint.",
+        "fatalities": 0,
+        "timestamp": 1770676350,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.044,
+          12.7833
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM93656",
+        "event_date": "2024-11-12",
+        "year": 2024,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "Labor Group (Yemen)",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Craiter",
+        "admin3": "",
+        "location": "Aden - Ras Qatam",
+        "geo_precision": 1,
+        "source": "Aden al Ghad; Al Harf 28",
+        "source_scale": "National",
+        "notes": "On 12 November 2024, judicial employees in Aden held a protest in front of the Judicial Complex and the Court of Appeals in Aden - Ras Qatam (Craiter, Aden), demanding full payment of their salaries without deductions and decrying unfair treatment.",
+        "fatalities": 0,
+        "timestamp": 1731979407,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0541,
+          12.7655
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM93848",
+        "event_date": "2024-11-17",
+        "year": 2024,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "Labor Group (Yemen)",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Craiter",
+        "admin3": "",
+        "location": "Aden - Maashiq Presidential Palace",
+        "geo_precision": 1,
+        "source": "Aden al Ghad; Al Harf 28; Al Masdar; Khabar News Agency (Yemen); Mareb Press",
+        "source_scale": "National",
+        "notes": "On 17 November 2024, displaced employees from Houthi-controlled areas held a large protest in front of the IRG government headquarters in Aden - Maashiq Presidential Palace (Craiter, Aden), demanding unpaid salaries, cost-of-living adjustments, allowances withheld since 2017, and that the government enable them to return to their work in their displaced locations.",
+        "fatalities": 0,
+        "timestamp": 1732580249,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0367,
+          12.7794
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM93851",
+        "event_date": "2024-11-20",
+        "year": 2024,
+        "event_type": "Battles",
+        "sub_event_type": "Armed clash",
+        "actor1": "Military Forces of Yemen (2022-2026) Presidential Leadership Council - STC",
+        "assoc_actor_1": "",
+        "inter1": "State forces",
+        "actor2": "Police Forces of Yemen (2022-2026) Presidential Leadership Council - Prison Guards",
+        "assoc_actor_2": "",
+        "inter2": "State forces",
+        "interaction": "State forces-State forces",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "",
+        "admin3": "",
+        "location": "Aden",
+        "geo_precision": 3,
+        "source": "Twitter",
+        "source_scale": "New media",
+        "notes": "Around 20 November 2024 (week of), STC forces clashed with prison guards of the eastern sector prison in Aden governorate (coded to governorate capital Aden) and forcibly released an STC officer who was arrested at a checkpoint due to his attempt to enter Aden governorate from Abyan with his weapon (coded on a separate event). There were no casualties.",
+        "fatalities": 0,
+        "timestamp": 1770676350,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0367,
+          12.7794
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM94312",
+        "event_date": "2024-12-04",
+        "year": 2024,
+        "event_type": "Strategic developments",
+        "sub_event_type": "Other",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "Teachers (Yemen)",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "",
+        "admin3": "",
+        "location": "Aden",
+        "geo_precision": 3,
+        "source": "Al Mashhad Al Yemeni - Pro-IRG",
+        "source_scale": "National",
+        "notes": "Strikes: On 4 December 2024, the General Union of Southern Teachers and Educators started a strike across Southern and other IRG-controlled areas (coded to Aden city) in protest against the government's disregard for their demands to improve the conditions of teachers and educators.",
+        "fatalities": 0,
+        "timestamp": 1733789097,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0367,
+          12.7794
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM94471",
+        "event_date": "2024-12-03",
+        "year": 2024,
+        "event_type": "Strategic developments",
+        "sub_event_type": "Other",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "Health Workers (Yemen); Labor Group (Yemen); Teachers (Yemen)",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "",
+        "admin3": "",
+        "location": "Aden",
+        "geo_precision": 1,
+        "source": "Al Harf 28; Al Masdar; Al Masirah",
+        "source_scale": "National",
+        "notes": "Strikes: On 3 December 2024, labor unions, including the General Syndicate of Medical and Health Professions, the General Union of Technical Education and Vocational Training, and the Southern Teachers Union, announced new strikes in Aden city (Aden) to protest deteriorating living conditions, delays in salary payments, and unmet demands for wage adjustments.",
+        "fatalities": 0,
+        "timestamp": 1733789098,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0494,
+          12.7792
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM94501",
+        "event_date": "2024-12-09",
+        "year": 2024,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "al-Dawla Tribal Group (Yemen)",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Craiter",
+        "admin3": "",
+        "location": "Aden - Sira",
+        "geo_precision": 1,
+        "source": "Aden al Ghad",
+        "source_scale": "National",
+        "notes": "On 9 December 2024, the family of 'Akram Al-Dawlah' from Ad Dawlah Tribe held a protest in front of the Appeals court in Aden - Sira (Craiter, Aden) demanding the prosecution of those responsible for his killing.",
+        "fatalities": 0,
+        "timestamp": 1765850627,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0367,
+          12.7794
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM94513",
+        "event_date": "2024-12-07",
+        "year": 2024,
+        "event_type": "Strategic developments",
+        "sub_event_type": "Arrests",
+        "actor1": "Police Forces of Yemen (2022-2026) Presidential Leadership Council - STC Aden Security",
+        "assoc_actor_1": "",
+        "inter1": "State forces",
+        "actor2": "Unidentified Armed Group (Yemen)",
+        "assoc_actor_2": "",
+        "inter2": "Political militia",
+        "interaction": "State forces-Political militia",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "",
+        "admin3": "",
+        "location": "Aden",
+        "geo_precision": 1,
+        "source": "Hadramawt 21",
+        "source_scale": "National",
+        "notes": "On 7 December 2024, security forces (coded as STC Aden Security) arrested an unidentified number of individuals in Aden City (Aden) planning to carry out an assassination attempt involving a car bomb targeting a senior government official in the city. It is unclear whether the attempt was thwarted before or after the perpetrators booby-trapped the car.",
+        "fatalities": 0,
+        "timestamp": 1769474359,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.031,
+          12.8274
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM91857",
+        "event_date": "2024-09-09",
+        "year": 2024,
+        "event_type": "Strategic developments",
+        "sub_event_type": "Looting/property destruction",
+        "actor1": "Police Forces of Yemen (2022-2026) Presidential Leadership Council - STC Aden Security",
+        "assoc_actor_1": "",
+        "inter1": "State forces",
+        "actor2": "Military Forces of Yemen (2022-2026) Presidential Leadership Council",
+        "assoc_actor_2": "",
+        "inter2": "State forces",
+        "interaction": "State forces-State forces",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Aden International Airport",
+        "geo_precision": 1,
+        "source": "Aden al Ghad; Twitter",
+        "source_scale": "New media-National",
+        "notes": "Looting: On 9 September 2024, an armed group affiliated with STC forces (coded as Aden Security) stormed the Military Medical Services Department building at Aboud Hospital (Aden - Aden International Airport) (Khur Maksar, Aden). The forces looted documents and papers, and destroyed the director's office. The gunmen removed Ministry of Defence signs and replaced them with other signage. No official statement or action has been taken by the Ministry of Defence regarding the incident. Military journalists affiliated with the IRG, confirmed that the office of the director was broken into, and a picture of President Al-Alimi was thrown away during the raid.",
+        "fatalities": 0,
+        "timestamp": 1770676350,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.031,
+          12.8274
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM93417",
+        "event_date": "2024-10-31",
+        "year": 2024,
+        "event_type": "Strategic developments",
+        "sub_event_type": "Looting/property destruction",
+        "actor1": "Police Forces of Yemen (2022-2026) Presidential Leadership Council - STC Aden Security",
+        "assoc_actor_1": "",
+        "inter1": "State forces",
+        "actor2": "Government of Yemen (2022-2026) Presidential Leadership Council",
+        "assoc_actor_2": "",
+        "inter2": "State forces",
+        "interaction": "State forces-State forces",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Aden International Airport",
+        "geo_precision": 1,
+        "source": "Al Harf 28; Al Mashhad Al Yemeni - Pro-IRG; Twitter",
+        "source_scale": "New media-National",
+        "notes": "Looting: On 31 October 2024, STC forces (coded to Aden Security) raided and looted the medical supply storage facilities of the Ministry of Defense at Aboud Military Hospital nearby Aden - Aden International Airport (Khur Maksar). According to the source, STC forces broke into the storage area, directed by the STC's health division head, and seized medical supplies. The storage area was under the security responsibility of STC Military Police.",
+        "fatalities": 0,
+        "timestamp": 1770676350,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.031,
+          12.8274
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM93442",
+        "event_date": "2024-10-25",
+        "year": 2024,
+        "event_type": "Strategic developments",
+        "sub_event_type": "Arrests",
+        "actor1": "Military Forces of Yemen (2022-2026) Presidential Leadership Council - STC",
+        "assoc_actor_1": "",
+        "inter1": "State forces",
+        "actor2": "Civilians (Yemen)",
+        "assoc_actor_2": "Health Workers (Yemen)",
+        "inter2": "Civilians",
+        "interaction": "State forces-Civilians",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Aden International Airport",
+        "geo_precision": 1,
+        "source": "Al Harf 28; Al Masdar",
+        "source_scale": "National",
+        "notes": "On 25 October 2024, STC forces (coded to Aden Security) detained 6 doctors from Sanaa at the Al Nasr Camp in Aden (coded to nearest location, Aden - Aden International Airport) (Khur Maksar). The doctors had traveled to Aden to collect medical equipment belonging to a Sanaa hospital after resolving a dispute with the warehouse guard where the equipment was stored. The detainees include the Director of Unimax Hospital in Sana'a and several other staff members. The STC claimed suspicion of ties with the Houthi group, despite no judicial orders for their detention.",
+        "fatalities": 0,
+        "timestamp": 1770676350,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0294,
+          12.8149
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM94886",
+        "event_date": "2025-01-09",
+        "year": 2025,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "Teachers (Yemen)",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Jawlat Badr",
+        "geo_precision": 2,
+        "source": "Al Masdar",
+        "source_scale": "National",
+        "notes": "On 9 January 2025, the teaching association of Aden, Lahij, Abyan, and Shabwah universities held a protest stand in front of the Faculty of Education near Aden - Jawlat Badr (Khur Maksar), demanding the improvement of their living conditions.",
+        "fatalities": 0,
+        "timestamp": 1762820001,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0205,
+          12.789
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM85921",
+        "event_date": "2024-02-28",
+        "year": 2024,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Al Mualla",
+        "admin3": "",
+        "location": "Aden - Jawlat al Aqabah",
+        "geo_precision": 2,
+        "source": "Aden al Ghad",
+        "source_scale": "National",
+        "notes": "On 28 February 2024, dozens of protesters from Fuqum village held a demonstration in front of the governor's office (coded to Aden - Jawlat al Aqabah) (Al Mualla) demanding the release of the sheikh of Fuqum who was arrested over a week prior over some construction work around Fuqum.",
+        "fatalities": 0,
+        "timestamp": 1737435905,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0024,
+          12.7899
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM87727",
+        "event_date": "2024-05-12",
+        "year": 2024,
+        "event_type": "Riots",
+        "sub_event_type": "Violent demonstration",
+        "actor1": "Rioters (Yemen)",
+        "assoc_actor_1": "",
+        "inter1": "Rioters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Rioters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Al Mualla",
+        "admin3": "",
+        "location": "Aden - Al Maalla",
+        "geo_precision": 2,
+        "source": "Khabar News Agency (Yemen); Yemen Data Project",
+        "source_scale": "Local partner-National",
+        "notes": "On 12 May 2024, residents held a demonstration burning tires and blocking the main road in Al Mualla district (coded to Aden - Al Maalla) (Aden) over power outage.",
+        "fatalities": 0,
+        "timestamp": 1737435905,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0328,
+          12.7775
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM87785",
+        "event_date": "2024-05-14",
+        "year": 2024,
+        "event_type": "Riots",
+        "sub_event_type": "Mob violence",
+        "actor1": "Rioters (Yemen)",
+        "assoc_actor_1": "General Union of Southern Women; STC: Southern Transitional Council",
+        "inter1": "Rioters",
+        "actor2": "Civilians (Yemen)",
+        "assoc_actor_2": "General Union of Yemeni Women",
+        "inter2": "Civilians",
+        "interaction": "Rioters-Civilians",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Craiter",
+        "admin3": "",
+        "location": "Aden - Kraytar",
+        "geo_precision": 2,
+        "source": "Al Masdar; Yemen Data Project",
+        "source_scale": "Local partner-National",
+        "notes": "On 14 May 2024, several men and women affiliated with the 'Union of Southern Women' stormed the headquarters of the General Union of Yemeni Women in Ruzmit neighborhood in Craiter district (coded to Aden - Kraytar) and took down Yemen's flag. The Union of Southern Women is STC-affiliated.",
+        "fatalities": 0,
+        "timestamp": 1737435905,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0024,
+          12.7899
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM87797",
+        "event_date": "2024-05-14",
+        "year": 2024,
+        "event_type": "Riots",
+        "sub_event_type": "Violent demonstration",
+        "actor1": "Rioters (Yemen)",
+        "assoc_actor_1": "",
+        "inter1": "Rioters",
+        "actor2": "Police Forces of Yemen (2022-2026) Presidential Leadership Council - STC Aden Security",
+        "assoc_actor_2": "",
+        "inter2": "State forces",
+        "interaction": "State forces-Rioters",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Al Mualla",
+        "admin3": "",
+        "location": "Aden - Al Maalla",
+        "geo_precision": 1,
+        "source": "Al Masdar",
+        "source_scale": "National",
+        "notes": "On 14 May 2024, rioters continued to demonstrate for the second day in a row by burning tires and closing the main street of Aden - Al Maalla (Al Mualla) over power outages. Security forces shot at the rioters. Casualties unknown.",
+        "fatalities": 0,
+        "timestamp": 1769474359,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0328,
+          12.7775
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM88124",
+        "event_date": "2024-06-04",
+        "year": 2024,
+        "event_type": "Riots",
+        "sub_event_type": "Violent demonstration",
+        "actor1": "Rioters (Yemen)",
+        "assoc_actor_1": "",
+        "inter1": "Rioters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Rioters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Craiter",
+        "admin3": "",
+        "location": "Aden - Kraytar",
+        "geo_precision": 2,
+        "source": "Yemen Window",
+        "source_scale": "National",
+        "notes": "On 4 June 2024, dozens of demonstrators burnt tires in Craiter district (coded to Aden - Kraytar) to denounce power outages.",
+        "fatalities": 0,
+        "timestamp": 1737435905,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0284,
+          12.785
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM89575",
+        "event_date": "2024-05-12",
+        "year": 2024,
+        "event_type": "Violence against civilians",
+        "sub_event_type": "Abduction/forced disappearance",
+        "actor1": "Unidentified Armed Group (Yemen)",
+        "assoc_actor_1": "",
+        "inter1": "Political militia",
+        "actor2": "Civilians (Yemen)",
+        "assoc_actor_2": "",
+        "inter2": "Civilians",
+        "interaction": "Political militia-Civilians",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Craiter",
+        "admin3": "",
+        "location": "Aden - Al Khusaf",
+        "geo_precision": 1,
+        "source": "Aden al Ghad",
+        "source_scale": "National",
+        "notes": "Around 12 May 2024 (month of), unknown militants abducted a taxi driver in Aden - Al Khusaf (Craiter, Aden) after he had posted a video on social media to complain about the political situation.",
+        "fatalities": 0,
+        "timestamp": 1754411473,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0024,
+          12.7899
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM89898",
+        "event_date": "2024-07-24",
+        "year": 2024,
+        "event_type": "Strategic developments",
+        "sub_event_type": "Looting/property destruction",
+        "actor1": "Police Forces of Yemen (2022-2026) Presidential Leadership Council - STC Aden Security",
+        "assoc_actor_1": "",
+        "inter1": "State forces",
+        "actor2": "Civilians (Yemen)",
+        "assoc_actor_2": "Labor Group (Yemen)",
+        "inter2": "Civilians",
+        "interaction": "State forces-Civilians",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Al Mualla",
+        "admin3": "",
+        "location": "Aden - Al Maalla",
+        "geo_precision": 2,
+        "source": "Twitter",
+        "source_scale": "New media",
+        "notes": "Property destruction: On 24 July 2024, security forces (coded as STC Aden Security) raided the house of 1 businessman and started shooting bullets inside the house in Al Mualla district (coded to Aden - Al Maalla). The source claimed that the reason for the raid was the presence of a truck of sand in the property of the businessman.",
+        "fatalities": 0,
+        "timestamp": 1769474359,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          44.9931,
+          12.7719
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM91369",
+        "event_date": "2024-08-24",
+        "year": 2024,
+        "event_type": "Violence against civilians",
+        "sub_event_type": "Abduction/forced disappearance",
+        "actor1": "Police Forces of Yemen (2022-2026) Presidential Leadership Council - STC Aden Security",
+        "assoc_actor_1": "",
+        "inter1": "State forces",
+        "actor2": "Civilians (Yemen)",
+        "assoc_actor_2": "",
+        "inter2": "Civilians",
+        "interaction": "State forces-Civilians",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Attawahi",
+        "admin3": "",
+        "location": "Aden - Gold Mohur Valley",
+        "geo_precision": 1,
+        "source": "Aden al Ghad; Al Mashhad Al Yemeni - Pro-IRG",
+        "source_scale": "National",
+        "notes": "On 24 August 2024, STC forces (coded as STC Aden Security) abducted 5 members of the same family in Aden - Gold Mohur Valley (Attawahi) and held them incommunicado. The STC forces released 4 of them on 26 August. The 5th victim, an expatriate leaving in Saudi Arabia who had just returned to Aden, was kept for sending remittances under accusations of conducting unspecified money transfers.",
+        "fatalities": 0,
+        "timestamp": 1770676350,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0024,
+          12.7899
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM91389",
+        "event_date": "2024-08-26",
+        "year": 2024,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Al Mualla",
+        "admin3": "",
+        "location": "Aden - Al Maalla",
+        "geo_precision": 1,
+        "source": "Aden al Ghad; Khabar News Agency (Yemen)",
+        "source_scale": "National",
+        "notes": "On 26 August 2024, hundreds of residents staged a protest in Aden - Al Maalla (Al Mualla) demanding access to drinking water. The protesters claimed that they had been without water for over a month and that the supply reaching them was extremely scarce. This was one of two similar demonstrations that day.",
+        "fatalities": 0,
+        "timestamp": 1737435906,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0351,
+          12.7718
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM91390",
+        "event_date": "2024-08-26",
+        "year": 2024,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Craiter",
+        "admin3": "",
+        "location": "Aden - Hayy al Aydarus",
+        "geo_precision": 1,
+        "source": "Khabar News Agency (Yemen)",
+        "source_scale": "National",
+        "notes": "On 26 August 2024, residents staged a protest in Aden - Hayy al Aydarus (Craiter) demanding access to drinking water. The protestors demanded access to clean drinking water, stating that their neighborhood had been without water for over a month. They explained that they had resorted to using donkeys to fetch water from distant locations. The demonstrators marched from Shaab al Aydarus to the headquarters of the General Water Corporation. This was one of two similar demonstrations that day.",
+        "fatalities": 0,
+        "timestamp": 1737435906,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0351,
+          12.7718
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM92201",
+        "event_date": "2024-09-26",
+        "year": 2024,
+        "event_type": "Violence against civilians",
+        "sub_event_type": "Abduction/forced disappearance",
+        "actor1": "Police Forces of Yemen (2022-2026) Presidential Leadership Council - STC Aden Security",
+        "assoc_actor_1": "",
+        "inter1": "State forces",
+        "actor2": "Civilians (Yemen)",
+        "assoc_actor_2": "Labor Group (Yemen)",
+        "inter2": "Civilians",
+        "interaction": "State forces-Civilians",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Craiter",
+        "admin3": "",
+        "location": "Aden - Hayy al Aydarus",
+        "geo_precision": 1,
+        "source": "Al Mashhad Al Yemeni - Pro-IRG",
+        "source_scale": "National",
+        "notes": "On 26 September 2024, security forces (coded as STC Aden Security) abducted 1 civilian in Aden - Hayy al Aydarus (Craiter, Aden). The reason behind the abduction was raising the Yemeni flag on his bus. He was taken to an unknown destination.",
+        "fatalities": 0,
+        "timestamp": 1769474359,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0328,
+          12.7775
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM92784",
+        "event_date": "2024-10-14",
+        "year": 2024,
+        "event_type": "Strategic developments",
+        "sub_event_type": "Other",
+        "actor1": "Police Forces of Yemen (2022-2026) Presidential Leadership Council - STC Aden Security",
+        "assoc_actor_1": "",
+        "inter1": "State forces",
+        "actor2": "Civilians (Yemen)",
+        "assoc_actor_2": "Labor Group (Yemen)",
+        "inter2": "Civilians",
+        "interaction": "State forces-Civilians",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Craiter",
+        "admin3": "",
+        "location": "Aden - Kraytar",
+        "geo_precision": 2,
+        "source": "Al Masdar",
+        "source_scale": "National",
+        "notes": "Other: On 14 October 2024, Security Belt Forces (coded to STC police) forced shops in the Aden - Kraytar (Craiter, Aden) to raise the flag of the former Democratic Republic of Yemen (South Yemen) in conjunction with the 61st anniversary of the 14 October Revolution. They imposed a 50,000 riyal fine on non-compliant businesses.",
+        "fatalities": 0,
+        "timestamp": 1769474359,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0328,
+          12.7775
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM92961",
+        "event_date": "2024-10-14",
+        "year": 2024,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Craiter",
+        "admin3": "",
+        "location": "Aden - Kraytar",
+        "geo_precision": 1,
+        "source": "Aden al Ghad",
+        "source_scale": "National",
+        "notes": "On 14 October 2024, protesters marched in Aden - Kraytar (Craiter, Aden) in support of the people of Gaza and against the Israeli 'aggression on the region' following the latest round of violence between Hamas and Israel in the Gaza Strip.",
+        "fatalities": 0,
+        "timestamp": 1737435906,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0367,
+          12.7794
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM96092",
+        "event_date": "2025-01-14",
+        "year": 2025,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "",
+        "admin3": "",
+        "location": "Aden",
+        "geo_precision": 3,
+        "source": "Aden al Ghad; Khabar News Agency (Yemen)",
+        "source_scale": "National",
+        "notes": "On 14 January 2025, thousands of residents held a protest stand in Aden governorate (coded to governorate capital Aden) demanding the restriction of salaries and their value against foreign currency and denouncing the deterioration of economic and living conditions.",
+        "fatalities": 0,
+        "timestamp": 1737435907,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0195,
+          12.7918
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM91859",
+        "event_date": "2024-09-09",
+        "year": 2024,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "Labor Group (Yemen)",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Al Mualla",
+        "admin3": "",
+        "location": "Aden - Ad Dakkah",
+        "geo_precision": 1,
+        "source": "Aden al Ghad",
+        "source_scale": "National",
+        "notes": "On 9 September 2024, members of the Tax Employees Syndicate in Aden held a protest in front of the Aden Governorate building (coded to Aden - Ad Dakkah) (Al Mualla) in solidarity with the Director of the Mansoura Tax Office, and his deputy following a 'defamation campaign' on social media. The protestors issued a statement condemning the campaign, demanding justice for the officials after investigations found no evidence of financial misconduct.",
+        "fatalities": 0,
+        "timestamp": 1737495707,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0195,
+          12.7918
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM95485",
+        "event_date": "2024-12-24",
+        "year": 2024,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "Teachers (Yemen)",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Al Mualla",
+        "admin3": "",
+        "location": "Aden - Ad Dakkah",
+        "geo_precision": 1,
+        "source": "Khabar News Agency (Yemen)",
+        "source_scale": "National",
+        "notes": "On 24 December 2024, dozens of teachers in Aden began an open strike and held a protest in front of the Aden Governorate building in Aden - Ad Dakkah (Al Mualla), demanding the payment of their overdue salaries.",
+        "fatalities": 0,
+        "timestamp": 1762820001,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          44.9802,
+          12.7847
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM85155",
+        "event_date": "2024-01-28",
+        "year": 2024,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Attawahi",
+        "admin3": "",
+        "location": "Aden - At Tawahi",
+        "geo_precision": 2,
+        "source": "Aden al Ghad",
+        "source_scale": "National",
+        "notes": "On 28 January 2024, dozens of protesters demonstrated in front of the local administration building in Attawahi district (coded to Aden - At Tawahi) over water shortages.",
+        "fatalities": 0,
+        "timestamp": 1739238856,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          44.9802,
+          12.7847
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM89564",
+        "event_date": "2024-07-08",
+        "year": 2024,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Attawahi",
+        "admin3": "",
+        "location": "Aden - At Tawahi",
+        "geo_precision": 2,
+        "source": "Aden al Ghad",
+        "source_scale": "National",
+        "notes": "On 8 July 2024, protesters demonstrated in the streets of Attawahi district (coded to Aden - At Tawahi) demanding the replacement of the district director who they described as corrupt.",
+        "fatalities": 0,
+        "timestamp": 1739238857,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          44.9802,
+          12.7847
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM89976",
+        "event_date": "2024-07-21",
+        "year": 2024,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Attawahi",
+        "admin3": "",
+        "location": "Aden - At Tawahi",
+        "geo_precision": 2,
+        "source": "Aden al Ghad; Al Asimah; Khabar News Agency (Yemen); Twitter",
+        "source_scale": "New media-National",
+        "notes": "On 21 July 2024, protesters marched in Attawahi district (coded to Aden - At Tawahi) demanding the dismissal of the district director accusing him of corruption and mismanagement of basic services. The source noted that security forces affiliated with the district director stormed in a restaurant and shut it down possibly in relation to the protest.",
+        "fatalities": 0,
+        "timestamp": 1739238857,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          44.9991,
+          12.7917
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM90491",
+        "event_date": "2024-07-23",
+        "year": 2024,
+        "event_type": "Violence against civilians",
+        "sub_event_type": "Abduction/forced disappearance",
+        "actor1": "Police Forces of Yemen (2022-2026) Presidential Leadership Council - STC Aden Security",
+        "assoc_actor_1": "",
+        "inter1": "State forces",
+        "actor2": "Civilians (Yemen)",
+        "assoc_actor_2": "Giants Brigades",
+        "inter2": "Civilians",
+        "interaction": "State forces-Civilians",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Al Mualla",
+        "admin3": "",
+        "location": "Aden - Jawlat Hujayf",
+        "geo_precision": 1,
+        "source": "Aden al Ghad; Al Mashhad Al Yemeni - Pro-IRG",
+        "source_scale": "National",
+        "notes": "On 23 July 2024, unknown security forces (coded as STC Aden Security) abducted 1 Giants Brigades commander at a checkpoint in Aden - Jawlat Hujayf (Al Mualla, Aden) and took him to an undisclosed location, for calling for a protest in support of Ali Ashal Al Jaadani, a colonel from Abyan governorate that was abducted at the hands of suspected STC Security Belt forces on 12 June.",
+        "fatalities": 0,
+        "timestamp": 1769474359,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          44.9802,
+          12.7847
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM92823",
+        "event_date": "2024-10-16",
+        "year": 2024,
+        "event_type": "Strategic developments",
+        "sub_event_type": "Looting/property destruction",
+        "actor1": "Police Forces of Yemen (2022-2026) Presidential Leadership Council - STC Aden Security",
+        "assoc_actor_1": "",
+        "inter1": "State forces",
+        "actor2": "Civilians (Yemen)",
+        "assoc_actor_2": "",
+        "inter2": "Civilians",
+        "interaction": "State forces-Civilians",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Attawahi",
+        "admin3": "",
+        "location": "Aden - At Tawahi",
+        "geo_precision": 2,
+        "source": "Al Masdar",
+        "source_scale": "National",
+        "notes": "Looting: On 16 October 2024, STC police forces (coded as Aden Security) raided and looted the house of a female activist in Attawahi district (coded to district center Aden - At Tawahi) (Aden). The source claimed that the police forces raided her house aiming to arrest her because she was following up on the abduction and death of her two brothers.",
+        "fatalities": 0,
+        "timestamp": 1769474359,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          44.9953,
+          12.8052
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM93390",
+        "event_date": "2024-10-31",
+        "year": 2024,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "Labor Group (Yemen)",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Al Mansura",
+        "admin3": "",
+        "location": "Aden - Container Port",
+        "geo_precision": 1,
+        "source": "Aden al Ghad",
+        "source_scale": "National",
+        "notes": "On 31 October 2024, workers of Aden Container Port held a protest stand in front of the port administration building in Aden - Container Port (Al Mansura, Aden) demanding the free zone housing association plan, which has been instructed to be granted to them in 2012.",
+        "fatalities": 0,
+        "timestamp": 1739238858,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          44.9989,
+          12.7841
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM96090",
+        "event_date": "2025-01-11",
+        "year": 2025,
+        "event_type": "Battles",
+        "sub_event_type": "Armed clash",
+        "actor1": "Military Forces of Yemen (2022-2026) Presidential Leadership Council",
+        "assoc_actor_1": "",
+        "inter1": "State forces",
+        "actor2": "Police Forces of Yemen (2022-2026) Presidential Leadership Council - STC Aden Security",
+        "assoc_actor_2": "",
+        "inter2": "State forces",
+        "interaction": "State forces-State forces",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Al Mualla",
+        "admin3": "",
+        "location": "Aden - Al Quluah",
+        "geo_precision": 1,
+        "source": "Al Masdar",
+        "source_scale": "National",
+        "notes": "On 11 January 2025, unknown forces (likely belonging to the IRG counterterrorism forces and coded as IRG generic forces), supported by 3 armored vehicles, stormed the police station of Aden - Al Quluah (Al Mualla, Aden). The forces threw a grenade at the police forces (coded as STC Aden security) before forcibly entering the station. Casualties unknown. Sources suggested that the incident may be linked to disputes involving the counterterrorism commander.",
+        "fatalities": 0,
+        "timestamp": 1770676350,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0367,
+          12.7794
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM96707",
+        "event_date": "2025-01-13",
+        "year": 2025,
+        "event_type": "Strategic developments",
+        "sub_event_type": "Disrupted weapons use",
+        "actor1": "Military Forces of Yemen (2022-2026) Presidential Leadership Council",
+        "assoc_actor_1": "",
+        "inter1": "State forces",
+        "actor2": "Unidentified Armed Group (Yemen)",
+        "assoc_actor_2": "",
+        "inter2": "Political militia",
+        "interaction": "State forces-Political militia",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "",
+        "admin3": "",
+        "location": "Aden",
+        "geo_precision": 3,
+        "source": "Twitter",
+        "source_scale": "New media",
+        "notes": "Weapons seizure: On 13 January 2025, IRG forces seized a shipment of electronics in Aden governorate (coded to governorate capital Aden) carrying electronics claimed to be for use in drones, including servo-motors, Arduino microcontrollers, Step down converters, and Motor drive controllers.",
+        "fatalities": 0,
+        "timestamp": 1770676350,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          44.9802,
+          12.7847
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM97013",
+        "event_date": "2024-11-02",
+        "year": 2024,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "Women (Yemen)",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Attawahi",
+        "admin3": "",
+        "location": "Aden - At Tawahi",
+        "geo_precision": 1,
+        "source": "Al Harf 28",
+        "source_scale": "National",
+        "notes": "On 2 November 2024, women held a protest stand in front of the Port Court building in Aden - At Tawahi (Attawahi, Aden) in solidarity with activist Hamda Mabrouk, condemning alleged 'violations' and raids on her home by the Southern Transitional Council (STC) forces.",
+        "fatalities": 0,
+        "timestamp": 1740447693,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0352,
+          12.8229
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM86982",
+        "event_date": "2024-04-14",
+        "year": 2024,
+        "event_type": "Strategic developments",
+        "sub_event_type": "Disrupted weapons use",
+        "actor1": "Unidentified Armed Group (Yemen)",
+        "assoc_actor_1": "",
+        "inter1": "Political militia",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Political militia only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Hayy ar Rashid",
+        "geo_precision": 1,
+        "source": "Al Masdar; Crater Sky; Twitter; Yemen Data Project",
+        "source_scale": "Local partner-National",
+        "notes": "Detonation: On 14 April 2024, a hand grenade exploded in front of a school in Aden - Hayy ar Rashid (Khur Maksar, Aden) killing 1 person and injuring 1 other. Sources suggested that the grenade was in possession of the victims.1 fatality.",
+        "fatalities": 1,
+        "timestamp": 1753970843,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0334,
+          12.8123
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM87781",
+        "event_date": "2024-05-13",
+        "year": 2024,
+        "event_type": "Riots",
+        "sub_event_type": "Violent demonstration",
+        "actor1": "Rioters (Yemen)",
+        "assoc_actor_1": "",
+        "inter1": "Rioters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Rioters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Khawr Maksar",
+        "geo_precision": 2,
+        "source": "Crater Sky; Yemen Data Project",
+        "source_scale": "Local partner-National",
+        "notes": "On 13 May 2024, rioters demonstrated by burning tires and closing roads in in several locations in Aden including Aden - Al Shaab (Al Buraiqeh), Aden - Enma (Al Mansura), and in Khur Maksar district (coded to Aden - Khawr Maksar) over power outages.",
+        "fatalities": 0,
+        "timestamp": 1770078493,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          44.9607,
+          12.8386
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM87783",
+        "event_date": "2024-05-13",
+        "year": 2024,
+        "event_type": "Riots",
+        "sub_event_type": "Violent demonstration",
+        "actor1": "Rioters (Yemen)",
+        "assoc_actor_1": "",
+        "inter1": "Rioters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Rioters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Al Mansura",
+        "admin3": "",
+        "location": "Aden - Enma",
+        "geo_precision": 1,
+        "source": "Crater Sky; Yemen Data Project",
+        "source_scale": "Local partner-National",
+        "notes": "On 13 May 2024, rioters demonstrated by burning tires and closing roads in in several locations in Aden including Aden - Al Shaab (Al Buraiqeh), Aden - Enma (Al Mansura), and in Khur Maksar district (coded to Aden - Khawr Maksar) over power outages.",
+        "fatalities": 0,
+        "timestamp": 1740520015,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0024,
+          12.7899
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM87784",
+        "event_date": "2024-05-13",
+        "year": 2024,
+        "event_type": "Riots",
+        "sub_event_type": "Violent demonstration",
+        "actor1": "Rioters (Yemen)",
+        "assoc_actor_1": "",
+        "inter1": "Rioters",
+        "actor2": "Police Forces of Yemen (2022-2026) Presidential Leadership Council - STC Aden Security",
+        "assoc_actor_2": "",
+        "inter2": "State forces",
+        "interaction": "State forces-Rioters",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Al Mualla",
+        "admin3": "",
+        "location": "Aden - Al Maalla",
+        "geo_precision": 1,
+        "source": "Crater Sky; Yemen Data Project",
+        "source_scale": "Local partner-National",
+        "notes": "On 13 May 2024, rioters demonstrated by burning tires and closing the main street of Aden - Al Maalla (Al Mualla) over power outages. Security forces shot at the rioters. Casualties unknown.",
+        "fatalities": 0,
+        "timestamp": 1769474359,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          44.9607,
+          12.8386
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM87848",
+        "event_date": "2024-05-19",
+        "year": 2024,
+        "event_type": "Violence against civilians",
+        "sub_event_type": "Attack",
+        "actor1": "Unidentified Armed Group (Yemen)",
+        "assoc_actor_1": "",
+        "inter1": "Political militia",
+        "actor2": "Civilians (Yemen)",
+        "assoc_actor_2": "Labor Group (Yemen)",
+        "inter2": "Civilians",
+        "interaction": "Political militia-Civilians",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Al Mansura",
+        "admin3": "",
+        "location": "Aden - Enma",
+        "geo_precision": 1,
+        "source": "Aden al Ghad; Al Masdar; Crater Sky; Yemen Data Project",
+        "source_scale": "Local partner-National",
+        "notes": "On 19 May 2024, unknown militants shot and killed 1 businessman real estate in Aden - Enma (Al Mansura, Aden). The reason for the shooting was not reported. The agent was initially injured and died in the hospital on 25 May. The same victim was targeted with an explosive device in May 2023.",
+        "fatalities": 0,
+        "timestamp": 1754411473,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0293,
+          12.8094
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM90872",
+        "event_date": "2024-08-15",
+        "year": 2024,
+        "event_type": "Strategic developments",
+        "sub_event_type": "Other",
+        "actor1": "Police Forces of Yemen (2022-2026) Presidential Leadership Council - STC Aden Security",
+        "assoc_actor_1": "",
+        "inter1": "State forces",
+        "actor2": "Civilians (Yemen)",
+        "assoc_actor_2": "",
+        "inter2": "Civilians",
+        "interaction": "State forces-Civilians",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Ash Shabat",
+        "geo_precision": 1,
+        "source": "Aden al Ghad",
+        "source_scale": "National",
+        "notes": "Other: On 15 August 2024, STC security forces (coded as STC Aden Security) prevented the National Youth Conference from holding an event in the Coral Hotel in Aden - Ash Shabat (Khur Maksar). The event aimed at supporting Youth participation in political and civic life and is in collaboration with NDI and USAID.",
+        "fatalities": 0,
+        "timestamp": 1769474359,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0278,
+          12.8135
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM91799",
+        "event_date": "2024-09-12",
+        "year": 2024,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Hayy As Salam",
+        "geo_precision": 1,
+        "source": "Aden al Ghad; Twitter",
+        "source_scale": "New media-National",
+        "notes": "On 12 September 2024, dozens of local residents and families of martyrs held a protest stand in Aden - Hayy As Salam (Khur Maksar, Aden) denouncing the orders by and threats of the Commander of Land Protection Unit to forcibly evacuate the building where families of martyrs had lived in after they lost their homes in the 2015 Battle of Aden. The source claimed that the Commander of the Land Protection Unit threatened the residents to forcibly evacuate the building after the deadline, which ends on Sunday, September 16.",
+        "fatalities": 0,
+        "timestamp": 1740520016,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0293,
+          12.8094
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM93419",
+        "event_date": "2024-11-05",
+        "year": 2024,
+        "event_type": "Strategic developments",
+        "sub_event_type": "Other",
+        "actor1": "General People's Congress",
+        "assoc_actor_1": "Al Islah Party; Al Rashad Union; Hadramawt National Council; Justice and Building Party; Liberation Front Party; Nasserist Unionist People's Organization; National Arab Socialist Baath Party - Yemen Region; National Resistance (Guards of the Republic); NSC: National Southern Coalition; Peace and Development Party; People's Democratic Party; Southern Movement; Southern National Salvation Council; The National Council of Shabwah; Union of Popular Forces; Yemen Renaissance Movement; Yemeni Republican Federal Party; Yemeni Socialist Party; Yemeni Unionist Congregation",
+        "inter1": "Political militia",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Political militia only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Ash Shabat",
+        "geo_precision": 1,
+        "source": "Al Harf 28; Al Mashhad Al Yemeni - Pro-IRG; Yemen Window",
+        "source_scale": "National",
+        "notes": "Other: On 5 November 2024, the National Bloc of Political Parties and Components was launched in Coral Hotel at Aden - Ash Shabat (Khur Maksar) comprising 21 political entities. These include the General People's Congress, Al Islah Party, Yemeni Socialist Party, Nasserite Popular Unionist Organization, Political Bureau of the National Resistance, Southern Movement, Yemeni Rashad Union, Justice and Building Party, NSC: National Southern Coalition, Ennahda Movement for Peaceful Change, National Solidarity Party, Southern Revolutionary Movement, Yemeni Unity Gathering, Union of Popular Forces, Peace and Development Party, Arab Socialist Baath Party, Hadhramaut National Council, People's Democratic Party (Hashd), Shabwa National Council, Republican Party, and the Liberation Front Party. Dr. Ahmed Obaid bin Dagher was appointed as the bloc's head, which aims to restore the state, unify national forces, resolve the southern issue, support the Presidential Leadership Council, and emphasize economic stabilization and citizens' welfare amidst the ongoing crisis. Notably, the STC did not participate or joined the new formed National Bloc.",
+        "fatalities": 0,
+        "timestamp": 1740520016,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0293,
+          12.8094
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM87795",
+        "event_date": "2024-05-15",
+        "year": 2024,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "Labor Group (Yemen)",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Ash Shabat",
+        "geo_precision": 1,
+        "source": "Aden al Ghad",
+        "source_scale": "National",
+        "notes": "On 15 May 2024, retirees of the Ministry of Interior demonstrated in front of the Ministry of Finance in Aden - Ash Shabat (Khur Maksar) over their delayed pensions.",
+        "fatalities": 0,
+        "timestamp": 1741125304,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0293,
+          12.8094
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM88128",
+        "event_date": "2024-06-08",
+        "year": 2024,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "Journalists (Yemen); Labor Group (Yemen)",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Ash Shabat",
+        "geo_precision": 1,
+        "source": "4 May News; Al Ayyam (Yemen)",
+        "source_scale": "National",
+        "notes": "On 8 June 2024, radio, television, and Aden News Agency employees protested in front of the Ministry of Finance building in Aden - Ash Shabat (Khur Maksar) against delays in their salaries.",
+        "fatalities": 0,
+        "timestamp": 1741125304,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0293,
+          12.8094
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM91577",
+        "event_date": "2024-09-02",
+        "year": 2024,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "Former Military Forces of Yemen (2022-2026) Presidential Leadership Council",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Ash Shabat",
+        "geo_precision": 1,
+        "source": "Khabar News Agency (Yemen)",
+        "source_scale": "National",
+        "notes": "On 2 September 2024, hundreds of retired military personnel protested in front of the Ministry of Finance in Aden - Ash Shabat (Khur Maksar, Aden)), demanding the disbursement of salaries for retired civilians and military personnel and the settlement of their situation.",
+        "fatalities": 0,
+        "timestamp": 1770676350,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0293,
+          12.8094
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM92197",
+        "event_date": "2024-09-24",
+        "year": 2024,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "Students (Yemen)",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Ash Shabat",
+        "geo_precision": 1,
+        "source": "Khabar News Agency (Yemen)",
+        "source_scale": "National",
+        "notes": "On 24 September 2024, students from the High Judicial Institute in Aden protested in front of the Ministry of Finance at Aden - Ash Shabat (Khur Maksar) demanding the payment of their monthly allowances, which have been delayed for nine to 10 months. They highlighted the worsening economic conditions and called on the government to release their overdue payments. The students appealed for immediate action and media support.",
+        "fatalities": 0,
+        "timestamp": 1762820001,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0302,
+          12.81
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM96406",
+        "event_date": "2025-01-14",
+        "year": 2025,
+        "event_type": "Protests",
+        "sub_event_type": "Protest with intervention",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "Al Jaadani Tribal Group (Yemen)",
+        "inter1": "Protesters",
+        "actor2": "Military Forces of Yemen (2022-2026) Presidential Leadership Council - STC Asifah Brigade",
+        "assoc_actor_2": "",
+        "inter2": "State forces",
+        "interaction": "State forces-Protesters",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Sahat al Urud",
+        "geo_precision": 1,
+        "source": "Twitter",
+        "source_scale": "New media",
+        "notes": "On 14 January 2025, protesters held a protest in Aden - Sahat al Urud (Khur Maksar) demanding justice in the kidnapping of Ali Ashal Al Jaadani, a colonel from Abyan governorate who was abducted at the hands of suspected STC Security Belt forces on 12 June 2024. STC Asifah Brigade forces tore down and shredded a poster of Al Jaadani displayed during the protest and attempted to detain protesters, including his son.",
+        "fatalities": 0,
+        "timestamp": 1770676350,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0327,
+          12.8352
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM86859",
+        "event_date": "2024-03-25",
+        "year": 2024,
+        "event_type": "Violence against civilians",
+        "sub_event_type": "Abduction/forced disappearance",
+        "actor1": "Police Forces of Yemen (2022-2026) Presidential Leadership Council - STC Security Belt Forces",
+        "assoc_actor_1": "",
+        "inter1": "State forces",
+        "actor2": "Civilians (Yemen)",
+        "assoc_actor_2": "",
+        "inter2": "Civilians",
+        "interaction": "State forces-Civilians",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Hayy an Nasr",
+        "geo_precision": 1,
+        "source": "Twitter",
+        "source_scale": "New media",
+        "notes": "Around 25 March 2024, STC Security Belt forces abducted 1 civilian from his house and took him to An Nasr camp in Aden - Hayy an Nasr (Khur Maksar). The reason behind the abduction was not reported but the source noted that the civilian spent 2 years in Security Belt prisons in the past and was released without charge.",
+        "fatalities": 0,
+        "timestamp": 1769474359,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0419,
+          12.8449
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM92988",
+        "event_date": "2024-10-21",
+        "year": 2024,
+        "event_type": "Battles",
+        "sub_event_type": "Armed clash",
+        "actor1": "Unidentified Armed Group (Yemen)",
+        "assoc_actor_1": "",
+        "inter1": "Political militia",
+        "actor2": "Unidentified Armed Group (Yemen)",
+        "assoc_actor_2": "",
+        "inter2": "Political militia",
+        "interaction": "Political militia-Political militia",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Al Arish",
+        "geo_precision": 1,
+        "source": "Al Mashhad Al Yemeni - Pro-IRG",
+        "source_scale": "National",
+        "notes": "On 21 October 2024, in the afternoon, armed clashes broke out in Aden - Al Arish neighborhood (Khur Maksar, Aden) as an unidentified group surrounded a person inside a house, leading to heavy gunfire and explosions. The identity of those involved was not reported. Security forces intervened to contain the clashes. Casualties unknown.",
+        "fatalities": 0,
+        "timestamp": 1753970843,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0419,
+          12.8449
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM94793",
+        "event_date": "2025-01-08",
+        "year": 2025,
+        "event_type": "Violence against civilians",
+        "sub_event_type": "Attack",
+        "actor1": "Unidentified Armed Group (Yemen)",
+        "assoc_actor_1": "",
+        "inter1": "Political militia",
+        "actor2": "Civilians (Yemen)",
+        "assoc_actor_2": "Al Jaadani Tribal Group (Yemen); Military Forces of Yemen (2022-2026) Presidential Leadership Council",
+        "inter2": "Civilians",
+        "interaction": "Political militia-Civilians",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Al Arish",
+        "geo_precision": 1,
+        "source": "Aden al Ghad; Al Mashhad Al Yemeni - Pro-IRG",
+        "source_scale": "National",
+        "notes": "On 8 January 2025, unidentified gunmen in a military vehicle shot at a lieutenant in his, likely private, car in Aden - Al Arish (Khur Maksar, Aden) causing heavy damage to his car. The lieutenant survived the suspected assassination attempt. The gunmen fled to an unknown destination.",
+        "fatalities": 0,
+        "timestamp": 1770676350,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0419,
+          12.8449
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM85024",
+        "event_date": "2024-02-02",
+        "year": 2024,
+        "event_type": "Violence against civilians",
+        "sub_event_type": "Attack",
+        "actor1": "Unidentified Armed Group (Yemen)",
+        "assoc_actor_1": "Police Forces of Yemen (2022-2026) Presidential Leadership Council - STC Aden Security",
+        "inter1": "Political militia",
+        "actor2": "Civilians (Yemen)",
+        "assoc_actor_2": "Muslim Group (Yemen)",
+        "inter2": "Civilians",
+        "interaction": "Political militia-Civilians",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Al Arish",
+        "geo_precision": 1,
+        "source": "Aden al Ghad; Twitter; Undisclosed Source",
+        "source_scale": "Local partner-Other",
+        "notes": "On 2 February 2024, a gunman, allegedly a soldier in the STC security forces (coded as STC Aden Security), opened fire at worshipers during prayers in Al Sunna mosque in Aden - Al Arish (Khur Maksar), injuring 2 civilians. Other worshipers managed to detain and disarm the gunman, and he was arrested by local police forces. The exact reason behind the attack was not reported, but according to sources he shouted 'political slogans' before shooting.",
+        "fatalities": 0,
+        "timestamp": 1769474359,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0541,
+          12.7655
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM85917",
+        "event_date": "2024-02-26",
+        "year": 2024,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "Labor Group (Yemen)",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Craiter",
+        "admin3": "",
+        "location": "Aden - Maashiq Presidential Palace",
+        "geo_precision": 1,
+        "source": "Aden al Ghad; Undisclosed Source",
+        "source_scale": "Local partner-Other",
+        "notes": "On 26 February 2024, between dozens and hundreds of protesters, including employees of the ministries of education, defense, health, and oil, demonstrated in front of Aden - Maashiq Presidential Palace (Craiter) against increased prices and deteriorating living conditions.",
+        "fatalities": 0,
+        "timestamp": 1752545221,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0367,
+          12.7794
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM86328",
+        "event_date": "2024-03-19",
+        "year": 2024,
+        "event_type": "Strategic developments",
+        "sub_event_type": "Looting/property destruction",
+        "actor1": "Police Forces of Yemen (2022-2026) Presidential Leadership Council - STC Aden Security",
+        "assoc_actor_1": "",
+        "inter1": "State forces",
+        "actor2": "Civilians (Yemen)",
+        "assoc_actor_2": "Military Forces of Yemen (2022-2026) Presidential Leadership Council",
+        "inter2": "Civilians",
+        "interaction": "State forces-Civilians",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "",
+        "admin3": "",
+        "location": "Aden",
+        "geo_precision": 1,
+        "source": "Aden al Ghad; Al Masdar; Undisclosed Source; Yemen Data Project",
+        "source_scale": "Local partner-Other",
+        "notes": "Looting: On 19 March 2024, STC forces (coded as STC Aden Security) looted weapons from the house of the commander of the IRG 115th Brigade after storming it and searching it in Aden city (Aden). One source claimed that the STC forces wanted to arrest the commander for criminal charges who was not in the house, but arrested his son. A statement from notable figures from Abyan, where the commander was from, denounced the incident and stated that there was no court order or a prior warning and that the incident was illegal.",
+        "fatalities": 0,
+        "timestamp": 1770676350,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          44.9752,
+          12.7831
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM87081",
+        "event_date": "2024-04-20",
+        "year": 2024,
+        "event_type": "Violence against civilians",
+        "sub_event_type": "Attack",
+        "actor1": "Unidentified Armed Group (Yemen)",
+        "assoc_actor_1": "",
+        "inter1": "Political militia",
+        "actor2": "Civilians (Yemen)",
+        "assoc_actor_2": "",
+        "inter2": "Civilians",
+        "interaction": "Political militia-Civilians",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Attawahi",
+        "admin3": "",
+        "location": "Aden - Al Fath",
+        "geo_precision": 1,
+        "source": "Aden al Ghad; Al Masdar; Crater Sky; Twitter; Undisclosed Source; Yemen Data Project",
+        "source_scale": "Local partner-Other",
+        "notes": "On 20 April 2024, unidentified gunmen shot and killed 1 civilian in Al Arusa in Aden - Al Fath (Attawahi). The reason behind the incident was not reported.",
+        "fatalities": 1,
+        "timestamp": 1754411473,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0111,
+          12.7911
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM87215",
+        "event_date": "2024-04-24",
+        "year": 2024,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "Labor Group (Yemen)",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Al Mualla",
+        "admin3": "",
+        "location": "Aden - Main Street",
+        "geo_precision": 1,
+        "source": "Al Masdar; Undisclosed Source",
+        "source_scale": "Local partner-Other",
+        "notes": "On 24 April 2024, dozens of construction tools dealers held a protest in Aden - Main Street (Al Mualla) demanding the removal of the leader of intervention unit and holding him accountable on charges of exploitation and blackmail of citizens, and to demand the facilitation of measures imposed by the government for selling and transporting construction tools in Aden.",
+        "fatalities": 0,
+        "timestamp": 1752545222,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0302,
+          12.81
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM87216",
+        "event_date": "2024-04-24",
+        "year": 2024,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "Labor Group (Yemen)",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Sahat al Urud",
+        "geo_precision": 1,
+        "source": "Aden al Ghad; Undisclosed Source",
+        "source_scale": "Local partner-Other",
+        "notes": "On 24 April 2024, dozens of construction tools dealers held a protest in Aden - Sahat al Urud (Khur Maksar) demanding the facilitation of measures imposed by the government for selling and transporting construction tools in Aden. This came following new measures imposed by the Land Protection Unit of the STC Security Belt forces that prohibit dealers from selling tools without licenses.",
+        "fatalities": 0,
+        "timestamp": 1752545222,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0367,
+          12.7794
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM87429",
+        "event_date": "2024-05-06",
+        "year": 2024,
+        "event_type": "Violence against civilians",
+        "sub_event_type": "Abduction/forced disappearance",
+        "actor1": "Police Forces of Yemen (2022-2026) Presidential Leadership Council - STC Aden Security",
+        "assoc_actor_1": "",
+        "inter1": "State forces",
+        "actor2": "Civilians (Yemen)",
+        "assoc_actor_2": "Labor Group (Yemen)",
+        "inter2": "Civilians",
+        "interaction": "State forces-Civilians",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "",
+        "admin3": "",
+        "location": "Aden",
+        "geo_precision": 1,
+        "source": "Al Masdar; Undisclosed Source",
+        "source_scale": "Local partner-Other",
+        "notes": "On 6 May 2024, STC security forces (coded as STC Aden Security forces) abducted a construction material merchant in Aden city (Aden) for leading the construction material merchants protests.",
+        "fatalities": 0,
+        "timestamp": 1769474359,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0334,
+          12.8123
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM87446",
+        "event_date": "2024-05-07",
+        "year": 2024,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Khawr Maksar",
+        "geo_precision": 2,
+        "source": "Aden al Ghad; Al Masdar; Undisclosed Source",
+        "source_scale": "Local partner-Other",
+        "notes": "On 7 May 2024, dozens of protesters held a demonstration in front of the judicial compound in Khur Maksar district (coded Aden - Khawr Maksar) against the arrest of Mahdi Al Aqrabi, a prominent Sheikh from Al Aqrabi tribe who was arrested the previous week.",
+        "fatalities": 0,
+        "timestamp": 1770078493,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0302,
+          12.81
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM87457",
+        "event_date": "2024-05-08",
+        "year": 2024,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "Labor Group (Yemen)",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Sahat al Urud",
+        "geo_precision": 1,
+        "source": "Aden al Ghad; Khabar News Agency (Yemen); Undisclosed Source; Yemen Data Project; Yemen News Agency (SABA) - Houthi",
+        "source_scale": "Local partner-Other",
+        "notes": "On 8 May 2024, employees of the post office demonstrated in front of the post office headquarters by Aden - Sahat al Urud (Khur Maksar) over the privatization of the post office services, after several retirees pensions were disbursed through private banks.",
+        "fatalities": 0,
+        "timestamp": 1752545222,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0494,
+          12.7792
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM88025",
+        "event_date": "2024-05-23",
+        "year": 2024,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "Labor Group (Yemen)",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Craiter",
+        "admin3": "",
+        "location": "Aden - Sira",
+        "geo_precision": 1,
+        "source": "Al Masdar; Undisclosed Source",
+        "source_scale": "Local partner-Other",
+        "notes": "On 23 May 2024, dozens of water tanker drivers held a protest in Aden - Sira (Craiter) against the additional taxes imposed on them by the local authority.",
+        "fatalities": 0,
+        "timestamp": 1752545222,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          44.9802,
+          12.7847
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM88029",
+        "event_date": "2024-05-23",
+        "year": 2024,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Attawahi",
+        "admin3": "",
+        "location": "Aden - At Tawahi",
+        "geo_precision": 1,
+        "source": "Crater Sky; Undisclosed Source; Yemen Data Project",
+        "source_scale": "Local partner-Other",
+        "notes": "On 23 May 2024, dozens of protesters held a demonstration in Aden - At Tawahi (Attawahi) against the deterioration of services in the governorate.",
+        "fatalities": 0,
+        "timestamp": 1752545222,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0328,
+          12.7775
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM88123",
+        "event_date": "2024-05-26",
+        "year": 2024,
+        "event_type": "Riots",
+        "sub_event_type": "Mob violence",
+        "actor1": "Rioters (Yemen)",
+        "assoc_actor_1": "General Union of Southern Women; STC: Southern Transitional Council",
+        "inter1": "Rioters",
+        "actor2": "Civilians (Yemen)",
+        "assoc_actor_2": "General Union of Yemeni Women; Women (Yemen)",
+        "inter2": "Civilians",
+        "interaction": "Rioters-Civilians",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Craiter",
+        "admin3": "",
+        "location": "Aden - Kraytar",
+        "geo_precision": 2,
+        "source": "Al Masdar; Undisclosed Source",
+        "source_scale": "Local partner-Other",
+        "notes": "On 26 May 2024, several women affiliated with the 'General Union of Southern Women' stormed the headquarters of the General Union of Yemeni Women in Ruzmit neighborhood in Craiter district (coded to Aden - Kraytar), destroyed equipment, kicked out the women who were staying in the office, and seized the office. A similar event took place on 14 May. The Union of Southern Women is STC-affiliated.",
+        "fatalities": 0,
+        "timestamp": 1752545222,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0293,
+          12.8094
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM88127",
+        "event_date": "2024-05-28",
+        "year": 2024,
+        "event_type": "Violence against civilians",
+        "sub_event_type": "Abduction/forced disappearance",
+        "actor1": "Police Forces of Yemen (2022-2026) Presidential Leadership Council - STC Aden Security",
+        "assoc_actor_1": "",
+        "inter1": "State forces",
+        "actor2": "Civilians (Yemen)",
+        "assoc_actor_2": "Southern Movement",
+        "inter2": "Civilians",
+        "interaction": "State forces-Civilians",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Ash Shabat",
+        "geo_precision": 1,
+        "source": "Aden al Ghad; Al Masdar; Twitter; Undisclosed Source",
+        "source_scale": "Local partner-Other",
+        "notes": "On 28 May 2024, STC forces (coded as Aden security) abducted 1 civilian in front of Al Kuraimi Exchange company in Aden - Ash Shabat (Khur Maksar). The abductee was an activist of the Southern Movement. The reason behind the abduction was not reported. The STC released him on 7 July.",
+        "fatalities": 0,
+        "timestamp": 1769474359,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0334,
+          12.8123
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM88825",
+        "event_date": "2024-06-26",
+        "year": 2024,
+        "event_type": "Violence against civilians",
+        "sub_event_type": "Attack",
+        "actor1": "Police Forces of Yemen (2022-2026) Presidential Leadership Council - STC Aden Security",
+        "assoc_actor_1": "",
+        "inter1": "State forces",
+        "actor2": "Civilians (Yemen)",
+        "assoc_actor_2": "Judges (Yemen)",
+        "inter2": "Civilians",
+        "interaction": "State forces-Civilians",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Khawr Maksar",
+        "geo_precision": 2,
+        "source": "Al Mashhad Al Yemeni - Pro-IRG; Undisclosed Source",
+        "source_scale": "Local partner-Other",
+        "notes": "On 26 June 2024, police department of Khur Maksar district (coded as STC Aden Security) assaulted 1 public prosecutor in the district (coded to Aden - Khawr Maksar) before arresting and detaining him. The reason for the assault was not reported. On 2 July, the Director of Khur Maksar police and three police soldiers, who were involved were arrested and await trial.",
+        "fatalities": 0,
+        "timestamp": 1770078493,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0541,
+          12.7655
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM89147",
+        "event_date": "2024-07-11",
+        "year": 2024,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "Abductees' Mothers Association; Women (Yemen)",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Craiter",
+        "admin3": "",
+        "location": "Aden - Maashiq Presidential Palace",
+        "geo_precision": 1,
+        "source": "Abductees Mothers Association; Al Masdar; Undisclosed Source",
+        "source_scale": "Local partner-Other",
+        "notes": "On 11 July 2024, women from the Abductees' Mothers Association held protests in front of Aden - Maashiq Presidential Palace (Craiter) and Aden Security Administration building in Aden - Khawr Maksar (coded to district center Khur Maksar) denouncing the increasing rate of arrests and enforced disappearances of individuals from the southern provinces including Ali Ashal Al Jaadani, a colonel from Abyan governorate that was abducted at the hands of suspected STC Security Belt forces on 12 June.",
+        "fatalities": 0,
+        "timestamp": 1752545223,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0302,
+          12.81
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM89658",
+        "event_date": "2024-07-16",
+        "year": 2024,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "Al Jaadani Tribal Group (Yemen)",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Sahat al Urud",
+        "geo_precision": 1,
+        "source": "Aden al Ghad; Al Masdar; Undisclosed Source",
+        "source_scale": "Local partner-Other",
+        "notes": "On 16 July 2024, hundreds (thousands according to another source), likely including Al Jaadani tribesmen, demonstrated in Aden - Sahat al Urud (Khur Maksar) calling for justice in the kidnapping of Ali Ashal Al Jaadani, a colonel from Abyan governorate that was abducted at the hands of suspected STC Security Belt forces on 12 June. Security forces stopped some buses transporting protesters from accessing the protest.",
+        "fatalities": 0,
+        "timestamp": 1752545223,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0411,
+          12.7764
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM89894",
+        "event_date": "2024-07-25",
+        "year": 2024,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "Labor Group (Yemen)",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Craiter",
+        "admin3": "",
+        "location": "Aden - Hayy al Qati",
+        "geo_precision": 1,
+        "source": "Aden al Ghad; Al Masdar; Undisclosed Source",
+        "source_scale": "Local partner-Other",
+        "notes": "On 25 July 2024, the IRG Central Bank and National Bank Employees Associations held a protest in front of the Central Bank in Aden - Hayy al Qati (Craiter) denouncing the Presidential Leadership Council's withdrawal from financial decisions against rogue money exchange companies that targeted Houthi-controlled areas.",
+        "fatalities": 0,
+        "timestamp": 1752545223,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0473,
+          12.8365
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM90507",
+        "event_date": "2024-08-03",
+        "year": 2024,
+        "event_type": "Battles",
+        "sub_event_type": "Armed clash",
+        "actor1": "Unidentified Armed Group (Yemen)",
+        "assoc_actor_1": "",
+        "inter1": "Political militia",
+        "actor2": "Police Forces of Yemen (2022-2026) Presidential Leadership Council - STC Aden Security",
+        "assoc_actor_2": "",
+        "inter2": "State forces",
+        "interaction": "State forces-Political militia",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Jawlat al Arish",
+        "geo_precision": 1,
+        "source": "Dera Al Ganoob; Mareb Press; Nukhba Hadramawt; Undisclosed Source",
+        "source_scale": "Local partner-Other",
+        "notes": "On 3 August 2024, unknown militants shot and killed 1 policeman (coded as STC Aden Security) in Aden - Jawlat al Arish (Khur Maksar). The source claimed that this took place in conjunction with and was somewhat related to ongoing mass demonstrations in Khur Maksar district in support of Ali Ashal Al Jaadani, a colonel from Abyan governorate that was abducted at the hands of suspected STC Security Belt forces on 12 June (coded as a separate event).",
+        "fatalities": 1,
+        "timestamp": 1769474359,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0334,
+          12.8123
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM90508",
+        "event_date": "2024-08-03",
+        "year": 2024,
+        "event_type": "Violence against civilians",
+        "sub_event_type": "Attack",
+        "actor1": "Unidentified Armed Group (Yemen)",
+        "assoc_actor_1": "",
+        "inter1": "Political militia",
+        "actor2": "Civilians (Yemen)",
+        "assoc_actor_2": "",
+        "inter2": "Civilians",
+        "interaction": "Political militia-Civilians",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Khawr Maksar",
+        "geo_precision": 2,
+        "source": "Dera Al Ganoob; Mareb Press; Undisclosed Source",
+        "source_scale": "Local partner-Other",
+        "notes": "On 3 August 2024, unknown militants shot and injured 1 civilian in Khur Maksar district (coded to district center Aden - Khawr Maksar) (Aden). The source claimed that this took place in conjunction with and was somewhat related to ongoing mass demonstrations in Khur Maksar district in support of Ali Ashal Al Jaadani, a colonel from Abyan governorate that was abducted at the hands of suspected STC Security Belt forces on 12 June (coded as a separate event).",
+        "fatalities": 0,
+        "timestamp": 1770078493,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.031,
+          12.8274
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM91385",
+        "event_date": "2024-08-27",
+        "year": 2024,
+        "event_type": "Strategic developments",
+        "sub_event_type": "Arrests",
+        "actor1": "Police Forces of Yemen (2022-2026) Presidential Leadership Council - STC Aden Security",
+        "assoc_actor_1": "",
+        "inter1": "State forces",
+        "actor2": "Government of Yemen (2017-) Houthi",
+        "assoc_actor_2": "Police Forces of Yemen (2017-) Houthi",
+        "inter2": "State forces",
+        "interaction": "State forces-State forces",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Aden International Airport",
+        "geo_precision": 1,
+        "source": "2 December News; Al Mashhad Al Yemeni - Pro-IRG; Undisclosed Source",
+        "source_scale": "Local partner-Other",
+        "notes": "On 27 August 2024, STC police forces (coded as STC Aden Security) arrested 2 Houthi leaders in Aden - Aden International airport (Khur Maksar) following their return from Cairo, Egypt. The Houthi leaders were Abdulmumin Muhammad Ismail, the Houthi deputy governor of Taizz, and the Abdulhakim Abdulmumin Muhammad Ismail, who worked as a Houthi supervisor in Taizz (coded as police). They were accused of espionage, involvement in war crimes, and child soldier recruitment. The men were transferred to the specialized criminal court, awaiting trial.",
+        "fatalities": 0,
+        "timestamp": 1769474359,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0334,
+          12.8123
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM92747",
+        "event_date": "2024-10-03",
+        "year": 2024,
+        "event_type": "Strategic developments",
+        "sub_event_type": "Arrests",
+        "actor1": "Police Forces of Yemen (2022-2026) Presidential Leadership Council - STC Aden Security",
+        "assoc_actor_1": "",
+        "inter1": "State forces",
+        "actor2": "Civilians (Yemen)",
+        "assoc_actor_2": "Journalists (Yemen)",
+        "inter2": "Civilians",
+        "interaction": "State forces-Civilians",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Khawr Maksar",
+        "geo_precision": 2,
+        "source": "Al Masdar; Al Mashhad Al Yemeni - Pro-IRG; Undisclosed Source",
+        "source_scale": "Local partner-Other",
+        "notes": "On 3 October 2024, security forces (coded as STC Aden Security) arrested 1 reporter who worked as a correspondent for Al-Jumhuriya TV in Khur Maksar district (coded to district center Aden - Khawr Maksar) (Aden) following direct orders from Presidential Leadership Council member, Major General Faraj Salmeen Al-Bahsani, over posts he had written three years ago. The security forces released him on 13 October.",
+        "fatalities": 0,
+        "timestamp": 1770078493,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0293,
+          12.8094
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM93418",
+        "event_date": "2024-11-05",
+        "year": 2024,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "STC: Southern Transitional Council",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Ash Shabat",
+        "geo_precision": 1,
+        "source": "Aden al Ghad; Al Harf 28; Undisclosed Source",
+        "source_scale": "Local partner-Other",
+        "notes": "On 5 November 2024, dozens of local residents held a rally in front of the Coral Hotel in Aden - Ash Shabat (Khur Maksar, Aden) during the negotiations for the National Coalition of Political Parties in support of the STC forces.",
+        "fatalities": 0,
+        "timestamp": 1752545224,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0367,
+          12.7794
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM94117",
+        "event_date": "2024-11-27",
+        "year": 2024,
+        "event_type": "Strategic developments",
+        "sub_event_type": "Other",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "Teachers (Yemen)",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "",
+        "admin3": "",
+        "location": "Aden",
+        "geo_precision": 3,
+        "source": "Al Harf 28; Al Masdar; Undisclosed Source; Yemen Window",
+        "source_scale": "Local partner-Other",
+        "notes": "Strikes: On 27 November 2024, teachers started a strike across number of schools in Attawahi, Al Mansura, and Al Mualla districts in Aden governorate (coded to governorate capital Aden) calling for the payment of their salaries.",
+        "fatalities": 0,
+        "timestamp": 1752545224,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0541,
+          12.7655
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM95765",
+        "event_date": "2024-12-31",
+        "year": 2024,
+        "event_type": "Strategic developments",
+        "sub_event_type": "Non-violent transfer of territory",
+        "actor1": "Military Forces of Yemen (2022-2026) Presidential Leadership Council - STC",
+        "assoc_actor_1": "",
+        "inter1": "State forces",
+        "actor2": "Military Forces of Yemen (2022-2026) Presidential Leadership Council - Presidential Guard",
+        "assoc_actor_2": "",
+        "inter2": "State forces",
+        "interaction": "State forces-State forces",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Craiter",
+        "admin3": "",
+        "location": "Aden - Maashiq Presidential Palace",
+        "geo_precision": 2,
+        "source": "Al Harf 28; Al Masdar; Facebook; Mareb Press; Undisclosed Source",
+        "source_scale": "Local partner-Other",
+        "notes": "On 31 December 2024, STC forces took over a checkpoint from the Presidential Guards forces near Aden - Maashiq Presidential Palace (Craiter, Aden) after firing medium-range bullets into the air. The Presidential Guard forces withdrew into the palace without clashes, and the STC forces seized control of the checkpoint.",
+        "fatalities": 0,
+        "timestamp": 1770676350,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0302,
+          12.81
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM95865",
+        "event_date": "2025-01-01",
+        "year": 2025,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "Teachers (Yemen)",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Sahat al Urud",
+        "geo_precision": 1,
+        "source": "Aden al Ghad; Al Masdar; Al Mashhad Al Yemeni - Pro-IRG; Twitter; Undisclosed Source",
+        "source_scale": "Local partner-Other",
+        "notes": "On 1 January 2025, dozens of teachers held a demonstration in Aden - Sahat al Urud (Khur Maksar, Aden) demanding the payment of their delayed salaries and improving their conditions.",
+        "fatalities": 0,
+        "timestamp": 1762820001,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0302,
+          12.81
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM96091",
+        "event_date": "2025-01-14",
+        "year": 2025,
+        "event_type": "Protests",
+        "sub_event_type": "Peaceful protest",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "Labor Group (Yemen); Teachers (Yemen)",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Sahat al Urud",
+        "geo_precision": 1,
+        "source": "Hadramawt 21; Khabar News Agency (Yemen); Undisclosed Source",
+        "source_scale": "Local partner-Other",
+        "notes": "On 14 January 2025, hundreds of workers and teachers organized by the Southern Labor Union held a large protest in Aden - Sahat al Urud (Khur Maksar, Aden), demanding regular salary payments, wage restructuring, and urgent measures to address the collapsing Yemeni rial. A teacher participating in the march was 'assaulted' by an employee from the STC-affiliated media outlet, Aden Channel, as he was interviewing an activist on camera. No further detail on the assault was given.",
+        "fatalities": 0,
+        "timestamp": 1762820001,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0419,
+          12.8449
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM101999",
+        "event_date": "2024-04-09",
+        "year": 2024,
+        "event_type": "Violence against civilians",
+        "sub_event_type": "Attack",
+        "actor1": "Police Forces of Yemen (2022-2026) Presidential Leadership Council - STC Security Belt Forces",
+        "assoc_actor_1": "",
+        "inter1": "State forces",
+        "actor2": "Civilians (Yemen)",
+        "assoc_actor_2": "Labor Group (Yemen)",
+        "inter2": "Civilians",
+        "interaction": "State forces-Civilians",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Al Arish",
+        "geo_precision": 1,
+        "source": "Undisclosed Source",
+        "source_scale": "Local partner-Other",
+        "notes": "On 9 April 2024, an STC Security Belt soldier opened fire on a minibus in Aden - Al Arish (Khur Maksar) following a dispute with the driver, injuring 1 passenger.",
+        "fatalities": 0,
+        "timestamp": 1769474342,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0334,
+          12.8123
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM102175",
+        "event_date": "2024-05-01",
+        "year": 2024,
+        "event_type": "Riots",
+        "sub_event_type": "Violent demonstration",
+        "actor1": "Rioters (Yemen)",
+        "assoc_actor_1": "",
+        "inter1": "Rioters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Rioters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Khur Maksar",
+        "admin3": "",
+        "location": "Aden - Khawr Maksar",
+        "geo_precision": 2,
+        "source": "Undisclosed Source",
+        "source_scale": "Local partner-Other",
+        "notes": "On 1 May 2024, dozens of rioters demonstrated by burning cars and closing the road leading to the Aden International Airport in Khur Maksar district (coded to Aden - Khawr Maksar) over power outages.",
+        "fatalities": 0,
+        "timestamp": 1770078493,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          44.9802,
+          12.7847
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM102667",
+        "event_date": "2024-02-05",
+        "year": 2024,
+        "event_type": "Violence against civilians",
+        "sub_event_type": "Abduction/forced disappearance",
+        "actor1": "Unidentified Armed Group (Yemen)",
+        "assoc_actor_1": "",
+        "inter1": "Political militia",
+        "actor2": "Civilians (Yemen)",
+        "assoc_actor_2": "Labor Group (Yemen)",
+        "inter2": "Civilians",
+        "interaction": "Political militia-Civilians",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Attawahi",
+        "admin3": "",
+        "location": "Aden - At Tawahi",
+        "geo_precision": 2,
+        "source": "Undisclosed Source",
+        "source_scale": "Local partner-Other",
+        "notes": "On 5 February 2024, masked men wearing outfits resembling STC Security Belt forces outfits (coded as UAG) kidnapped a civilian who works for STC-affiliated National Foundation for Humanitarian and Charitable Development Work in front of the post office in Aden's Attawahi district (coded to Aden - At Tawahi). The reason behind the abduction was not reported.",
+        "fatalities": 0,
+        "timestamp": 1754411473,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0367,
+          12.7794
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM103165",
+        "event_date": "2024-11-30",
+        "year": 2024,
+        "event_type": "Strategic developments",
+        "sub_event_type": "Other",
+        "actor1": "Protesters (Yemen)",
+        "assoc_actor_1": "Teachers (Yemen)",
+        "inter1": "Protesters",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "Protesters only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "",
+        "admin3": "",
+        "location": "Aden",
+        "geo_precision": 3,
+        "source": "Undisclosed Source",
+        "source_scale": "Local partner-Other",
+        "notes": "Strikes: On 30 November 2024, the Southern Teachers Syndicate started a broader strike across schools in Aden (coded to Aden city) to demand the timely disbursement of salaries and improved working conditions.",
+        "fatalities": 0,
+        "timestamp": 1752550318,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0367,
+          12.7794
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM103867",
+        "event_date": "2024-12-18",
+        "year": 2024,
+        "event_type": "Strategic developments",
+        "sub_event_type": "Change to group/activity",
+        "actor1": "Military Forces of Yemen (2022-2026) Presidential Leadership Council - Nation Shield Forces",
+        "assoc_actor_1": "",
+        "inter1": "State forces",
+        "actor2": "",
+        "assoc_actor_2": "",
+        "inter2": "",
+        "interaction": "State forces only",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "",
+        "admin3": "",
+        "location": "Aden",
+        "geo_precision": 3,
+        "source": "Undisclosed Source",
+        "source_scale": "Local partner-Other",
+        "notes": "Movement of forces: Around 18 December 2024 (week of), military reinforcements for the Nations Shield forces from the Saudi port of Al Wadiah, including dozens of military pickup vehicles, arrived in the governorate of Aden (coded to Aden city), where they are set to assume 'security responsibilities' at key military sites in the coming weeks, after passing through Ataq city and Abyan.",
+        "fatalities": 0,
+        "timestamp": 1770676302,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          44.9931,
+          12.7719
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM108282",
+        "event_date": "2025-01-15",
+        "year": 2025,
+        "event_type": "Violence against civilians",
+        "sub_event_type": "Attack",
+        "actor1": "Police Forces of Yemen (2022-2026) Presidential Leadership Council - STC Aden Security",
+        "assoc_actor_1": "",
+        "inter1": "State forces",
+        "actor2": "Civilians (Yemen)",
+        "assoc_actor_2": "Prisoners (Yemen)",
+        "inter2": "Civilians",
+        "interaction": "State forces-Civilians",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Attawahi",
+        "admin3": "",
+        "location": "Aden - Gold Mohur Valley",
+        "geo_precision": 2,
+        "source": "Undisclosed Source; Yemen Now News",
+        "source_scale": "Local partner-Other",
+        "notes": "Around 15 January 2025 (month of), STC police forces (coded as STC Aden Security) tortured 1 prisoner at Wadah Hall Prison in Aden - Gold Mohur Valley (Attawahi, Aden) by beating, handcuffing, blindfolding, and deprivation of food and sleep in order to extracting confessions. He was released on October suffering severe physical and psychological damage. Sources reported that torture took place 10 months prior to the date of release.",
+        "fatalities": 0,
+        "timestamp": 1770676315,
+        "event_source": "ACLED"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.0024,
+          12.7899
+        ]
+      },
+      "properties": {
+        "event_id_cnty": "YEM108592",
+        "event_date": "2025-01-15",
+        "year": 2025,
+        "event_type": "Violence against civilians",
+        "sub_event_type": "Abduction/forced disappearance",
+        "actor1": "Police Forces of Yemen (2022-2026) Presidential Leadership Council - STC Aden Security",
+        "assoc_actor_1": "",
+        "inter1": "State forces",
+        "actor2": "Civilians (Yemen)",
+        "assoc_actor_2": "",
+        "inter2": "Civilians",
+        "interaction": "State forces-Civilians",
+        "country": "Yemen",
+        "admin1": "Aden",
+        "admin2": "Al Mualla",
+        "admin3": "",
+        "location": "Aden - Al Maalla",
+        "geo_precision": 2,
+        "source": "Undisclosed Source; Yemen Now News",
+        "source_scale": "Local partner-Other",
+        "notes": "Around 15 January 2025 (month of), in the evening, STC police forces (coded as STC Aden Security) abducted 1 civilian from his house in Al Mualla district (coded to district center Aden - Al Maalla) (Aden) and took him to Wadah Hall Prison. After the abduction and severe beating, the forces took him to his house and looted his family's money, gold, and car. The reason behind the abduction was not reported. He was released on October suffering severe physical and psychological damage.",
+        "fatalities": 0,
+        "timestamp": 1769474359,
+        "event_source": "ACLED"
+      }
+    }
+  ]
+}

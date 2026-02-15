@@ -13,11 +13,14 @@ This script demonstrates how to use the pipeline to:
 Before running, set your API keys:
     export FIRMS_MAP_KEY='your-32-char-key'
     export ACLED_EMAIL='your@email.com'
-    export ACLED_API_KEY='your-acled-key'
+    export ACLED_PASSWORD='your-acled-password'
 
 Get your keys at:
     - FIRMS: https://firms.modaps.eosdis.nasa.gov/api/map_key/
     - ACLED: https://acleddata.com/register/
+
+Note: ACLED uses OAuth authentication. Access tokens are valid for 24 hours.
+      The client will automatically handle token refresh using your credentials.
 """
 
 import logging
@@ -108,7 +111,7 @@ def example_step_by_step():
         conflicts = query_conflict_events(aoi, days=7)
         print(f"Found {len(conflicts.get('features', []))} conflict events")
     except Exception as e:
-        print(f"ACLED query failed (set ACLED_EMAIL and ACLED_API_KEY): {e}")
+        print(f"ACLED query failed (set ACLED_EMAIL and ACLED_PASSWORD): {e}")
         conflicts = {"type": "FeatureCollection", "features": []}
 
     # Step 5: Filter detections near infrastructure

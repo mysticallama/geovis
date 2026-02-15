@@ -1,196 +1,237 @@
-# Planet Labs Imagery Processing Pipeline
+# Planet Pipeline
 
-A comprehensive, modular Python pipeline for querying, downloading, processing, and preparing Planet Labs satellite imagery for machine learning workflows.
+A modular Python pipeline for querying Planet Labs satellite imagery and OpenStreetMap data, with integrated ML export workflows for YOLOv8, Siamese networks, DBSCAN/HDBSCAN, and semantic segmentation.
 
-## 🚀 Features
+## Features
 
-### Multi-AOI Management
-- Query multiple Areas of Interest (AOIs) simultaneously
-- Support for GeoJSON, individual geometries, and bulk AOI loading
-- Organized storage with automatic metadata tracking
+- **Planet Labs Integration**: Query, download, and process satellite imagery
+- **OSM Overpass Queries**: Fetch buildings, roads, water, land use, POIs
+- **Spectral Indices**: NDVI, NDWI, EVI, SAVI, and 7 more
+- **ML Export Formats**: YOLO annotations, clustering data, Siamese pairs, segmentation masks
+- **Dataset Preparation**: Train/val/test splits, chipping, normalization, augmentation
 
-### Imagery Processing
-- **Download Management**: Parallel downloads with progress tracking and resume capability
-- **Spectral Indices**: Calculate 14+ indices (NDVI, NDWI, EVI, SAVI, etc.)
-- **Preprocessing**: Cloud masking, atmospheric correction, normalization
-- **ML Preparation**: Generate training datasets for PyTorch, TensorFlow, and scikit-learn
-
-### Flexible Architecture
-- Modular design for easy integration into existing pipelines
-- Can be used as standalone tool or imported as Python library
-- Extensible with custom processing operations
-
-## 🔧 Installation
+## Installation
 
 ```bash
-# Clone repository
+# Clone and install
 git clone <your-repo-url>
 cd planet-pipeline
+pip install -e .
 
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate
-
-# Install dependencies
+# Or install dependencies directly
 pip install -r requirements.txt
 
-# Set up API key
+# Set Planet API key
 export PL_API_KEY='your-planet-api-key'
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
-### As a Python Library
+### Planet Imagery
 
 ```python
 from planet_pipeline import PlanetPipeline
 
-# Initialize pipeline
-pipeline = PlanetPipeline(storage_dir="./my_data")
+# Initialize
+pipeline = PlanetPipeline(storage_dir="./data")
 
-# Add AOIs
-pipeline.add_aoi("san_francisco", geometry_file="sf_aoi.geojson")
+# Add AOI
+pipeline.add_aoi("site1", {
+    "type": "Polygon",
+    "coordinates": [[[-122.4, 37.7], [-122.4, 37.8], [-122.3, 37.8], [-122.3, 37.7], [-122.4, 37.7]]]
+})
 
-# Query imagery
-pipeline.query_all_aois(
-    start_date="2024-01-01",
-    end_date="2024-01-31",
-    cloud_cover_max=0.1
-)
-
-# Download imagery
-pipeline.download_imagery(limit_per_aoi=10)
-
-# Calculate spectral indices
-pipeline.calculate_indices(indices=["ndvi", "ndwi", "evi"])
-
-# Prepare for ML
-dataset_path = pipeline.prepare_for_ml(
-    model_type="pytorch",
-    chip_size=256
-)
+# Search and download
+scenes = pipeline.search("site1", "2024-01-01", "2024-03-31", cloud_cover_max=0.1)
+pipeline.download("site1", scenes, limit=10)
 ```
 
-## 📦 Pipeline Modules
-
-1. **Query** (`query.py`) - Enhanced API client with retry and caching
-2. **Storage** (`storage.py`) - Organized file system management
-3. **Download** (`download.py`) - Parallel downloads with progress tracking
-4. **Indices** (`indices.py`) - 14+ spectral indices calculation
-5. **Preprocessing** (`preprocessing.py`) - Cloud masking, correction, normalization
-6. **ML Prep** (`ml_prep.py`) - Dataset preparation for PyTorch/TensorFlow/sklearn
-
-## 💡 Usage Examples
-
-### Multi-AOI Batch Processing
+### OSM Data
 
 ```python
-pipeline = PlanetPipeline(storage_dir="./agricultural_study")
+from planet_pipeline import query_buildings, query_water, export_yolo, generate_mask
 
-# Load multiple AOIs
-pipeline.add_aois_from_file("farm_fields.geojson")
+# Query buildings
+aoi = {"type": "Polygon", "coordinates": [[...]]}
+buildings = query_buildings(aoi)
 
-# Query all fields
-results = pipeline.query_all_aois(
-    start_date="2024-06-01",
-    end_date="2024-08-31",
-    max_gsd=3.0,
-    cloud_cover_max=0.05
-)
+# Export YOLO annotations
+export_yolo(buildings, "./labels", "tile_001",
+            image_bounds=(-122.4, 37.7, -122.3, 37.8),
+            image_size=(1024, 1024),
+            class_map={"residential": 0, "commercial": 1})
 
-# Download and process
-pipeline.download_imagery(limit_per_aoi=20)
-pipeline.calculate_indices(indices=["ndvi", "evi", "savi"])
+# Or generate segmentation mask
+mask = generate_mask(buildings, bounds=(-122.4, 37.7, -122.3, 37.8), size=(512, 512))
 ```
 
-### ML Training Dataset
+### Spectral Indices
 
 ```python
-# Add labeled AOIs
-pipeline.add_aoi("forest", geometry_file="forest_samples.geojson")
-pipeline.add_aoi("urban", geometry_file="urban_samples.geojson")
-pipeline.add_aoi("water", geometry_file="water_samples.geojson")
+from planet_pipeline import ImageProcessor, list_indices
 
-# Prepare dataset
-dataset_path = pipeline.prepare_for_ml(
-    model_type="pytorch",
+# See available indices
+print(list_indices())  # ['ndvi', 'ndwi', 'evi', 'savi', ...]
+
+# Calculate indices
+ImageProcessor.calculate_index("imagery.tif", "ndvi", "ndvi.tif")
+ImageProcessor.calculate_indices("imagery.tif", ["ndvi", "ndwi", "evi"], "./indices")
+```
+
+### ML Dataset
+
+```python
+from planet_pipeline import prepare_dataset, prepare_detection_dataset
+
+# Create training chips
+prepare_dataset(
+    imagery_files=list(Path("./imagery").glob("*.tif")),
+    output_dir="./dataset",
     chip_size=256,
-    overlap=32,
-    train_split=0.7,
-    augment=True,
-    label_file="labels.json"
+    normalize=True,
+    augment=True
 )
+
+# Or YOLOv8 detection dataset
+prepare_detection_dataset("./imagery", "./labels", "./yolo_dataset")
 ```
 
-## 🔍 Available Spectral Indices
-
-| Index | Use Case | Formula |
-|-------|----------|---------|
-| NDVI | Vegetation health | (NIR-Red)/(NIR+Red) |
-| NDWI | Water bodies | (Green-NIR)/(Green+NIR) |
-| EVI | Dense vegetation | 2.5×((NIR-Red)/(NIR+6×Red-7.5×Blue+1)) |
-| SAVI | Sparse vegetation | ((NIR-Red)/(NIR+Red+0.5))×1.5 |
-| GNDVI | Chlorophyll | (NIR-Green)/(NIR+Green) |
-| NDBI | Urban areas | (SWIR-NIR)/(SWIR+NIR) |
-| BAI | Burned areas | 1/((0.1-Red)²+(0.06-NIR)²) |
-
-Plus: MSAVI, NBR, NDMI, ARVI, GCI, SIPI, VARI
-
-## 🤖 ML Integration
-
-### PyTorch
-
-```python
-from pytorch_loader import PlanetDataset
-from torch.utils.data import DataLoader
-
-train_dataset = PlanetDataset("dataset_path/train")
-train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
-
-# Your training loop here
-for chips, labels in train_loader:
-    # Train model
-    pass
-```
-
-### TensorFlow
-
-```python
-from tensorflow_loader import create_dataset
-
-train_dataset = create_dataset("dataset_path/train", batch_size=32)
-model.fit(train_dataset, epochs=10)
-```
-
-## 📊 Directory Structure
+## Module Structure
 
 ```
-planet_data/
-├── aois/              # AOI definitions
-├── imagery/           # Downloaded imagery by AOI/date
-├── processed/         # Preprocessed imagery
-├── indices/           # Spectral indices
-├── ml_datasets/       # ML-ready datasets
-└── cache/             # API response cache
+planet_pipeline/
+├── __init__.py      # Public API
+├── core.py          # Planet API client, downloads, storage
+├── processing.py    # Spectral indices, preprocessing
+├── osm.py           # OSM Overpass queries, ML exports
+└── ml.py            # Dataset preparation
 ```
 
-## 🧪 Testing
+## API Reference
+
+### Core (Planet)
+
+| Function | Description |
+|----------|-------------|
+| `PlanetPipeline(storage_dir)` | Main pipeline interface |
+| `pipeline.add_aoi(name, geometry)` | Register an AOI |
+| `pipeline.search(aoi, start, end)` | Search for imagery |
+| `pipeline.download(aoi, scenes)` | Download scenes |
+| `PlanetClient` | Low-level API client |
+| `Storage` | File organization |
+
+### Processing
+
+| Function | Description |
+|----------|-------------|
+| `ImageProcessor.calculate_index(path, index)` | Calculate spectral index |
+| `ImageProcessor.normalize(data)` | Normalize imagery |
+| `ImageProcessor.clip_to_geometry(path, geom)` | Clip to AOI |
+| `list_indices()` | List available indices |
+
+### OSM
+
+| Function | Description |
+|----------|-------------|
+| `query_buildings(geometry)` | Fetch building footprints |
+| `query_water(geometry)` | Fetch water features |
+| `query_landuse(geometry)` | Fetch land use polygons |
+| `query_roads(geometry)` | Fetch road networks |
+| `query_pois(geometry)` | Fetch points of interest |
+| `query_features(geometry, tags)` | Custom tag query |
+| `export_yolo(geojson, ...)` | Export YOLO annotations |
+| `export_clustering(geojson, path)` | Export for DBSCAN |
+| `export_pairs(geojson, path)` | Export Siamese pairs |
+| `generate_mask(geojson, bounds, size)` | Create segmentation mask |
+
+### ML
+
+| Function | Description |
+|----------|-------------|
+| `prepare_dataset(files, output_dir)` | Create training chips |
+| `prepare_detection_dataset(img, labels, out)` | YOLOv8 dataset |
+| `prepare_segmentation_dataset(img, masks, out)` | Segmentation dataset |
+| `DatasetCreator` | Fine-grained control |
+| `normalize_chip(chip)` | Normalize array |
+
+## Spectral Indices
+
+| Index | Description | Use Case |
+|-------|-------------|----------|
+| NDVI | Normalized Difference Vegetation | Vegetation health |
+| NDWI | Normalized Difference Water | Water bodies |
+| EVI | Enhanced Vegetation | Dense vegetation |
+| SAVI | Soil-Adjusted Vegetation | Sparse vegetation |
+| MSAVI | Modified SAVI | Mixed land cover |
+| GNDVI | Green NDVI | Chlorophyll content |
+| ARVI | Atmospherically Resistant VI | Hazy conditions |
+| VARI | Visible Atmospherically Resistant | RGB-only analysis |
+| BAI | Burned Area Index | Fire damage |
+| GCI | Green Chlorophyll Index | Crop health |
+| SIPI | Structure Insensitive Pigment | Leaf pigments |
+
+## Examples
+
+Run the interactive examples:
 
 ```bash
-pytest tests/
-pytest --cov=planet_pipeline tests/
+python examples.py        # Interactive menu
+python examples.py 4      # Run specific example
+python examples.py osm    # Run OSM examples (4-9)
+python examples.py all    # Run all examples
 ```
 
-## 📝 License
+Available examples:
+1. Planet Search
+2. Planet Download
+3. Spectral Indices
+4. OSM Buildings
+5. OSM Custom Query
+6. YOLO Export
+7. Clustering Export (DBSCAN)
+8. Siamese Pairs
+9. Segmentation Masks
+10. ML Dataset Prep
+11. Integrated Workflow
+
+## Output Structure
+
+```
+data/
+├── planet/
+│   ├── aois/{name}/geometry.geojson
+│   ├── imagery/{aoi}/{date}/{item_id}/
+│   ├── processed/
+│   └── indices/
+├── osm/
+│   └── buildings.geojson
+├── yolo/
+│   └── tile_001.txt
+├── clustering/
+│   └── pois.npy
+└── dataset/
+    ├── train/
+    ├── val/
+    ├── test/
+    └── pytorch_loader.py
+```
+
+## Requirements
+
+- Python 3.8+
+- requests, numpy, rasterio, shapely, tqdm
+
+Optional:
+- torch (PyTorch loaders)
+- tensorflow (TF loaders)
+- scikit-learn (clustering)
+- Pillow (mask visualization)
+
+## License
 
 MIT License
 
-## 🙏 Acknowledgments
+## Links
 
-- Planet Labs for satellite imagery and API
-- Open source geospatial community
-
-## 📧 Support
-
-- GitHub Issues
 - [Planet API Documentation](https://developers.planet.com/docs/apis/)
+- [Overpass API](https://wiki.openstreetmap.org/wiki/Overpass_API)

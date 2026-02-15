@@ -1,17 +1,24 @@
 """
-NASA FIRMS (Fire Information for Resource Management System) API client.
+NASA FIRMS thermal anomaly data via GIBS (Global Imagery Browse Services).
 
-Queries thermal anomaly data from VIIRS and MODIS satellites.
-API Documentation: https://firms.modaps.eosdis.nasa.gov/api/
+Queries thermal anomaly data from VIIRS and MODIS satellites using NASA GIBS WMTS.
+No API key required!
 
-Supports:
-- VIIRS S-NPP (375m resolution)
-- VIIRS NOAA-20 (375m resolution)
-- MODIS (1km resolution)
+GIBS Documentation: https://nasa-gibs.github.io/gibs-api-docs/
+Available layers: https://nasa-gibs.github.io/gibs-api-docs/available-visualizations/
+
+Data Products:
+- VIIRS NOAA-20/21 Thermal Anomalies 375m (gridded from VNP14IMG 750m L2 swath)
+- VIIRS SNPP Thermal Anomalies 375m (gridded from VNP14IMG 750m L2 swath)
+- MODIS Terra/Aqua Thermal Anomalies 1km
+
+Note: The source data is "VIIRS/NPP Thermal Anomalies/Fire 6-Min L2 Swath 750m V002"
+(VNP14IMG). GIBS serves this as a 375m gridded visualization layer for efficient
+tile-based access. The 375m resolution uses the I-band for higher spatial detail.
 """
 
-import io
 import logging
+import math
 import os
 import time
 from dataclasses import dataclass, field
@@ -20,76 +27,134 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 import pandas as pd
 import requests
-from shapely.geometry import Point, mapping, shape
+from shapely.geometry import Point, box, shape
 
 logger = logging.getLogger(__name__)
 
+# Try to import mapbox_vector_tile for MVT decoding
+try:
+    import mapbox_vector_tile
+    HAS_MVT = True
+except ImportError:
+    HAS_MVT = False
+    logger.warning(
+        "mapbox_vector_tile not installed. Install with: pip install mapbox-vector-tile"
+    )
 
-# Available FIRMS data sources
-FIRMS_SOURCES = {
-    "VIIRS_SNPP_NRT": "VIIRS S-NPP Near Real-Time",
-    "VIIRS_SNPP_SP": "VIIRS S-NPP Standard Processing",
-    "VIIRS_NOAA20_NRT": "VIIRS NOAA-20 Near Real-Time",
-    "VIIRS_NOAA21_NRT": "VIIRS NOAA-21 Near Real-Time",
-    "MODIS_NRT": "MODIS Near Real-Time",
-    "MODIS_SP": "MODIS Standard Processing",
+
+# Available GIBS thermal anomaly layers
+# Note: GIBS serves gridded visualization products, not raw swath data.
+# Primary product: VIIRS_NOAA20_Thermal_Anomalies_375m_All (VJ114IMGT_NRT 2)
+GIBS_THERMAL_LAYERS = {
+    # Primary product - VIIRS NOAA-20 (VJ114IMGT_NRT 2)
+    "VIIRS_NOAA20": "VIIRS_NOAA20_Thermal_Anomalies_375m_All",
+    # Additional layers (available but not default)
+    "VIIRS_NOAA20_Day": "VIIRS_NOAA20_Thermal_Anomalies_375m_Day",
+    "VIIRS_NOAA20_Night": "VIIRS_NOAA20_Thermal_Anomalies_375m_Night",
+    "VIIRS_NOAA21": "VIIRS_NOAA21_Thermal_Anomalies_375m_All",
+    "VIIRS_SNPP": "VIIRS_SNPP_Thermal_Anomalies_375m_All",
+    "MODIS_Terra": "MODIS_Terra_Thermal_Anomalies_All",
+    "MODIS_Aqua": "MODIS_Aqua_Thermal_Anomalies_All",
+}
+
+# Tile matrix sets for different resolutions
+# GIBS EPSG:4326 tile matrix zoom levels
+TILE_MATRIX_SETS = {
+    "250m": {"id": "250m", "zoom_levels": 6},
+    "500m": {"id": "500m", "zoom_levels": 5},
+    "1km": {"id": "1km", "zoom_levels": 4},
+    "2km": {"id": "2km", "zoom_levels": 3},
 }
 
 
 @dataclass
 class FIRMSConfig:
     """
-    NASA FIRMS API configuration.
+    NASA GIBS configuration for thermal anomaly data.
 
-    Get your MAP_KEY at: https://firms.modaps.eosdis.nasa.gov/api/map_key/
+    No API key required! GIBS is freely accessible.
+
+    Documentation: https://nasa-gibs.github.io/gibs-api-docs/
 
     Attributes:
-        api_key: FIRMS MAP_KEY (32 characters). Set via FIRMS_MAP_KEY env var.
-        base_url: FIRMS API base URL
-        default_source: Default satellite source
-        max_days: Maximum days per request (FIRMS limit is 10)
+        base_url: GIBS WMTS base URL
+        default_layer: Default thermal anomaly layer
+        tile_matrix_set: Resolution (250m, 500m, 1km, 2km)
         max_retries: Maximum retry attempts
-        retry_delay: Base delay between retries (seconds)
-        rate_limit_delay: Delay between requests (rate limit: 5000/10min)
+        retry_delay: Base delay between retries
+        rate_limit_delay: Delay between requests
     """
-    api_key: Optional[str] = None
-    base_url: str = "https://firms.modaps.eosdis.nasa.gov/api/area"
-    default_source: str = "VIIRS_SNPP_NRT"
-    max_days: int = 10
+    base_url: str = "https://gibs.earthdata.nasa.gov/wmts/epsg4326/best"
+    default_layer: str = "VIIRS_NOAA20"
+    tile_matrix_set: str = "500m"
     max_retries: int = 3
-    retry_delay: float = 2.0
-    rate_limit_delay: float = 0.5
+    retry_delay: float = 1.0
+    rate_limit_delay: float = 0.2
+    # Keep api_key for backward compatibility but it's not needed
+    api_key: Optional[str] = None
 
     def __post_init__(self):
+        # For backward compatibility, check env var but don't require it
         if self.api_key is None:
             self.api_key = os.environ.get("FIRMS_MAP_KEY")
-        if not self.api_key:
-            logger.warning(
-                "FIRMS API key not set. Set FIRMS_MAP_KEY environment variable "
-                "or pass api_key parameter. Get your key at: "
-                "https://firms.modaps.eosdis.nasa.gov/api/map_key/"
-            )
+
+
+def _lat_lon_to_tile(lat: float, lon: float, zoom: int) -> Tuple[int, int]:
+    """Convert lat/lon to tile coordinates for EPSG:4326."""
+    # GIBS uses EPSG:4326 with specific tile matrix
+    # At zoom 0, there are 2 tiles horizontally (-180 to 0, 0 to 180)
+    n = 2 ** zoom
+
+    # X tile (column)
+    x = int((lon + 180.0) / 360.0 * n)
+
+    # Y tile (row) - EPSG:4326 goes from 90 to -90
+    y = int((90.0 - lat) / 180.0 * n)
+
+    return max(0, min(x, n * 2 - 1)), max(0, min(y, n - 1))
+
+
+def _get_tiles_for_bbox(
+    west: float, south: float, east: float, north: float, zoom: int
+) -> List[Tuple[int, int]]:
+    """Get all tile coordinates that cover the bounding box."""
+    min_col, max_row = _lat_lon_to_tile(north, west, zoom)
+    max_col, min_row = _lat_lon_to_tile(south, east, zoom)
+
+    tiles = []
+    for row in range(min_row, max_row + 1):
+        for col in range(min_col, max_col + 1):
+            tiles.append((row, col))
+
+    return tiles
 
 
 class FIRMSClient:
     """
-    NASA FIRMS API client for thermal anomaly detection.
+    NASA GIBS client for thermal anomaly data.
 
-    Queries VIIRS and MODIS fire/thermal data within a geographic area.
+    Uses WMTS vector tiles - no API key required!
 
     Example:
         client = FIRMSClient()
-        df = client.query(geometry, days=7)
-        geojson = client.to_geojson(df)
+        detections = client.query(geometry, days=3)
+        geojson = client.to_geojson(detections)
     """
 
     def __init__(self, config: Optional[FIRMSConfig] = None):
         self.config = config or FIRMSConfig()
         self.session = requests.Session()
         self.session.headers.update({
-            "User-Agent": "water-pipeline/1.0"
+            "User-Agent": "water-pipeline/1.0",
+            "Accept-Encoding": "gzip, deflate",
         })
         self._last_request = 0.0
+
+        if not HAS_MVT:
+            logger.warning(
+                "mapbox_vector_tile not available. Install with: "
+                "pip install mapbox-vector-tile"
+            )
 
     def _rate_limit(self):
         """Apply rate limiting between requests."""
@@ -98,349 +163,353 @@ class FIRMSClient:
             time.sleep(self.config.rate_limit_delay - elapsed)
         self._last_request = time.time()
 
-    def _build_url(
-        self,
-        source: str,
-        bbox: Tuple[float, float, float, float],
-        days: int,
-        date: Optional[str] = None
-    ) -> str:
-        """
-        Build FIRMS API URL.
+    def _get_layer_name(self, source: str) -> str:
+        """Get full GIBS layer name from short source name."""
+        if source in GIBS_THERMAL_LAYERS:
+            return GIBS_THERMAL_LAYERS[source]
+        # Check if it's already a full layer name
+        if source in GIBS_THERMAL_LAYERS.values():
+            return source
+        # Default to VIIRS NOAA-20
+        return GIBS_THERMAL_LAYERS.get(
+            self.config.default_layer,
+            "VIIRS_NOAA20_Thermal_Anomalies_375m_All"
+        )
 
-        API format: /api/area/csv/{MAP_KEY}/{source}/{bbox}/{days}/{date}
-        """
-        if not self.config.api_key:
-            raise ValueError(
-                "FIRMS API key required. Set FIRMS_MAP_KEY environment variable."
+    def _fetch_tile(
+        self,
+        layer: str,
+        date: str,
+        zoom: int,
+        row: int,
+        col: int
+    ) -> List[Dict]:
+        """Fetch a single MVT tile and decode features."""
+        if not HAS_MVT:
+            raise RuntimeError(
+                "mapbox_vector_tile required. Install with: pip install mapbox-vector-tile"
             )
 
-        west, south, east, north = bbox
-        bbox_str = f"{west},{south},{east},{north}"
-
-        url = f"{self.config.base_url}/csv/{self.config.api_key}/{source}/{bbox_str}/{days}"
-
-        if date:
-            url += f"/{date}"
-
-        return url
-
-    def query(
-        self,
-        geometry: Dict,
-        days: int = 7,
-        source: str = None,
-        date: Optional[str] = None,
-        confidence_filter: Optional[str] = None
-    ) -> pd.DataFrame:
-        """
-        Query FIRMS for thermal anomalies within geometry.
-
-        Args:
-            geometry: GeoJSON geometry (bbox will be extracted)
-            days: Number of days to query (1-10, will chunk if >10)
-            source: Data source (default: VIIRS_SNPP_NRT)
-            date: End date in YYYY-MM-DD format (default: today)
-            confidence_filter: Filter by confidence: "low", "nominal", "high"
-
-        Returns:
-            DataFrame with columns:
-                - latitude, longitude: Detection coordinates
-                - brightness: Brightness temperature (Kelvin)
-                - scan, track: Pixel dimensions
-                - acq_date, acq_time: Acquisition datetime
-                - satellite: Satellite identifier
-                - confidence: Detection confidence
-                - version: Algorithm version
-                - bright_t31: Channel 31 brightness (MODIS)
-                - frp: Fire Radiative Power (MW)
-                - daynight: Day (D) or Night (N)
-        """
-        source = source or self.config.default_source
-
-        # Get bounding box from geometry
-        geom = shape(geometry)
-        bbox = geom.bounds  # (minx, miny, maxx, maxy) = (west, south, east, north)
-
-        # Handle requests > 10 days by chunking
-        if days > self.config.max_days:
-            return self._query_chunked(geometry, days, source, date, confidence_filter)
-
-        url = self._build_url(source, bbox, days, date)
+        # Build WMTS REST URL
+        # Format: {base}/{layer}/default/{date}/{tilematrixset}/{zoom}/{row}/{col}.mvt
+        url = (
+            f"{self.config.base_url}/{layer}/default/{date}T00:00:00Z/"
+            f"{self.config.tile_matrix_set}/{zoom}/{row}/{col}.mvt"
+        )
 
         self._rate_limit()
 
         for attempt in range(self.config.max_retries):
             try:
-                logger.debug(f"FIRMS request: {source}, {days} days, bbox={bbox}")
-                response = self.session.get(url, timeout=60)
+                response = self.session.get(url, timeout=30)
+
+                if response.status_code == 404:
+                    # No data for this tile/date
+                    return []
+
+                if response.status_code == 400:
+                    # Bad request - usually means date is outside GIBS archive
+                    # GIBS typically only retains ~30-90 days of NRT data
+                    return []
 
                 if response.status_code == 429:
-                    delay = float(response.headers.get(
-                        "Retry-After",
-                        self.config.retry_delay * (2 ** attempt)
-                    ))
+                    delay = self.config.retry_delay * (2 ** attempt)
                     logger.warning(f"Rate limited, waiting {delay}s")
                     time.sleep(delay)
                     continue
 
-                if response.status_code == 401:
-                    raise ValueError("Invalid FIRMS API key")
-
                 response.raise_for_status()
 
-                # Parse CSV response
-                if not response.text.strip():
-                    logger.info("No thermal detections found")
-                    return pd.DataFrame()
+                if not response.content:
+                    return []
 
-                df = pd.read_csv(io.StringIO(response.text))
+                # Decode MVT
+                decoded = mapbox_vector_tile.decode(response.content)
 
-                # Filter to geometry (bbox may include extra area)
-                df = self._filter_to_geometry(df, geometry)
+                features = []
+                for layer_name, layer_data in decoded.items():
+                    for feature in layer_data.get("features", []):
+                        features.append(feature)
 
-                # Apply confidence filter
-                if confidence_filter and "confidence" in df.columns:
-                    df = self._filter_confidence(df, confidence_filter)
-
-                logger.info(f"Retrieved {len(df)} thermal detections")
-                return df
+                return features
 
             except requests.RequestException as e:
-                logger.warning(f"Request failed (attempt {attempt + 1}): {e}")
+                logger.warning(f"Tile fetch failed (attempt {attempt + 1}): {e}")
                 if attempt < self.config.max_retries - 1:
                     time.sleep(self.config.retry_delay * (attempt + 1))
                     continue
-                raise
 
-        raise RuntimeError("Max retries exceeded")
+        return []
 
-    def _query_chunked(
+    def _mvt_to_geojson_features(
+        self,
+        mvt_features: List[Dict],
+        tile_row: int,
+        tile_col: int,
+        zoom: int,
+        bbox: Tuple[float, float, float, float]
+    ) -> List[Dict]:
+        """Convert MVT features to GeoJSON, filtering to bbox."""
+        geojson_features = []
+
+        # MVT coordinates are in tile-local space (0-4096 typically)
+        # Need to convert to lat/lon based on tile position
+        extent = 4096  # Standard MVT extent
+
+        # Calculate tile bounds in EPSG:4326
+        n = 2 ** zoom
+        tile_width = 360.0 / (n * 2)  # Width in degrees
+        tile_height = 180.0 / n  # Height in degrees
+
+        tile_west = -180.0 + tile_col * tile_width
+        tile_north = 90.0 - tile_row * tile_height
+
+        west, south, east, north = bbox
+        bbox_geom = box(west, south, east, north)
+
+        for feature in mvt_features:
+            geom = feature.get("geometry", {})
+            props = feature.get("properties", {})
+
+            if geom.get("type") != "Point":
+                continue
+
+            coords = geom.get("coordinates", [])
+            if len(coords) < 2:
+                continue
+
+            # Convert tile coordinates to lat/lon
+            x, y = coords[0], coords[1]
+            lon = tile_west + (x / extent) * tile_width
+            lat = tile_north - (y / extent) * tile_height
+
+            # Filter to bbox
+            point = Point(lon, lat)
+            if not bbox_geom.contains(point):
+                continue
+
+            # Build GeoJSON feature
+            gj_feature = {
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [lon, lat]
+                },
+                "properties": {
+                    **props,
+                    "detection_type": "thermal_anomaly",
+                    "latitude": lat,
+                    "longitude": lon,
+                }
+            }
+            geojson_features.append(gj_feature)
+
+        return geojson_features
+
+    def query(
         self,
         geometry: Dict,
-        days: int,
-        source: str,
-        date: Optional[str],
-        confidence_filter: Optional[str]
-    ) -> pd.DataFrame:
-        """Query in chunks for periods > 10 days."""
-        chunks = []
-        remaining_days = days
+        days: int = 3,
+        source: str = None,
+        date: Optional[str] = None,
+        confidence_filter: Optional[str] = None
+    ) -> List[Dict]:
+        """
+        Query GIBS for thermal anomalies within geometry.
+
+        Args:
+            geometry: GeoJSON geometry (bbox will be extracted)
+            days: Number of days to query (default: 3)
+            source: Data source (VIIRS_NOAA20, VIIRS_SNPP, MODIS_Terra, etc.)
+            date: End date in YYYY-MM-DD format (default: yesterday)
+            confidence_filter: Filter by confidence (not yet implemented for GIBS)
+
+        Returns:
+            List of GeoJSON feature dicts
+        """
+        if not HAS_MVT:
+            raise RuntimeError(
+                "mapbox_vector_tile required for GIBS queries. "
+                "Install with: pip install mapbox-vector-tile"
+            )
+
+        layer = self._get_layer_name(source or self.config.default_layer)
+        logger.info(f"Querying GIBS layer: {layer}")
+
+        # Get bounding box from geometry
+        geom = shape(geometry)
+        bbox = geom.bounds  # (west, south, east, north)
+
+        # Determine zoom level based on tile matrix set
+        tms = TILE_MATRIX_SETS.get(self.config.tile_matrix_set, TILE_MATRIX_SETS["500m"])
+        zoom = tms["zoom_levels"]
+
+        # Get tiles covering the bbox
+        tiles = _get_tiles_for_bbox(*bbox, zoom)
 
         # Parse end date
         if date:
             end_date = datetime.strptime(date, "%Y-%m-%d")
         else:
-            end_date = datetime.utcnow()
+            # Use yesterday (today's data may not be available yet)
+            end_date = datetime.utcnow() - timedelta(days=1)
 
-        while remaining_days > 0:
-            chunk_days = min(remaining_days, self.config.max_days)
-            chunk_date = end_date.strftime("%Y-%m-%d")
+        all_features = []
 
-            df = self.query(
-                geometry,
-                days=chunk_days,
-                source=source,
-                date=chunk_date,
-                confidence_filter=confidence_filter
-            )
-            chunks.append(df)
+        # Query each day
+        for day_offset in range(days):
+            query_date = end_date - timedelta(days=day_offset)
+            date_str = query_date.strftime("%Y-%m-%d")
 
-            remaining_days -= chunk_days
-            end_date -= timedelta(days=chunk_days)
+            logger.debug(f"Querying {layer} for {date_str}, {len(tiles)} tiles")
 
-        if not chunks:
-            return pd.DataFrame()
+            # Fetch all tiles for this day
+            for row, col in tiles:
+                try:
+                    mvt_features = self._fetch_tile(layer, date_str, zoom, row, col)
 
-        combined = pd.concat(chunks, ignore_index=True)
+                    if mvt_features:
+                        gj_features = self._mvt_to_geojson_features(
+                            mvt_features, row, col, zoom, bbox
+                        )
 
-        # Remove duplicates (same detection across chunk boundaries)
-        if not combined.empty and "latitude" in combined.columns:
-            combined = combined.drop_duplicates(
-                subset=["latitude", "longitude", "acq_date", "acq_time"],
-                keep="first"
-            )
+                        # Add date to features
+                        for f in gj_features:
+                            f["properties"]["acq_date"] = date_str
 
-        return combined
+                        all_features.extend(gj_features)
 
-    def _filter_to_geometry(self, df: pd.DataFrame, geometry: Dict) -> pd.DataFrame:
-        """Filter detections to exact geometry (not just bbox)."""
-        if df.empty or "latitude" not in df.columns:
-            return df
+                except Exception as e:
+                    logger.warning(f"Error fetching tile {row}/{col}: {e}")
 
-        geom = shape(geometry)
+        # Remove duplicates based on coordinates
+        seen = set()
+        unique_features = []
+        for f in all_features:
+            coords = tuple(f["geometry"]["coordinates"])
+            date = f["properties"].get("acq_date", "")
+            key = (coords, date)
+            if key not in seen:
+                seen.add(key)
+                unique_features.append(f)
 
-        # Only filter if geometry is not a simple bbox
-        if geom.geom_type in ["Polygon", "MultiPolygon"]:
-            mask = df.apply(
-                lambda row: geom.contains(Point(row["longitude"], row["latitude"])),
-                axis=1
-            )
-            return df[mask].reset_index(drop=True)
-
-        return df
-
-    def _filter_confidence(self, df: pd.DataFrame, level: str) -> pd.DataFrame:
-        """
-        Filter by confidence level.
-
-        VIIRS confidence: "low", "nominal", "high"
-        MODIS confidence: 0-100 numeric
-        """
-        if df.empty:
-            return df
-
-        col = "confidence"
-        if col not in df.columns:
-            return df
-
-        # Handle VIIRS text confidence
-        if df[col].dtype == object:
-            levels = {"low": 0, "nominal": 1, "high": 2}
-            min_level = levels.get(level.lower(), 0)
-            df = df[df[col].str.lower().map(levels).fillna(0) >= min_level]
-
-        # Handle MODIS numeric confidence
-        else:
-            thresholds = {"low": 0, "nominal": 30, "high": 80}
-            min_conf = thresholds.get(level.lower(), 0)
-            df = df[df[col] >= min_conf]
-
-        return df.reset_index(drop=True)
+        logger.info(f"Retrieved {len(unique_features)} thermal detections from GIBS")
+        return unique_features
 
     def query_multiple_sources(
         self,
         geometry: Dict,
-        days: int = 7,
+        days: int = 3,
         sources: Optional[List[str]] = None,
         confidence_filter: Optional[str] = None
-    ) -> pd.DataFrame:
+    ) -> List[Dict]:
         """
         Query multiple VIIRS/MODIS sources and combine results.
 
         Args:
             geometry: GeoJSON geometry
             days: Number of days
-            sources: List of sources (default: VIIRS_SNPP_NRT, VIIRS_NOAA20_NRT)
+            sources: List of sources (default: VIIRS_NOAA20, VIIRS_SNPP)
             confidence_filter: Confidence filter level
 
         Returns:
-            Combined DataFrame with source column
+            Combined list of GeoJSON features
         """
         if sources is None:
-            sources = ["VIIRS_SNPP_NRT", "VIIRS_NOAA20_NRT"]
+            sources = ["VIIRS_NOAA20", "VIIRS_SNPP"]
 
-        all_data = []
+        all_features = []
         for source in sources:
             try:
-                df = self.query(
+                features = self.query(
                     geometry,
                     days=days,
                     source=source,
                     confidence_filter=confidence_filter
                 )
-                if not df.empty:
-                    df["data_source"] = source
-                    all_data.append(df)
+                for f in features:
+                    f["properties"]["data_source"] = source
+                all_features.extend(features)
             except Exception as e:
                 logger.warning(f"Failed to query {source}: {e}")
 
-        if not all_data:
-            return pd.DataFrame()
+        # Remove duplicates
+        seen = set()
+        unique_features = []
+        for f in all_features:
+            coords = tuple(f["geometry"]["coordinates"])
+            date = f["properties"].get("acq_date", "")
+            key = (coords, date)
+            if key not in seen:
+                seen.add(key)
+                unique_features.append(f)
 
-        combined = pd.concat(all_data, ignore_index=True)
+        return unique_features
 
-        # Remove duplicates (same fire detected by multiple satellites)
-        if not combined.empty:
-            combined = combined.drop_duplicates(
-                subset=["latitude", "longitude", "acq_date"],
-                keep="first"
-            )
-
-        return combined
-
-    def to_geojson(self, df: pd.DataFrame) -> Dict:
+    def to_geojson(self, features: List[Dict]) -> Dict:
         """
-        Convert DataFrame to GeoJSON FeatureCollection.
+        Convert feature list to GeoJSON FeatureCollection.
 
         Args:
-            df: DataFrame from query()
+            features: List of GeoJSON feature dicts
 
         Returns:
             GeoJSON FeatureCollection
         """
-        if df.empty:
-            return {"type": "FeatureCollection", "features": []}
-
-        features = []
-        for _, row in df.iterrows():
-            # Build properties from all columns except lat/lon
-            properties = {
-                k: (v.item() if hasattr(v, "item") else v)
-                for k, v in row.items()
-                if k not in ["latitude", "longitude"]
-            }
-
-            # Add detection type
-            properties["detection_type"] = "thermal_anomaly"
-
-            feature = {
-                "type": "Feature",
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [float(row["longitude"]), float(row["latitude"])]
-                },
-                "properties": properties
-            }
-            features.append(feature)
-
-        return {"type": "FeatureCollection", "features": features}
+        return {
+            "type": "FeatureCollection",
+            "features": features
+        }
 
 
 def query_thermal_anomalies(
     geometry: Dict,
-    days: int = 7,
-    source: str = "VIIRS_SNPP_NRT",
+    days: int = 3,
+    source: str = "VIIRS_NOAA20",
     confidence_filter: Optional[str] = None,
     config: Optional[FIRMSConfig] = None
 ) -> Dict:
     """
-    High-level function to query thermal anomalies.
+    High-level function to query thermal anomalies via GIBS.
+
+    No API key required!
 
     Args:
         geometry: GeoJSON geometry (polygon, bbox, etc.)
-        days: Number of days to query (default: 7)
-        source: FIRMS data source
-        confidence_filter: Filter by confidence level
+        days: Number of days to query (default: 3)
+        source: GIBS layer source (VIIRS_NOAA20, VIIRS_SNPP, MODIS_Terra, etc.)
+        confidence_filter: Filter by confidence level (not yet implemented)
         config: Optional FIRMSConfig
 
     Returns:
         GeoJSON FeatureCollection with thermal detection points
     """
     client = FIRMSClient(config)
-    df = client.query(
+    features = client.query(
         geometry,
         days=days,
         source=source,
         confidence_filter=confidence_filter
     )
-    return client.to_geojson(df)
+    return client.to_geojson(features)
 
 
 def query_thermal_anomalies_multi(
     geometry: Dict,
-    days: int = 7,
+    days: int = 3,
     sources: Optional[List[str]] = None,
     confidence_filter: Optional[str] = None,
     config: Optional[FIRMSConfig] = None
 ) -> Dict:
     """
-    Query thermal anomalies from multiple satellite sources.
+    Query thermal anomalies from multiple satellite sources via GIBS.
+
+    No API key required!
 
     Args:
         geometry: GeoJSON geometry
         days: Number of days to query
-        sources: List of FIRMS sources (default: VIIRS_SNPP_NRT, VIIRS_NOAA20_NRT)
+        sources: List of sources (default: VIIRS_NOAA20, VIIRS_SNPP)
         confidence_filter: Confidence filter level
         config: Optional FIRMSConfig
 
@@ -448,10 +517,14 @@ def query_thermal_anomalies_multi(
         GeoJSON FeatureCollection with thermal detection points
     """
     client = FIRMSClient(config)
-    df = client.query_multiple_sources(
+    features = client.query_multiple_sources(
         geometry,
         days=days,
         sources=sources,
         confidence_filter=confidence_filter
     )
-    return client.to_geojson(df)
+    return client.to_geojson(features)
+
+
+# Backward compatibility aliases
+FIRMS_SOURCES = GIBS_THERMAL_LAYERS
