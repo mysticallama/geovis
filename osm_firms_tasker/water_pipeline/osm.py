@@ -32,6 +32,17 @@ DEFAULT_WATER_TAGS = [
     {"key": "waterway", "value": "dam"},
     {"key": "waterway", "value": "canal"},
     {"key": "waterway", "value": "ditch"},
+    # Drinking water points
+    {"key": "amenity", "value": "drinking_water"},
+    {"key": "amenity", "value": "water_point"},
+    {"key": "amenity", "value": "watering_place"},
+    {"key": "man_made", "value": "water_well"},
+    {"key": "emergency", "value": "drinking_water"},
+    # Water source tags
+    {"key": "water_source", "value": "main"},
+    {"key": "water_source", "value": "water_works"},
+    {"key": "water_source", "value": "tube_well"},
+    {"key": "water_source", "value": "water_tank"},
 ]
 
 # Extended water infrastructure tags
@@ -61,9 +72,16 @@ EXTENDED_WATER_TAGS = [
     # Landuse
     {"key": "landuse", "value": "reservoir"},
     {"key": "landuse", "value": "basin"},
-    # Amenities
+    # Amenities and drinking water
     {"key": "amenity", "value": "drinking_water"},
     {"key": "amenity", "value": "water_point"},
+    {"key": "amenity", "value": "watering_place"},
+    {"key": "emergency", "value": "drinking_water"},
+    # Water source tags
+    {"key": "water_source", "value": "main"},
+    {"key": "water_source", "value": "water_works"},
+    {"key": "water_source", "value": "tube_well"},
+    {"key": "water_source", "value": "water_tank"},
 ]
 
 
@@ -101,13 +119,14 @@ class Tag:
 class OverpassConfig:
     """Overpass API configuration."""
     endpoint: str = "https://overpass-api.de/api/interpreter"
-    timeout: int = 180
-    max_retries: int = 3
-    retry_delay: float = 2.0
+    timeout: int = 300  # 5 minutes - Overpass can be slow
+    max_retries: int = 4
+    retry_delay: float = 3.0
     rate_limit_delay: float = 1.0
     fallback_endpoints: List[str] = field(default_factory=lambda: [
         "https://overpass.kumi.systems/api/interpreter",
-        "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
+        "https://lz4.overpass-api.de/api/interpreter",
+        "https://z.overpass-api.de/api/interpreter",
     ])
 
 
@@ -131,6 +150,7 @@ class OverpassClient:
         """Cycle to next endpoint on failure."""
         total = 1 + len(self.config.fallback_endpoints)
         self._endpoint_idx = (self._endpoint_idx + 1) % total
+        logger.info(f"Switching to Overpass endpoint: {self._get_endpoint()}")
 
     def _rate_limit(self):
         """Apply rate limiting."""
@@ -160,12 +180,22 @@ class OverpassClient:
                 )
                 self._last_request = time.time()
 
-                if response.status_code in (429, 503):
+                # Handle server errors (rate limit, overload, gateway timeout)
+                if response.status_code in (429, 502, 503, 504):
                     delay = float(response.headers.get(
                         "Retry-After",
                         self.config.retry_delay * (2 ** attempt)
                     ))
-                    logger.warning(f"Overpass rate limited, waiting {delay}s")
+                    error_type = {
+                        429: "rate limited",
+                        502: "bad gateway",
+                        503: "service unavailable",
+                        504: "gateway timeout"
+                    }.get(response.status_code, "server error")
+                    logger.warning(
+                        f"Overpass {error_type} ({response.status_code}), "
+                        f"trying fallback endpoint in {delay}s"
+                    )
                     time.sleep(delay)
                     self._cycle_endpoint()
                     continue

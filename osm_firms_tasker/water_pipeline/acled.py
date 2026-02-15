@@ -2,9 +2,17 @@
 ACLED (Armed Conflict Location & Event Data) API client.
 
 Queries conflict event data including battles, protests, violence against civilians, etc.
-API Documentation: https://acleddata.com/resources/general-guides/
+API Documentation: https://acleddata.com/api-documentation/getting-started
 
 Registration required at: https://acleddata.com/register/
+
+Authentication:
+    ACLED uses OAuth token-based authentication. You can authenticate using either:
+    1. Email + Password (recommended): Set ACLED_EMAIL and ACLED_PASSWORD environment variables
+    2. Pre-obtained access token: Set ACLED_ACCESS_TOKEN environment variable
+
+    Access tokens are valid for 24 hours. Refresh tokens are valid for 14 days.
+    The client will automatically refresh tokens when they expire.
 """
 
 import logging
@@ -59,25 +67,48 @@ ACLED_SUB_EVENT_TYPES = [
     "Other",
 ]
 
+# Default sub-event types for infrastructure damage analysis
+# These are violent/destructive events likely to cause infrastructure damage
+DEFAULT_VIOLENCE_SUB_EVENTS = [
+    "Attack",
+    "Shelling/artillery/missile attack",
+    "Air/drone strike",
+    "Mob violence",
+    "Remote explosive/landmine/IED",
+    "Looting/property destruction",
+    "Grenade",
+]
+
 
 @dataclass
 class ACLEDConfig:
     """
-    ACLED API configuration.
+    ACLED API configuration using OAuth authentication.
 
     Register at: https://acleddata.com/register/
+    API docs: https://acleddata.com/api-documentation/getting-started
+
+    Authentication options:
+        1. Email + Password: Set ACLED_EMAIL and ACLED_PASSWORD env vars
+        2. Access token: Set ACLED_ACCESS_TOKEN env var (valid 24 hours)
 
     Attributes:
         email: Registered email address (from ACLED_EMAIL env var)
-        api_key: ACLED API key (from ACLED_API_KEY env var)
+        password: Account password (from ACLED_PASSWORD env var)
+        access_token: Pre-obtained access token (from ACLED_ACCESS_TOKEN env var)
+        refresh_token: Refresh token for renewing access (from ACLED_REFRESH_TOKEN env var)
         base_url: ACLED API base URL
+        token_url: OAuth token endpoint
         max_retries: Maximum retry attempts
         retry_delay: Base delay between retries
         default_fields: Default fields to retrieve
     """
     email: Optional[str] = None
-    api_key: Optional[str] = None
-    base_url: str = "https://api.acleddata.com/acled/read"
+    password: Optional[str] = None
+    access_token: Optional[str] = None
+    refresh_token: Optional[str] = None
+    base_url: str = "https://acleddata.com/api/acled/read"
+    token_url: str = "https://acleddata.com/oauth/token"
     max_retries: int = 3
     retry_delay: float = 2.0
     default_fields: List[str] = field(default_factory=lambda: [
@@ -111,32 +142,183 @@ class ACLEDConfig:
     def __post_init__(self):
         if self.email is None:
             self.email = os.environ.get("ACLED_EMAIL")
-        if self.api_key is None:
-            self.api_key = os.environ.get("ACLED_API_KEY")
+        if self.password is None:
+            self.password = os.environ.get("ACLED_PASSWORD")
+        if self.access_token is None:
+            self.access_token = os.environ.get("ACLED_ACCESS_TOKEN")
+        if self.refresh_token is None:
+            self.refresh_token = os.environ.get("ACLED_REFRESH_TOKEN")
 
-        if not self.email or not self.api_key:
+        has_credentials = self.email and self.password
+        has_token = self.access_token
+
+        if not has_credentials and not has_token:
             logger.warning(
-                "ACLED credentials not set. Set ACLED_EMAIL and ACLED_API_KEY "
-                "environment variables. Register at: https://acleddata.com/register/"
+                "ACLED credentials not set. Either set ACLED_EMAIL and ACLED_PASSWORD, "
+                "or set ACLED_ACCESS_TOKEN. Register at: https://acleddata.com/register/"
             )
 
 
 class ACLEDClient:
     """
-    ACLED API client for conflict event data.
+    ACLED API client for conflict event data using OAuth authentication.
 
     Example:
-        client = ACLEDClient()
+        # Using email/password (recommended)
+        client = ACLEDClient()  # Uses ACLED_EMAIL and ACLED_PASSWORD env vars
         df = client.query_within_aoi(geometry, days=7)
         geojson = client.to_geojson(df)
+
+        # Using explicit credentials
+        config = ACLEDConfig(email="user@example.com", password="password")
+        client = ACLEDClient(config)
     """
 
     def __init__(self, config: Optional[ACLEDConfig] = None):
         self.config = config or ACLEDConfig()
         self.session = requests.Session()
         self.session.headers.update({
-            "User-Agent": "water-pipeline/1.0"
+            "User-Agent": "water-pipeline/1.0",
+            "Content-Type": "application/x-www-form-urlencoded",
         })
+
+        # Token state
+        self._access_token: Optional[str] = self.config.access_token
+        self._refresh_token: Optional[str] = self.config.refresh_token
+        self._token_expires_at: Optional[datetime] = None
+
+        # If we have a pre-set access token, assume it's valid for now
+        if self._access_token:
+            # Assume token expires in 23 hours (conservative estimate)
+            self._token_expires_at = datetime.utcnow() + timedelta(hours=23)
+
+    def _authenticate(self) -> str:
+        """
+        Authenticate with ACLED OAuth endpoint and obtain access token.
+
+        Returns:
+            Access token string
+
+        Raises:
+            ValueError: If credentials are missing or invalid
+        """
+        if not self.config.email or not self.config.password:
+            raise ValueError(
+                "ACLED credentials required. Set ACLED_EMAIL and ACLED_PASSWORD "
+                "environment variables, or provide email and password in ACLEDConfig."
+            )
+
+        logger.debug("Authenticating with ACLED OAuth endpoint...")
+
+        data = {
+            "username": self.config.email,
+            "password": self.config.password,
+            "grant_type": "password",
+            "client_id": "acled",
+        }
+
+        try:
+            response = self.session.post(
+                self.config.token_url,
+                data=data,
+                timeout=30,
+            )
+
+            if response.status_code == 401:
+                raise ValueError(
+                    "Invalid ACLED credentials. Check your email and password."
+                )
+
+            response.raise_for_status()
+
+            token_data = response.json()
+
+            self._access_token = token_data.get("access_token")
+            self._refresh_token = token_data.get("refresh_token")
+
+            # Access token valid for 24 hours, set expiry conservatively at 23 hours
+            expires_in = token_data.get("expires_in", 86400)  # Default 24 hours
+            self._token_expires_at = datetime.utcnow() + timedelta(seconds=expires_in - 3600)
+
+            logger.info("Successfully authenticated with ACLED API")
+            return self._access_token
+
+        except requests.RequestException as e:
+            logger.error(f"ACLED authentication failed: {e}")
+            raise
+
+    def _refresh_access_token(self) -> str:
+        """
+        Refresh the access token using the refresh token.
+
+        Returns:
+            New access token string
+
+        Raises:
+            ValueError: If refresh fails
+        """
+        if not self._refresh_token:
+            logger.debug("No refresh token available, performing full authentication")
+            return self._authenticate()
+
+        logger.debug("Refreshing ACLED access token...")
+
+        data = {
+            "refresh_token": self._refresh_token,
+            "grant_type": "refresh_token",
+            "client_id": "acled",
+        }
+
+        try:
+            response = self.session.post(
+                self.config.token_url,
+                data=data,
+                timeout=30,
+            )
+
+            if response.status_code == 401:
+                # Refresh token expired, need full re-authentication
+                logger.warning("Refresh token expired, performing full authentication")
+                return self._authenticate()
+
+            response.raise_for_status()
+
+            token_data = response.json()
+
+            self._access_token = token_data.get("access_token")
+            if token_data.get("refresh_token"):
+                self._refresh_token = token_data.get("refresh_token")
+
+            expires_in = token_data.get("expires_in", 86400)
+            self._token_expires_at = datetime.utcnow() + timedelta(seconds=expires_in - 3600)
+
+            logger.info("Successfully refreshed ACLED access token")
+            return self._access_token
+
+        except requests.RequestException as e:
+            logger.warning(f"Token refresh failed: {e}, attempting full authentication")
+            return self._authenticate()
+
+    def _get_valid_token(self) -> str:
+        """
+        Get a valid access token, refreshing or authenticating if needed.
+
+        Returns:
+            Valid access token string
+        """
+        # Check if we have a valid token
+        if self._access_token and self._token_expires_at:
+            if datetime.utcnow() < self._token_expires_at:
+                return self._access_token
+            else:
+                logger.debug("Access token expired, refreshing...")
+                return self._refresh_access_token()
+
+        # No token, need to authenticate
+        if self._refresh_token:
+            return self._refresh_access_token()
+        else:
+            return self._authenticate()
 
     def _build_params(
         self,
@@ -144,21 +326,13 @@ class ACLEDClient:
         start_date: Optional[str] = None,
         end_date: Optional[str] = None,
         event_types: Optional[List[str]] = None,
+        sub_event_types: Optional[List[str]] = None,
         fields: Optional[List[str]] = None,
         limit: Optional[int] = None,
         bbox: Optional[Tuple[float, float, float, float]] = None,
     ) -> Dict:
-        """Build API request parameters."""
-        if not self.config.email or not self.config.api_key:
-            raise ValueError(
-                "ACLED credentials required. Set ACLED_EMAIL and ACLED_API_KEY "
-                "environment variables."
-            )
-
-        params = {
-            "key": self.config.api_key,
-            "email": self.config.email,
-        }
+        """Build API request parameters (without auth - that's in headers now)."""
+        params = {}
 
         # Add fields
         fields = fields or self.config.default_fields
@@ -185,6 +359,10 @@ class ACLEDClient:
         if event_types:
             params["event_type"] = "|".join(event_types)
 
+        # Sub-event type filter (for specific violence types)
+        if sub_event_types:
+            params["sub_event_type"] = ":OR:".join(sub_event_types)
+
         # Bounding box filter (ACLED uses latitude/longitude ranges)
         if bbox:
             west, south, east, north = bbox
@@ -205,9 +383,11 @@ class ACLEDClient:
         start_date: Optional[str] = None,
         end_date: Optional[str] = None,
         event_types: Optional[List[str]] = None,
+        sub_event_types: Optional[List[str]] = None,
         fields: Optional[List[str]] = None,
         limit: Optional[int] = None,
         geometry: Optional[Dict] = None,
+        filter_violence: bool = False,
     ) -> pd.DataFrame:
         """
         Query ACLED for conflict events.
@@ -217,13 +397,19 @@ class ACLEDClient:
             start_date: Start date (YYYY-MM-DD)
             end_date: End date (YYYY-MM-DD)
             event_types: Filter by event types (see ACLED_EVENT_TYPES)
+            sub_event_types: Filter by sub-event types (see ACLED_SUB_EVENT_TYPES)
             fields: Columns to retrieve
             limit: Maximum number of events
             geometry: GeoJSON geometry for spatial filtering (bbox extracted)
+            filter_violence: If True, filter to DEFAULT_VIOLENCE_SUB_EVENTS
 
         Returns:
             DataFrame with conflict events
         """
+        # Apply default violence filter if requested
+        if filter_violence and sub_event_types is None:
+            sub_event_types = DEFAULT_VIOLENCE_SUB_EVENTS
+
         # Extract bbox from geometry
         bbox = None
         if geometry:
@@ -235,6 +421,7 @@ class ACLEDClient:
             start_date=start_date,
             end_date=end_date,
             event_types=event_types,
+            sub_event_types=sub_event_types,
             fields=fields,
             limit=limit,
             bbox=bbox,
@@ -242,12 +429,21 @@ class ACLEDClient:
 
         for attempt in range(self.config.max_retries):
             try:
+                # Get valid access token
+                token = self._get_valid_token()
+
                 logger.debug(f"ACLED request: {params.get('country', 'all')}, "
                            f"{start_date} to {end_date}")
+
+                # Make request with Bearer token
+                headers = {
+                    "Authorization": f"Bearer {token}",
+                }
 
                 response = self.session.get(
                     self.config.base_url,
                     params=params,
+                    headers=headers,
                     timeout=60
                 )
 
@@ -261,7 +457,13 @@ class ACLEDClient:
                     continue
 
                 if response.status_code == 401:
-                    raise ValueError("Invalid ACLED credentials")
+                    # Token might have expired, try refreshing
+                    logger.warning("Received 401, attempting token refresh...")
+                    self._access_token = None
+                    self._token_expires_at = None
+                    if attempt < self.config.max_retries - 1:
+                        continue
+                    raise ValueError("Invalid ACLED credentials or expired token")
 
                 response.raise_for_status()
 

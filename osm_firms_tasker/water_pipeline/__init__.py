@@ -26,7 +26,8 @@ Quick Start:
 
 Modules:
     - aoi: AOI input handling (coordinates, GeoJSON, shapefiles)
-    - firms: NASA FIRMS/VIIRS thermal anomaly API
+    - firms: NASA GIBS WMTS for thermal anomalies (NRT, no API key)
+    - firms_api: NASA FIRMS REST API (requires MAP_KEY, longer archives)
     - acled: ACLED conflict event API
     - osm: OpenStreetMap Overpass API for water infrastructure
     - spatial: Proximity analysis and spatial operations
@@ -51,7 +52,7 @@ from .aoi import (
     load_aoi,
 )
 
-# NASA FIRMS thermal detection
+# NASA FIRMS thermal detection (GIBS WMTS - NRT only, no API key)
 from .firms import (
     FIRMSClient,
     FIRMSConfig,
@@ -60,11 +61,21 @@ from .firms import (
     query_thermal_anomalies_multi,
 )
 
+# NASA FIRMS REST API (requires MAP_KEY, supports longer date ranges)
+from .firms_api import (
+    FIRMSAPIClient,
+    FIRMSAPIConfig,
+    FIRMS_SOURCES as FIRMS_API_SOURCES,
+    query_firms_thermal_anomalies,
+    query_firms_multi_source,
+)
+
 # ACLED conflict events
 from .acled import (
     ACLEDClient,
     ACLEDConfig,
     ACLED_EVENT_TYPES,
+    DEFAULT_VIOLENCE_SUB_EVENTS,
     query_conflict_events,
     query_violence_events,
 )
@@ -130,12 +141,19 @@ __all__ = [
     "AOIConfig",
     "load_aoi",
 
-    # FIRMS
+    # FIRMS (GIBS WMTS)
     "FIRMSClient",
     "FIRMSConfig",
     "FIRMS_SOURCES",
     "query_thermal_anomalies",
     "query_thermal_anomalies_multi",
+
+    # FIRMS REST API
+    "FIRMSAPIClient",
+    "FIRMSAPIConfig",
+    "FIRMS_API_SOURCES",
+    "query_firms_thermal_anomalies",
+    "query_firms_multi_source",
 
     # ACLED
     "ACLEDClient",
