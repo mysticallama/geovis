@@ -106,6 +106,7 @@ class WFPConfig:
     download_timeout: int = 120
     cache_downloads: bool = True
     fallback_to_osm: bool = True
+    max_features_per_layer: int = 8000  # cap per layer to keep map.html manageable
 
     def __post_init__(self):
         if self.hdx_api_key is None:
@@ -264,7 +265,7 @@ class WFPLogisticsClient:
         """
         output_dir = Path(output_dir)
         output_dir.mkdir(parents=True, exist_ok=True)
-        downloaded: List[Path] = []
+        downloaded: List[Tuple[Path, Dict]] = []
 
         for res in resources[:max_downloads]:
             url  = res.get("url", "")
@@ -274,7 +275,7 @@ class WFPLogisticsClient:
 
             if self.config.cache_downloads and out_path.exists():
                 logger.info(f"  [cache] {out_path.name}")
-                downloaded.append(out_path)
+                downloaded.append((out_path, res))
                 continue
 
             self._rate_limit()
@@ -285,7 +286,7 @@ class WFPLogisticsClient:
                     for chunk in resp.iter_content(chunk_size=1 << 20):
                         fh.write(chunk)
                 logger.info(f"  Downloaded → {out_path.name}")
-                downloaded.append(out_path)
+                downloaded.append((out_path, res))
             except Exception as exc:
                 logger.warning(f"  Failed to download {url}: {exc}")
 
@@ -346,15 +347,86 @@ class WFPLogisticsClient:
     def _classify_layer(title: str, filename: str) -> str:
         """Assign a layer type from dataset title / filename keywords."""
         text = f"{title} {filename}".lower()
-        if any(k in text for k in ("road", "highway", "route", "transport")):
-            return "roads"
+        # Check airports before roads — "aerodrome/airport" is more specific
+        # than "transport" which can appear in airport dataset titles
         if any(k in text for k in ("airport", "airstrip", "aerodrome", "airfield")):
             return "airports"
+        if any(k in text for k in ("road", "highway", "route", "transport")):
+            return "roads"
         if any(k in text for k in ("border", "crossing", "checkpoint", "boundary")):
             return "crossings"
         if any(k in text for k in ("warehouse", "storage", "port", "depot", "hub")):
             return "storage"
         return "other"
+
+    # ── OSM major roads ──────────────────────────────────────────────────────
+
+    def _query_osm_major_roads(self, aoi_geometry: Dict) -> List[Dict]:
+        """
+        Query OSM Overpass for roads within the AOI.
+
+        First queries major roads (motorway, trunk, primary, secondary).
+        Then attempts to add residential/tertiary roads.  If the combined
+        feature count would exceed ``max_features_per_layer``, the
+        residential/tertiary results are discarded and only major roads
+        are returned.
+        """
+        from .osm import OverpassClient, QueryBuilder, _osm_to_geojson
+
+        def _line_features(fc: Dict) -> List[Dict]:
+            return [
+                f for f in fc.get("features", [])
+                if f.get("geometry", {}).get("type") in ("LineString", "MultiLineString")
+            ]
+
+        major_tags = [
+            {"key": "highway", "value": "motorway"},
+            {"key": "highway", "value": "trunk"},
+            {"key": "highway", "value": "primary"},
+            {"key": "highway", "value": "secondary"},
+        ]
+        residential_tags = [
+            {"key": "highway", "value": "tertiary"},
+            {"key": "highway", "value": "residential"},
+        ]
+
+        # ── Major roads (required) ────────────────────────────────────────
+        major_features: List[Dict] = []
+        try:
+            self._rate_limit()
+            osm_client = OverpassClient()
+            qb = QueryBuilder()
+            qb.geometry(aoi_geometry).tags(major_tags)
+            major_features = _line_features(_osm_to_geojson(osm_client.query(qb.build())))
+            logger.info(f"OSM major roads: {len(major_features)} features")
+        except Exception as exc:
+            logger.warning(f"OSM major roads query failed: {exc}")
+            return []
+
+        # ── Residential / tertiary (optional) ────────────────────────────
+        cap = self.config.max_features_per_layer
+        try:
+            self._rate_limit()
+            qb2 = QueryBuilder()
+            qb2.geometry(aoi_geometry).tags(residential_tags)
+            res_features = _line_features(_osm_to_geojson(
+                OverpassClient().query(qb2.build())
+            ))
+            logger.info(f"OSM residential/tertiary roads: {len(res_features)} features")
+
+            combined = len(major_features) + len(res_features)
+            if combined <= cap:
+                logger.info(f"OSM roads combined: {combined} features (within cap {cap})")
+                return major_features + res_features
+            else:
+                logger.warning(
+                    f"OSM residential roads would bring total to {combined} "
+                    f"(cap={cap}) — using major roads only ({len(major_features)} features)"
+                )
+                return major_features
+        except Exception as exc:
+            logger.warning(f"OSM residential roads query failed: {exc} — using major roads only")
+            return major_features
 
     # ── OSM fallback ─────────────────────────────────────────────────────────
 
@@ -413,6 +485,7 @@ class WFPLogisticsClient:
 
         layers: Dict[str, List[Dict]] = {
             "roads": [], "airports": [], "crossings": [], "storage": [], "other": [],
+            "osm_roads": [],
         }
 
         datasets = self.search_datasets()
@@ -420,9 +493,9 @@ class WFPLogisticsClient:
         if datasets:
             resources = self._select_resources(datasets)
             dl_dir    = output_dir / "downloads"
-            dl_paths  = self.download_resources(resources, dl_dir)
+            dl_pairs  = self.download_resources(resources, dl_dir)
 
-            for path, res in zip(dl_paths, resources):
+            for path, res in dl_pairs:
                 fc = self._file_to_geojson(path)
                 if not fc or not fc.get("features"):
                     continue
@@ -453,10 +526,33 @@ class WFPLogisticsClient:
                     layer = "storage"
                 layers[layer].append(feat)
 
-        # Clip to AOI if provided
+        # Supplement with OSM major roads (motorway, trunk, primary, secondary)
+        if aoi_geometry:
+            osm_roads = self._query_osm_major_roads(aoi_geometry)
+            layers["osm_roads"].extend(osm_roads)
+
+        # Clip to AOI, normalise geometry types for Mapbox, build output
+        LINE_LAYERS  = {"roads", "osm_roads"}
+        POINT_LAYERS = {"airports", "crossings", "storage"}
+
         result_layers: Dict[str, Dict] = {}
         for lname, feats in layers.items():
             clipped = self._clip_to_aoi(feats, aoi_geometry) if aoi_geometry else feats
+            # Strip null-geometry features first
+            clipped = [f for f in clipped if f.get("geometry")]
+            # Normalise to the geometry type the Mapbox layer expects
+            if lname in LINE_LAYERS:
+                clipped = self._to_line_features(clipped)
+            elif lname in POINT_LAYERS:
+                clipped = self._to_point_features(clipped)
+            # Cap to prevent map.html from becoming unloadably large
+            cap = self.config.max_features_per_layer
+            if cap and len(clipped) > cap:
+                logger.warning(
+                    f"Layer '{lname}' has {len(clipped)} features — "
+                    f"capping to {cap} for map performance"
+                )
+                clipped = clipped[:cap]
             result_layers[lname] = {"type": "FeatureCollection", "features": clipped}
             if clipped:
                 fc_path = output_dir / f"wfp_{lname}.geojson"
@@ -469,6 +565,85 @@ class WFPLogisticsClient:
         total = sum(len(fc.get("features", [])) for fc in result_layers.values())
         logger.info(f"WFP fetch complete: {total} features across {len(result_layers)} layers")
         return result_layers
+
+    @staticmethod
+    def _to_line_features(features: List[Dict]) -> List[Dict]:
+        """
+        Normalise features to LineString/MultiLineString for Mapbox line layers.
+
+        - LineString / MultiLineString → kept as-is
+        - Polygon                      → exterior ring converted to LineString
+        - MultiPolygon                 → exterior rings converted to MultiLineString
+        - Point / other                → dropped
+        - null geometry                → dropped
+        """
+        result = []
+        for feat in features:
+            geom = feat.get("geometry")
+            if not geom:
+                continue
+            gtype = geom.get("type", "")
+            if gtype in ("LineString", "MultiLineString"):
+                result.append(feat)
+            elif gtype == "Polygon":
+                coords = geom.get("coordinates", [[]])
+                if coords and coords[0]:
+                    result.append({**feat, "geometry": {
+                        "type": "LineString",
+                        "coordinates": coords[0],
+                    }})
+            elif gtype == "MultiPolygon":
+                rings = [poly[0] for poly in geom.get("coordinates", []) if poly and poly[0]]
+                if rings:
+                    result.append({**feat, "geometry": {
+                        "type": "MultiLineString",
+                        "coordinates": rings,
+                    }})
+        return result
+
+    @staticmethod
+    def _to_point_features(features: List[Dict]) -> List[Dict]:
+        """
+        Normalise features to Point for Mapbox circle layers.
+
+        - Point        → kept as-is
+        - Polygon      → centroid computed via shapely (or first coordinate fallback)
+        - LineString   → midpoint used
+        - null geometry → dropped
+        """
+        result = []
+        for feat in features:
+            geom = feat.get("geometry")
+            if not geom:
+                continue
+            gtype = geom.get("type", "")
+            if gtype == "Point":
+                result.append(feat)
+            else:
+                try:
+                    from shapely.geometry import shape
+                    centroid = shape(geom).centroid
+                    result.append({**feat, "geometry": {
+                        "type": "Point",
+                        "coordinates": [centroid.x, centroid.y],
+                    }})
+                except Exception:
+                    # Fallback: dig out the first coordinate
+                    coords = geom.get("coordinates", [])
+                    pt = None
+                    if gtype == "LineString" and coords:
+                        mid = coords[len(coords) // 2]
+                        pt = mid[:2]
+                    elif gtype == "Polygon" and coords and coords[0]:
+                        ring = coords[0]
+                        mid = ring[len(ring) // 2]
+                        pt = mid[:2]
+                    if pt:
+                        result.append({**feat, "geometry": {
+                            "type": "Point",
+                            "coordinates": pt,
+                        }})
+        return result
 
     @staticmethod
     def _clip_to_aoi(features: List[Dict], aoi_geometry: Dict) -> List[Dict]:
@@ -507,8 +682,7 @@ def fetch_logistics_data(
 
     Returns:
         Dict of layer name → GeoJSON FeatureCollection.
-        Keys: ``"roads"``, ``"airports"``, ``"crossings"``, ``"storage"``,
-        ``"other"``.
+        Keys: ``"roads"``, ``"airports"``, ``"crossings"``, ``"storage"``, ``"other"``.
     """
     client = WFPLogisticsClient(config)
     return client.fetch(aoi_geometry=aoi_geometry, output_dir=output_dir)

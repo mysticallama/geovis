@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Water & Food Infrastructure Monitoring Pipeline — No FIRMS
-==========================================================
+Water & Food Infrastructure Monitoring Pipeline — Yemen (Western AOI)
+=====================================================================
 
 A slimmed-down pipeline that removes NASA FIRMS thermal data and replaces it
 with a richer OSM infrastructure query (water + food tags) and WFP logistics
@@ -52,20 +52,21 @@ from typing import Optional
 
 from dotenv import load_dotenv
 
+# Root of the working_paper_version project (one level up from country_runs/)
+_PROJECT_ROOT = Path(__file__).resolve().parent.parent
+
 # =============================================================================
 # CONFIGURATION — Edit these values for your analysis
 # =============================================================================
 
 # ── AOI ──────────────────────────────────────────────────────────────────────
 # Bounding box [west, south, east, north]
-# BBOX = [36.0559, 49.8812, 36.4049, 50.1058]   # Kharkiv
-BBOX = [22.0, 10.5, 26.5, 16.5]   # Western Sudan / Darfur
+# Western Yemen: Red Sea coast → Sanaa highlands (Hodeidah, Taiz, Ibb, Sanaa, Hajjah)
+BBOX = [42.5, 12.5, 46.5, 16.5]   # Western Yemen
 
 # ── Date range for ACLED ─────────────────────────────────────────────────────
-# ACLED_START_DATE = "2025-10-01"   # Kharkiv run
-# ACLED_END_DATE   = "2025-10-14"   # Kharkiv run
-ACLED_START_DATE = "2024-01-01"   # Inclusive start (YYYY-MM-DD)
-ACLED_END_DATE   = "2025-12-31"   # Inclusive end   (YYYY-MM-DD)
+ACLED_START_DATE = "2021-01-01"   # Inclusive start (YYYY-MM-DD)
+ACLED_END_DATE   = "2026-02-24"   # Inclusive end   (YYYY-MM-DD)
 
 # ── Planet imagery — before / after target dates ──────────────────────────────
 BEFORE_DATE = "2025-10-01"   # Baseline imagery target date (YYYY-MM-DD)
@@ -95,23 +96,22 @@ OSM_PROXIMITY_RADIUS_METERS  = 500  # radius for OSM feature cross-reference
 SAVE_ANNOTATED_TILES         = True # draw detection boxes on tile PNGs
 
 # ── WFP logistics (Step 6) ───────────────────────────────────────────────────
-WFP_COUNTRY_ISO3 = "SDN"   # ISO 3166-1 alpha-3 country code
-WFP_COUNTRY_NAME = "Sudan"  # Human-readable name for search
+WFP_COUNTRY_ISO3 = "YEM"   # ISO 3166-1 alpha-3 country code
+WFP_COUNTRY_NAME = "Yemen"  # Human-readable name for search
 
 # ── Mapbox web app (Step 7) ──────────────────────────────────────────────────
-MAP_TITLE   = f"Conflict & Logistics: {WFP_COUNTRY_NAME} ({ACLED_START_DATE} → {ACLED_END_DATE})"
-# MAP_ZOOM  = 7.0   # Kharkiv
-MAP_ZOOM    = 6.0
+MAP_TITLE   = f"Conflict & Logistics: {WFP_COUNTRY_NAME} Western ({ACLED_START_DATE} → {ACLED_END_DATE})"
+MAP_ZOOM    = 7.0
 # Map centre [longitude, latitude] — defaults to AOI centroid at runtime
 
 # ── Output ────────────────────────────────────────────────────────────────────
-OUTPUT_DIR = Path("./output")
+OUTPUT_DIR = _PROJECT_ROOT / "output_yemen"
 
 # =============================================================================
 # END CONFIGURATION
 # =============================================================================
 
-load_dotenv()
+load_dotenv(_PROJECT_ROOT / ".env")
 
 logging.basicConfig(
     level=logging.INFO,

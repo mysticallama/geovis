@@ -329,7 +329,8 @@ class ACLEDClient:
             params["event_type"] = "|".join(event_types)
 
         if sub_event_types:
-            params["sub_event_type"] = ":OR:".join(sub_event_types)
+            params["sub_event_type"] = "|".join(sub_event_types)
+            params["sub_event_type_where"] = "OR"
 
         if bbox:
             west, south, east, north = bbox

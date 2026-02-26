@@ -76,6 +76,7 @@ class MapboxFusionConfig:
     wfp_airport_color: str = "#ef4444"    # red-500
     wfp_crossing_color: str = "#f97316"   # orange-500
     wfp_storage_color: str = "#a855f7"    # purple-500
+    wfp_osm_road_color: str = "#f59e0b"  # amber-500
     map_style: str = "mapbox://styles/mapbox/dark-v11"
 
     def __post_init__(self):
@@ -116,11 +117,13 @@ def _build_html(
     cx, cy = config.initial_center
 
     # Embed GeoJSON data as JS vars
-    acled_js   = _safe_json(acled_geojson)
-    roads_js   = _safe_json(wfp_layers.get("roads",    {"type": "FeatureCollection", "features": []}))
-    airports_js = _safe_json(wfp_layers.get("airports", {"type": "FeatureCollection", "features": []}))
-    cross_js   = _safe_json(wfp_layers.get("crossings",{"type": "FeatureCollection", "features": []}))
-    storage_js = _safe_json(wfp_layers.get("storage",  {"type": "FeatureCollection", "features": []}))
+    _empty_fc = {"type": "FeatureCollection", "features": []}
+    acled_js    = _safe_json(acled_geojson)
+    roads_js    = _safe_json(wfp_layers.get("roads",     _empty_fc))
+    airports_js = _safe_json(wfp_layers.get("airports",  _empty_fc))
+    cross_js    = _safe_json(wfp_layers.get("crossings", _empty_fc))
+    storage_js  = _safe_json(wfp_layers.get("storage",   _empty_fc))
+    osm_roads_js = _safe_json(wfp_layers.get("osm_roads", _empty_fc))
 
     # Extract unique dates from ACLED for time slider
     dates_set: set = set()
@@ -132,11 +135,12 @@ def _build_html(
     dates_js = _safe_json(sorted_dates)
 
     # Summary stats for header
-    n_acled   = len(acled_geojson.get("features", []))
-    n_roads   = len(wfp_layers.get("roads",    {}).get("features", []))
-    n_air     = len(wfp_layers.get("airports", {}).get("features", []))
-    n_cross   = len(wfp_layers.get("crossings",{}).get("features", []))
-    n_storage = len(wfp_layers.get("storage",  {}).get("features", []))
+    n_acled    = len(acled_geojson.get("features", []))
+    n_roads    = len(wfp_layers.get("roads",     {}).get("features", []))
+    n_air      = len(wfp_layers.get("airports",  {}).get("features", []))
+    n_cross    = len(wfp_layers.get("crossings", {}).get("features", []))
+    n_storage  = len(wfp_layers.get("storage",   {}).get("features", []))
+    n_osm_rds  = len(wfp_layers.get("osm_roads", {}).get("features", []))
 
     html = f"""<!DOCTYPE html>
 <html lang="en">
@@ -146,6 +150,8 @@ def _build_html(
 <title>{title}</title>
 <link href="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css" rel="stylesheet"/>
 <script src="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js"></script>
+<link href="https://unpkg.com/@mapbox/mapbox-gl-geocoder@5.0.3/dist/mapbox-gl-geocoder.css" rel="stylesheet"/>
+<script src="https://unpkg.com/@mapbox/mapbox-gl-geocoder@5.0.3/dist/mapbox-gl-geocoder.min.js"></script>
 <style>
   * {{ margin: 0; padding: 0; box-sizing: border-box; }}
   body {{ font-family: 'Segoe UI', Arial, sans-serif; background: #111; color: #e5e7eb; }}
@@ -167,6 +173,7 @@ def _build_html(
   .badge-blue   {{ background: #1e3a8a; color: #93c5fd; }}
   .badge-orange {{ background: #92400e; color: #fcd34d; }}
   .badge-purple {{ background: #581c87; color: #d8b4fe; }}
+  .badge-amber  {{ background: #78350f; color: #fde68a; }}
 
   /* ── Legend ── */
   #legend {{
@@ -205,6 +212,10 @@ def _build_html(
   }}
   #heatmap-toggle:hover {{ background: #374151; }}
 
+  /* ── Geocoder — push below header ── */
+  .mapboxgl-ctrl-top-left {{ top: 54px !important; }}
+  .mapboxgl-ctrl-geocoder {{ min-width: 260px; font-size: 0.82rem; }}
+
   /* ── Pop-up custom style ── */
   .mapboxgl-popup-content {{
     background: #1f2937 !important; color: #e5e7eb !important;
@@ -223,7 +234,8 @@ def _build_html(
 <div id="header">
   <h1>{title}</h1>
   <span class="badge badge-red">ACLED {n_acled:,} events</span>
-  <span class="badge badge-blue">Roads {n_roads:,}</span>
+  <span class="badge badge-blue">WFP Roads {n_roads:,}</span>
+  <span class="badge badge-amber">OSM Roads {n_osm_rds:,}</span>
   <span class="badge badge-red">Airports {n_air}</span>
   <span class="badge badge-orange">Crossings {n_cross}</span>
   <span class="badge badge-purple">Storage {n_storage}</span>
@@ -235,7 +247,7 @@ def _build_html(
 <!-- Time slider -->
 <div id="slider-panel">
   <h3>ACLED Time Filter</h3>
-  <div id="date-range-label">All dates: {start_date} → {end_date}</div>
+  <div id="date-range-label"></div>
   <input type="range" id="date-slider" min="0" step="1" value="9999"/>
   <div id="slider-info">Showing all {n_acled:,} events</div>
   <button id="heatmap-toggle">Switch to point view</button>
@@ -245,8 +257,15 @@ def _build_html(
 <div id="legend">
   <h3>Legend</h3>
   <div class="legend-item" data-layer="acled-heat" id="li-heat">
-    <div class="legend-swatch" style="background:linear-gradient(to right,#2563eb,#ef4444);width:28px;height:10px;border-radius:2px;"></div>
+    <div class="legend-swatch" style="background:linear-gradient(to right,rgba(68,1,84,0.8),rgba(59,82,139,0.9),rgba(33,145,140,1),rgba(94,201,98,1),rgba(253,231,37,1));width:28px;height:10px;border-radius:2px;"></div>
     <span class="legend-label">ACLED heatmap</span>
+  </div>
+  <div style="margin-left:22px; margin-bottom:6px;">
+    <div style="background:linear-gradient(to right,rgba(68,1,84,0.8),rgba(59,82,139,0.9),rgba(33,145,140,1),rgba(94,201,98,1),rgba(253,231,37,1));height:5px;border-radius:2px;width:110px;"></div>
+    <div style="display:flex;justify-content:space-between;width:110px;font-size:0.63rem;color:#6b7280;margin-top:1px;">
+      <span>low</span><span>high</span>
+    </div>
+    <div style="font-size:0.65rem;color:#6b7280;margin-top:1px;">density of incidents</div>
   </div>
   <div class="legend-item" data-layer="acled-points" id="li-pts" style="display:none">
     <div class="legend-swatch circle" style="background:#ef4444;"></div>
@@ -255,6 +274,10 @@ def _build_html(
   <div class="legend-item" data-layer="wfp-roads" id="li-roads">
     <div class="legend-swatch line" style="background:{config.wfp_road_color};width:28px;"></div>
     <span class="legend-label">WFP Roads</span>
+  </div>
+  <div class="legend-item" data-layer="wfp-osm-roads" id="li-osm-roads">
+    <div class="legend-swatch line" style="background:{config.wfp_osm_road_color};width:28px;"></div>
+    <span class="legend-label">OSM major roads</span>
   </div>
   <div class="legend-item" data-layer="wfp-airports" id="li-air">
     <div class="legend-swatch circle" style="background:{config.wfp_airport_color};"></div>
@@ -277,6 +300,7 @@ const WFP_ROADS     = {roads_js};
 const WFP_AIRPORTS  = {airports_js};
 const WFP_CROSSINGS = {cross_js};
 const WFP_STORAGE   = {storage_js};
+const WFP_OSM_ROADS = {osm_roads_js};
 const ALL_DATES     = {dates_js};
 
 // ── Map initialisation ────────────────────────────────────────────────────
@@ -291,6 +315,14 @@ const map = new mapboxgl.Map({{
 map.addControl(new mapboxgl.NavigationControl(), "top-right");
 map.addControl(new mapboxgl.ScaleControl({{unit:"metric"}}), "bottom-right");
 map.addControl(new mapboxgl.FullscreenControl(), "top-right");
+try {{
+  map.addControl(new MapboxGeocoder({{
+    accessToken: mapboxgl.accessToken,
+    mapboxgl: mapboxgl,
+    placeholder: "Search location\u2026",
+    collapsed: false,
+  }}), "top-left");
+}} catch(e) {{ console.warn("Geocoder unavailable:", e); }}
 
 // ── State ─────────────────────────────────────────────────────────────────
 let isHeatmap = true;
@@ -330,18 +362,18 @@ map.on("load", () => {{
     type: "heatmap",
     source: "acled",
     paint: {{
-      "heatmap-weight":   ["interpolate",["linear"],["coalesce",["to-number",["get","fatalities"]],1], 0,0.3, 50,1],
-      "heatmap-intensity":["interpolate",["linear"],["zoom"], 3,0.5, 9,2],
-      "heatmap-radius":   {config.acled_heatmap_radius},
-      "heatmap-opacity":  {config.acled_heatmap_opacity},
+      "heatmap-weight":    ["interpolate",["linear"],["coalesce",["to-number",["get","fatalities"]],1], 0,0.5, 50,1],
+      "heatmap-intensity": ["interpolate",["linear"],["zoom"], 3,1.5, 6,2.5, 9,3.5],
+      "heatmap-radius":    ["interpolate",["linear"],["zoom"], 3,10, 6,20, 9,35],
+      "heatmap-opacity":   {config.acled_heatmap_opacity},
       "heatmap-color": [
         "interpolate",["linear"],["heatmap-density"],
-        0,   "rgba(0,0,255,0)",
-        0.2, "royalblue",
-        0.4, "cyan",
-        0.6, "lime",
-        0.8, "yellow",
-        1.0, "red"
+        0,    "rgba(0,0,0,0)",
+        0.01, "rgba(68,1,84,0.8)",
+        0.25, "rgba(59,82,139,0.9)",
+        0.5,  "rgba(33,145,140,1.0)",
+        0.75, "rgba(94,201,98,1.0)",
+        1.0,  "rgba(253,231,37,1.0)"
       ],
     }},
   }});
@@ -366,10 +398,20 @@ map.on("load", () => {{
   map.addSource("wfp-airports",  {{type:"geojson", data: WFP_AIRPORTS}});
   map.addSource("wfp-crossings", {{type:"geojson", data: WFP_CROSSINGS}});
   map.addSource("wfp-storage",   {{type:"geojson", data: WFP_STORAGE}});
+  map.addSource("wfp-osm-roads", {{type:"geojson", data: WFP_OSM_ROADS}});
 
   map.addLayer({{
     id: "wfp-roads", type: "line", source: "wfp-roads",
-    paint: {{"line-color": "{config.wfp_road_color}", "line-width": 2, "line-opacity": 0.8}},
+    paint: {{"line-color": "{config.wfp_road_color}", "line-width": 3, "line-opacity": 0.9}},
+  }});
+  map.addLayer({{
+    id: "wfp-osm-roads", type: "line", source: "wfp-osm-roads",
+    paint: {{
+      "line-color": "{config.wfp_osm_road_color}",
+      "line-width": 4,
+      "line-opacity": 0.85,
+      "line-dasharray": [4, 2],
+    }},
   }});
 
   function addWfpCircle(id, source, color) {{
@@ -377,7 +419,7 @@ map.on("load", () => {{
       id, type:"circle", source,
       paint: {{
         "circle-color":  color,
-        "circle-radius": 8,
+        "circle-radius": 10,
         "circle-opacity": 0.9,
         "circle-stroke-width": 2,
         "circle-stroke-color": "#fff",
@@ -385,7 +427,17 @@ map.on("load", () => {{
     }});
   }}
 
-  addWfpCircle("wfp-airports",  "wfp-airports",  "{config.wfp_airport_color}");
+  map.addLayer({{
+    id: "wfp-airports", type: "circle", source: "wfp-airports",
+    paint: {{
+      "circle-color":        "{config.wfp_airport_color}",
+      "circle-radius":       4,
+      "circle-opacity":      0.5,
+      "circle-stroke-width": 1,
+      "circle-stroke-color": "#fff",
+      "circle-stroke-opacity": 0.4,
+    }},
+  }});
   addWfpCircle("wfp-crossings", "wfp-crossings", "{config.wfp_crossing_color}");
   addWfpCircle("wfp-storage",   "wfp-storage",   "{config.wfp_storage_color}");
 
@@ -407,7 +459,7 @@ map.on("load", () => {{
   }});
 
   // ── WFP click popups ──────────────────────────────────────────────────
-  ["wfp-airports","wfp-crossings","wfp-storage","wfp-roads"].forEach(lid => {{
+  ["wfp-airports","wfp-crossings","wfp-storage","wfp-roads","wfp-osm-roads"].forEach(lid => {{
     map.on("click", lid, e => {{
       const p = e.features[0].properties;
       const keys = Object.keys(p).filter(k => !["osm_id","osm_type"].includes(k));
@@ -448,8 +500,15 @@ map.on("load", () => {{
   const info   = document.getElementById("slider-info");
   const label  = document.getElementById("date-range-label");
 
+  // Derive actual date bounds from embedded event data
+  const FIRST_DATE = ALL_DATES.length > 0 ? ALL_DATES[0]                    : "{start_date}";
+  const LAST_DATE  = ALL_DATES.length > 0 ? ALL_DATES[ALL_DATES.length - 1] : "{end_date}";
+
+  // Initialise display
+  label.textContent = `${{FIRST_DATE}} → ${{LAST_DATE}}`;
+
   if (ALL_DATES.length > 0) {{
-    slider.max   = ALL_DATES.length;  // max = all dates
+    slider.max   = ALL_DATES.length;  // max index = show all
     slider.value = ALL_DATES.length;
   }}
 
@@ -458,14 +517,14 @@ map.on("load", () => {{
     if (idx >= ALL_DATES.length) {{
       // Show all
       map.getSource("acled").setData(ACLED_DATA);
-      info.textContent = `Showing all {n_acled:,} events`;
-      label.textContent = `All dates: {start_date} → {end_date}`;
+      info.textContent  = `Showing all {n_acled:,} events`;
+      label.textContent = `${{FIRST_DATE}} → ${{LAST_DATE}}`;
     }} else {{
       const cutoff = ALL_DATES[idx];
       const fc = filteredAcled(cutoff);
       map.getSource("acled").setData(fc);
-      info.textContent = `Up to ${{cutoff}}: ${{fc.features.length}} events`;
-      label.textContent = `{start_date} → ${{cutoff}}`;
+      info.textContent  = `Up to ${{cutoff}}: ${{fc.features.length}} events`;
+      label.textContent = `${{FIRST_DATE}} → ${{cutoff}}`;
     }}
   }});
 

@@ -18,8 +18,9 @@ build/
 venv/
 env/
 
-# Pipeline outputs
+# Pipeline outputs — all country output dirs (large GeoJSON/imagery)
 output/
+output_*/
 
 # Downloaded model weights
 *.pt
